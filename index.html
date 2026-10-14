@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="fr" class="motion">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ETS AGBONOUGLA | Solutions Modulaires & Conteneurs en Côte d'Ivoire</title>
+  <meta name="description" content="Spécialiste de la vente et aménagement de modules préfabriqués et conteneurs maritimes en Côte d'Ivoire. Bureaux de chantier, bases-vie, sanitaires et stockage sécurisé. Devis sous 24h.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.etsagbonougla.net/index.html">
+  <link rel="icon" href="favicon.ico">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.etsagbonougla.net/">
+  <meta property="og:title" content="ETS AGBONOUGLA | Solutions Modulaires & Conteneurs en Côte d'Ivoire">
+  <meta property="og:description" content="Bureaux de chantier, bases-vie, conteneurs de stockage sécurisés et blocs sanitaires. Livraison par camion-grue et installation en Côte d'Ivoire.">
+  <meta property="og:image" content="https://www.etsagbonougla.net/39.jpg">
+  <meta property="og:locale" content="fr_FR">
+
+  <!-- Polices modernes & typographie éditoriale -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Maven+Pro:wght@500;600;700;800;900&family=Oswald:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="preload" as="image" href="hero-container-bg.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="hero-container-fg.png" fetchpriority="high">
+  <link rel="stylesheet" href="style.css?v=11">
+</head>
+<body class="home">
+
+  <!-- ── 1. BARRE DE CONTACT SUPÉRIEURE (TOPBAR) ─────────────── -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-left">
+        <a href="tel:+2250707831791" class="topbar-phone" aria-label="Appeler ETS AGBONOUGLA au +225 07 07 83 17 91">
+          <i class="fa-solid fa-phone" aria-hidden="true"></i>
+          <span>Appelez-nous &gt;</span>
+          <strong>+225 07 07 83 17 91</strong>
+        </a>
+      </div>
+      <div class="topbar-right">
+        <span class="topbar-badge"><i class="fa-solid fa-clock" aria-hidden="true"></i> Devis gratuit sous 24h</span>
+        <span class="topbar-badge"><i class="fa-solid fa-truck-ramp-box" aria-hidden="true"></i> Livraison &amp; grutage Abidjan &amp; intérieur CI</span>
+        <span class="topbar-badge topbar-badge--highlight"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Atelier : Attinguié, PK 26</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 2. NAVIGATION PRINCIPALE ─────────────────────────────── -->
+  <header class="navbar" id="appNavbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Ets Agbonougla, retour à l'accueil">
+        <img src="logoetsa.png" alt="Ets Agbonougla" width="36" height="23">
+        <div class="nav-logo-text">
+          <span class="nav-logo-brand"></span>
+          <span class="nav-logo-sub"></span>
+        </div>
+      </a>
+      <nav class="nav-links" aria-label="Menu principal">
+        <a href="index.html" class="nav-lnk act" aria-current="page">Accueil</a>
+        <a href="ets_solutions.html" class="nav-lnk">Solutions</a>
+        <a href="ets_expertise.html" class="nav-lnk">Expertise</a>
+        <a href="ets_references.html" class="nav-lnk">Références</a>
+        <a href="ets_carriere.html" class="nav-lnk">Carrières</a>
+        <a href="ets_contact.html" class="nav-lnk">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="tel:+2250707831791" class="nav-phone" aria-label="Appeler le +225 07 07 83 17 91">
+          <i class="fa-solid fa-phone" aria-hidden="true"></i>
+          <span>+225 07 07 83 17 91</span>
+        </a>
+        <a href="#devis" class="nav-cta">
+          <span>Demander un devis</span>
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="drawer">
+          <span class="hbg-bar"></span>
+          <span class="hbg-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── VOLET MOBILE (DRAWER) ────────────────────────────────── -->
+  <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+  <nav class="drawer" id="drawer" aria-label="Navigation mobile" aria-hidden="true">
+    <div class="drawer-header">
+      <span>Menu de navigation</span>
+      <button class="drawer-close" id="drawerClose" aria-label="Fermer le menu">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="drawer-links">
+      <a href="index.html" class="drawer-lnk act">Accueil <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
+      <a href="ets_solutions.html" class="drawer-lnk">Solutions <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
+      <a href="ets_expertise.html" class="drawer-lnk">Expertise <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
+      <a href="ets_references.html" class="drawer-lnk">Références <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
+      <a href="ets_carriere.html" class="drawer-lnk">Carrières <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
+      <a href="ets_contact.html" class="drawer-lnk">Contact <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
+    </div>
+    <div class="drawer-foot">
+      <div class="drawer-contact-quick">
+        <div class="drawer-cq-item">
+          <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+          <span>Attinguié, PK 26 Autoroute du Nord</span>
+        </div>
+        <div class="drawer-cq-item">
+          <i class="fa-solid fa-phone" aria-hidden="true"></i>
+          <a href="tel:+2250707831791">+225 07 07 83 17 91</a>
+        </div>
+      </div>
+      <a href="#devis" class="btn btn-green btn-full">Demander un devis</a>
+    </div>
+  </nav>
+
+  <main id="mainContent">
+
+    <!-- ── 1. HERO MONUMENTAL & CINÉMATOGRAPHIQUE (.h-hero) ──────── -->
+    <section class="h-hero" data-scroll="exit" aria-labelledby="hero-title">
+      <!-- Couche 0 : Ciel atmosphérique & tarmac humide -->
+      <div class="h-hero__bg" aria-hidden="true">
+        <img src="hero-container-bg.jpg" alt="" width="1376" height="768" fetchpriority="high">
+      </div>
+
+      <!-- Couche 1 : Titre architectural ETS AGBONOUGLA en arrière-plan (avec marges respirantes) -->
+      <div class="h-hero__megatitle" aria-hidden="true">
+        <span class="h-hero__mega-word">ETS AGBONOUGLA</span>
+      </div>
+
+      <!-- Couche 2 : Détourage PNG transparent (palonnier, câbles, moufle et conteneur passant DEVANT le titre) -->
+      <div class="h-hero__fg" aria-hidden="true">
+        <img src="hero-container-fg.png" alt="Conteneur maritime industriel suspendu par câbles et palonnier de grue" width="1376" height="768" fetchpriority="high">
+      </div>
+
+      <!-- Lignes de cote techniques vectorielles -->
+      <svg class="h-hero__leaders-svg" viewBox="0 0 1376 768" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <polyline
+          points="356,476 580,476 640,392"
+          fill="none"
+          stroke="rgba(255,255,255,0.22)"
+          stroke-width="1"
+        />
+        <line
+          x1="922"
+          y1="444"
+          x2="1128"
+          y2="444"
+          stroke="rgba(255,255,255,0.22)"
+          stroke-width="1"
+        />
+      </svg>
+
+      <div class="h-hero__overlay" aria-hidden="true"></div>
+
+      <!-- Couche 3 : 3 Hotspots concentriques sur le conteneur -->
+      <div class="h-hero__scene-ui" aria-hidden="true">
+        <div class="h-hero__hotspot h-hero__hotspot--1">
+          <span class="h-hero__hotspot-ring"></span>
+          <span class="h-hero__hotspot-dot"></span>
+          <div class="h-hero__hotspot-card">
+            <span class="h-hero__hotspot-code">STRUCTURE // 01</span>
+            <strong>Acier CORTEN Blindé</strong>
+            <span>Haute résistance &amp; anticorrosion</span>
+          </div>
+        </div>
+
+        <div class="h-hero__hotspot h-hero__hotspot--2">
+          <span class="h-hero__hotspot-ring"></span>
+          <span class="h-hero__hotspot-dot"></span>
+          <div class="h-hero__hotspot-card">
+            <span class="h-hero__hotspot-code">CLIMAT // 02</span>
+            <strong>Isolation Tropicalisée</strong>
+            <span>Panneaux haute densité 50 mm</span>
+          </div>
+        </div>
+
+        <div class="h-hero__hotspot h-hero__hotspot--3">
+          <span class="h-hero__hotspot-ring"></span>
+          <span class="h-hero__hotspot-dot"></span>
+          <div class="h-hero__hotspot-card">
+            <span class="h-hero__hotspot-code">LOGISTIQUE // 03</span>
+            <strong>Grutage Clé en Main</strong>
+            <span>Livraison camion-grue toute la CI</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Couche 4 : Conteneur principal aligné (Gauche / Centre libre / Droite / Bas) -->
+      <div class="h-hero__container">
+        <!-- Zone médiane : Boîte CTA épurée à gauche + Conteneur libre au centre + Fiche verticale à droite -->
+        <div class="h-hero__mid-row">
+          <!-- Bloc gauche épuré (Titre 2 lignes + Bouton uniquement, comme Move effortlessly in just minutes) -->
+          <div class="h-hero__callout">
+            <h1 class="h-hero__title" id="hero-title">
+              Déployez vos espaces<br>en quelques jours
+            </h1>
+            <a href="#devis" class="btn btn-white btn-full h-hero__cta-btn">
+              <span>DEMANDER UN DEVIS</span>
+            </a>
+          </div>
+
+          <!-- Fiche technique verticale en verre dépoli à droite -->
+          <aside class="h-hero__specbox" aria-label="Caractéristiques clés">
+            <div class="h-hero__specbox-media">
+              <img src="21.jpg" alt="Module bureau et conteneur aménagé ETS AGBONOUGLA" width="160" height="140">
+            </div>
+            <ul class="h-hero__specbox-list">
+              <li>Acier CORTEN blindé</li>
+              <li>100% Étanche &amp; isolé</li>
+            </ul>
+          </aside>
+        </div>
+
+        <!-- Zone inférieure asymétrique (alignée en bas comme sur la référence) -->
+        <div class="h-hero__bottom-row">
+          <div class="h-hero__why">
+            <div class="h-hero__why-kicker">
+              <span class="h-hero__why-icon"><i class="fa-solid fa-bolt" aria-hidden="true"></i></span>
+              <span>POURQUOI NOUS</span>
+            </div>
+            <h2 class="h-hero__why-title">
+              Des solutions modulaires<br>pour toutes les industries
+            </h2>
+          </div>
+
+          <a href="#solutions" class="h-hero__gear-card">
+            <div class="h-hero__gear-head">
+              <span>MODULES PRO !</span>
+              <span class="h-hero__gear-arrow" aria-hidden="true">↗</span>
+            </div>
+            <div class="h-hero__gear-media">
+              <img src="5.jpg" alt="Alignement de modules bases-vie de chantier" width="240" height="120">
+            </div>
+          </a>
+
+          <div class="h-hero__trust-card">
+            <div class="h-hero__trust-top">
+              <div>
+                <div class="h-hero__trust-num">2 500 m²</div>
+                <div class="h-hero__trust-sub">Atelier industriel &amp; parc PK 26</div>
+              </div>
+              <div class="h-hero__trust-avatars" aria-hidden="true">
+                <img src="39.jpg" alt="" width="44" height="44">
+                <img src="61.jpeg" alt="" width="44" height="44">
+              </div>
+            </div>
+            <div class="h-hero__trust-divider"></div>
+            <div class="h-hero__trust-foot">
+              <span class="h-hero__trust-badge-ico"><i class="fa-solid fa-cube" aria-hidden="true"></i></span>
+              <span>DEVIS SOUS 24H &amp; LIVRAISON GRUE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 2. MANIFESTE MÉTIER SCROLL REVEAL (.h-manifesto) ──────── -->
+    <section class="h-manifesto" data-scroll="enter" aria-label="Manifeste professionnel">
+      <div class="container h-manifesto__inner">
+        <span class="h-manifesto__kicker">NOTRE ENGAGEMENT DEPUIS ATTINGUIÉ PK 26</span>
+        <blockquote class="h-manifesto__text" data-words>
+          Nous concevons, aménageons et déployons des modules préfabriqués et conteneurs maritimes robustes, spécialement pensés pour résister aux contraintes sévères des chantiers et des opérations intensives en Côte d'Ivoire.
+        </blockquote>
+        <div class="h-manifesto__band">
+          <div class="h-manifesto__col" data-reveal>
+            <span class="h-manifesto__tag">INDEX // 01</span>
+            <div class="h-manifesto__num">2 500 m²</div>
+            <p class="h-manifesto__label">Atelier industriel de transformation et parc de stockage à Attinguié (PK 26 Autoroute du Nord).</p>
+          </div>
+          <div class="h-manifesto__col" data-reveal>
+            <span class="h-manifesto__tag">INDEX // 02</span>
+            <div class="h-manifesto__num">24 h</div>
+            <p class="h-manifesto__label">Chiffrage technique complet et devis ferme émis après qualification de votre cahier des charges.</p>
+          </div>
+          <div class="h-manifesto__col" data-reveal>
+            <span class="h-manifesto__tag">INDEX // 03</span>
+            <div class="h-manifesto__num">100 %</div>
+            <p class="h-manifesto__label">Modules isolés thermiquement, pré-câblés et prêts pour raccordement direct sur votre site.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 3. CATALOGUE ARCHITECTURAL DES SOLUTIONS (.h-bento) ── -->
+    <section class="h-bento" id="solutions" aria-labelledby="bento-title">
+      <div class="container">
+        <div class="section-hdr center">
+          <span class="eyebrow">CATALOGUE MODULAIRE PROFESSIONNEL</span>
+          <h2 class="section-title" id="bento-title">
+            Des structures adaptées à chaque impératif terrain
+          </h2>
+          <p class="section-sub">
+            Conteneurs maritimes transformés et modules préfabriqués répondant aux normes de sécurité et de robustesse les plus strictes.
+          </p>
+        </div>
+
+        <div class="h-bento__grid">
+
+          <!-- Solution 01 : Bases-vie & Dortoirs d'équipes -->
+          <article class="h-bento__item h-bento__item--large" data-reveal>
+            <div class="h-bento__media">
+              <img src="5.jpg" alt="Ensemble de modules préfabriqués formant une allée de base-vie d'équipe" width="720" height="450" loading="lazy">
+              <span class="h-bento__tag">SÉRIE 01 // BASES-VIE</span>
+            </div>
+            <div class="h-bento__body">
+              <h3 class="h-bento__title">Bases-vie &amp; Dortoirs d'équipes</h3>
+              <p class="h-bento__desc">
+                Complexes modulaires complets pour loger, restaurer et accueillir vos effectifs sur chantiers isolés, projets routiers et sites miniers. Confort thermique optimal et raccordements rapides.
+              </p>
+              <div class="h-bento__specs">
+                <span class="h-bento__spec-item"><i class="fa-solid fa-check" aria-hidden="true"></i> Climatisation tropicalisée</span>
+                <span class="h-bento__spec-item"><i class="fa-solid fa-check" aria-hidden="true"></i> Dortoirs &amp; réfectoires</span>
+                <span class="h-bento__spec-item"><i class="fa-solid fa-check" aria-hidden="true"></i> Raccordement rapide</span>
+              </div>
+              <a href="ets_solutions.html#bases-vie" class="h-bento__link">
+                <span>Consulter nos bases-vie</span>
+                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- Solution 02 : Bureaux de chantier climatisés -->
+          <article class="h-bento__item h-bento__item--side" data-reveal>
+            <div class="h-bento__media">
+              <img src="21.jpg" alt="Module de bureau préfabriqué avec fenêtres sécurisées et climatiseur" width="720" height="450" loading="lazy">
+              <span class="h-bento__tag">SÉRIE 02 // BUREAUX</span>
+            </div>
+            <div class="h-bento__body">
+              <h3 class="h-bento__title">Bureaux de chantier climatisés</h3>
+              <p class="h-bento__desc">
+                Espaces administratifs et postes de commandement opérationnels prêts à l'emploi. Isolation renforcée, éclairage LED, tableau divisionnaire et fenêtres à barreaux sécurisées.
+              </p>
+              <div class="h-bento__specs">
+                <span class="h-bento__spec-item"><i class="fa-solid fa-check" aria-hidden="true"></i> Prêt-à-brancher</span>
+                <span class="h-bento__spec-item"><i class="fa-solid fa-check" aria-hidden="true"></i> Fenêtres sécurisées</span>
+              </div>
+              <a href="ets_solutions.html#bureaux" class="h-bento__link">
+                <span>Découvrir les bureaux</span>
+                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- Solution 03 : Stockage sécurisé CORTEN -->
+          <article class="h-bento__item h-bento__item--alt-side" data-reveal>
+            <div class="h-bento__media">
+              <img src="61.jpeg" alt="Conteneur maritime 40 pieds en acier CORTEN pour stockage sécurisé sur site" width="720" height="450" loading="lazy">
+              <span class="h-bento__tag">SÉRIE 03 // STOCKAGE CORTEN</span>
+            </div>
+            <div class="h-bento__body">
+              <h3 class="h-bento__title">Stockage sécurisé (20' &amp; 40')</h3>
+              <p class="h-bento__desc">
+                Conteneurs maritimes en acier CORTEN étanche aux intempéries et hautement résistants à l'effraction pour outillages de valeur, pièces détachées et matériels sensibles.
+              </p>
+              <div class="h-bento__specs">
+                <span class="h-bento__spec-item"><i class="fa-solid fa-check" aria-hidden="true"></i> Acier CORTEN étanche</span>
+                <span class="h-bento__spec-item"><i class="fa-solid fa-check" aria-hidden="true"></i> Verrouillage blindé</span>
+              </div>
+              <a href="ets_solutions.html#stockage" class="h-bento__link">
+                <span>Voir le stockage CORTEN</span>
+                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- Solution 04 : Blocs sanitaires & Modules techniques -->
+          <article class="h-bento__item h-bento__item--alt-large" data-reveal>
+            <div class="h-bento__media">
+              <img src="24.jpg" alt="Module sanitaire préfabriqué avec raccordements autonomes pour chantier" width="720" height="450" loading="lazy">
+              <span class="h-bento__tag">SÉRIE 04 // HYGIÈNE &amp; TECHNIQUE</span>
+            </div>
+            <div class="h-bento__body">
+              <h3 class="h-bento__title">Blocs sanitaires &amp; Modules techniques</h3>
+              <p class="h-bento__desc">
+                Cabines de douches, WC autonomes, vestiaires et locaux techniques raccordables. Conçus pour un entretien simple et une conformité d'hygiène exemplaire sur vos chantiers.
+              </p>
+              <div class="h-bento__specs">
+                <span class="h-bento__spec-item"><i class="fa-solid fa-check" aria-hidden="true"></i> Plomberie intégrée</span>
+                <span class="h-bento__spec-item"><i class="fa-solid fa-check" aria-hidden="true"></i> Ventilation mécanique</span>
+                <span class="h-bento__spec-item"><i class="fa-solid fa-check" aria-hidden="true"></i> Surfaces lessivables</span>
+              </div>
+              <a href="ets_solutions.html#sanitaires" class="h-bento__link">
+                <span>Découvrir les sanitaires</span>
+                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 4. SCÈNE PRODUIT & PINS INTERACTIFS (.h-product) ──────── -->
+    <section class="h-product" id="produit" aria-labelledby="product-title">
+      <div class="container">
+        <div class="section-hdr">
+          <span class="eyebrow">ANATOMIE &amp; ROBUSTESSE INDUSTRIELLE</span>
+          <h2 class="section-title" id="product-title">
+            Conçu pour durer sous le climat équatorial
+          </h2>
+          <p class="section-sub">
+            Examinez ci-dessous les composants structurels éprouvés de nos modules et conteneurs aménagés.
+          </p>
+        </div>
+
+        <div class="h-product__layout">
+          <!-- Scène visuelle avec repères interactifs (Pins 1..4) -->
+          <div class="h-product__stage" data-reveal>
+            <img src="3.jpg" alt="Vue rapprochée d'un module préfabriqué ETS AGBONOUGLA montrant l'ossature, l'isolation et les menuiseries" width="960" height="660" loading="lazy">
+            
+            <button type="button" class="h-pin" data-pin="1" aria-label="Spécification 1 : Structure Acier CORTEN">1</button>
+            <button type="button" class="h-pin" data-pin="2" aria-label="Spécification 2 : Isolation Thermique Tropicalisée">2</button>
+            <button type="button" class="h-pin" data-pin="3" aria-label="Spécification 3 : Menuiseries Sécurisées Aluminium">3</button>
+            <button type="button" class="h-pin" data-pin="4" aria-label="Spécification 4 : Réseau Électrique Conforme">4</button>
+          </div>
+
+          <!-- Liste des spécifications synchronisées -->
+          <ul class="h-specs" data-reveal>
+            <li data-spec="1" tabindex="0">
+              <div class="h-specs__head">
+                <span class="h-specs__num">01</span>
+                <h3 class="h-specs__title">Structure Acier CORTEN &amp; Châssis Renforcé</h3>
+              </div>
+              <p class="h-specs__desc">
+                Châssis en acier haute résistance, coins ISO normalisés pour levage par grue et traitement anticorrosion spécial atmosphère marine et tropicale.
+              </p>
+            </li>
+
+            <li data-spec="2" tabindex="0">
+              <div class="h-specs__head">
+                <span class="h-specs__num">02</span>
+                <h3 class="h-specs__title">Isolation Thermique Tropicalisée</h3>
+              </div>
+              <p class="h-specs__desc">
+                Panneaux sandwichs haute densité en laine de roche ou polyuréthane pour bloquer la chaleur équatoriale et réduire les coûts de climatisation.
+              </p>
+            </li>
+
+            <li data-spec="3" tabindex="0">
+              <div class="h-specs__head">
+                <span class="h-specs__num">03</span>
+                <h3 class="h-specs__title">Menuiseries Sécurisées Aluminium</h3>
+              </div>
+              <p class="h-specs__desc">
+                Baies vitrées coulissantes avec barreaux de sécurité en acier intégrés et portes métalliques pleines équipées de serrures multipoints.
+              </p>
+            </li>
+
+            <li data-spec="4" tabindex="0">
+              <div class="h-specs__head">
+                <span class="h-specs__num">04</span>
+                <h3 class="h-specs__title">Installation Électrique Prête-à-Brancher</h3>
+              </div>
+              <p class="h-specs__desc">
+                Câblage ignifugé sous goulottes, tableau divisionnaire avec disjoncteur différentiel, luminaires LED étanches et prises industrielles prêtes pour raccordement.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 5. APPLICATIONS PROFESSIONNELLES NARRATIVES (.h-apps) ─── -->
+    <section class="h-apps" id="applications" aria-labelledby="apps-title">
+      <div class="container h-apps__layout">
+        
+        <!-- Colonne gauche fixe au scroll sur desktop -->
+        <div class="h-apps__sticky">
+          <span class="eyebrow">SECTEURS D'INTERVENTION</span>
+          <h2 class="section-title" id="apps-title">
+            Un déploiement opérationnel sur les grands projets de Côte d'Ivoire
+          </h2>
+          <p class="h-apps__lead">
+            De la lagune d'Abidjan aux chantiers d'infrastructure et exploitations minières de l'intérieur, nos structures répondent aux contraintes d'urgence, de mobilité et de sécurité.
+          </p>
+          <a href="#devis" class="btn btn-green">
+            <span>Demander une étude de site</span>
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+
+        <!-- Colonne droite : scènes d'usage réelles -->
+        <div class="h-apps__list">
+          
+          <article class="h-apps__scene" data-reveal>
+            <div class="h-apps__scene-media">
+              <img src="62.jpeg" alt="Module de chantier déployé sur un projet de travaux publics en Côte d'Ivoire" width="800" height="450" loading="lazy">
+            </div>
+            <div class="h-apps__scene-body">
+              <span class="h-apps__scene-tag"><i class="fa-solid fa-helmet-safety" aria-hidden="true"></i> BTP &amp; Génie Civil</span>
+              <h3 class="h-apps__scene-title">Bureaux de suivi de chantier &amp; Cantonnements mobiles</h3>
+              <p class="h-apps__scene-desc">
+                Implantation immédiate le long des corridors routiers et chantiers urbains. Déplaçables par camion-grue d'un tronçon à l'autre au fur et à mesure de l'avancement des travaux.
+              </p>
+            </div>
+          </article>
+
+          <article class="h-apps__scene" data-reveal>
+            <div class="h-apps__scene-media">
+              <img src="31.jpg" alt="Base-vie modulaire installée en zone isolée pour équipe d'exploitation" width="800" height="450" loading="lazy">
+            </div>
+            <div class="h-apps__scene-body">
+              <span class="h-apps__scene-tag"><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i> Mines &amp; Énergie</span>
+              <h3 class="h-apps__scene-title">Campements autonomes &amp; Espaces de vie sécurisés</h3>
+              <p class="h-apps__scene-desc">
+                Hébergement robuste, réfectoires collectifs et stockage de pièces critiques sur sites éloignés du réseau urbain, avec résistance continue aux fortes intempéries.
+              </p>
+            </div>
+          </article>
+
+          <article class="h-apps__scene" data-reveal>
+            <div class="h-apps__scene-media">
+              <img src="15.jpg" alt="Poste de garde et bureau logistique modulaire sur site industriel" width="800" height="450" loading="lazy">
+            </div>
+            <div class="h-apps__scene-body">
+              <span class="h-apps__scene-tag"><i class="fa-solid fa-dolly" aria-hidden="true"></i> Logistique &amp; Plateformes Industrielles</span>
+              <h3 class="h-apps__scene-title">Postes de garde, guichets d'accueil &amp; Ateliers d'appoint</h3>
+              <p class="h-apps__scene-desc">
+                Implantation sans permis de construire lourd dans les zones industrielles d'Abidjan (Yopougon, Vridi, PK 24) pour optimiser les flux de fret et sécuriser les accès.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 6. GALERIE TERRAIN RÉALISATIONS (.h-gallery) ──────────── -->
+    <section class="h-gallery" id="realisations" aria-labelledby="gallery-title">
+      <div class="container">
+        <div class="section-hdr center">
+          <span class="eyebrow">RÉALISATIONS TERRAIN EN CÔTE D'IVOIRE</span>
+          <h2 class="section-title" id="gallery-title">
+            Nos déploiements en situation réelle
+          </h2>
+          <p class="section-sub">
+            Modules livrés, grutés et mis en service pour nos partenaires opérant sur l'ensemble du territoire ivoirien.
+          </p>
+        </div>
+
+        <div class="h-gallery__grid">
+          
+          <article class="h-gallery__item" data-reveal>
+            <div class="h-gallery__media">
+              <img src="39.jpg" alt="Modules de bureaux avec préau de chantier posés à Abidjan" width="600" height="450" loading="lazy">
+            </div>
+            <div class="h-gallery__body">
+              <span class="h-gallery__tag">Bureau de chantier</span>
+              <h3 class="h-gallery__title">Module de bureau avec préau de protection</h3>
+              <span class="h-gallery__loc"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Abidjan, Zone Industrielle</span>
+            </div>
+          </article>
+
+          <article class="h-gallery__item" data-reveal>
+            <div class="h-gallery__media">
+              <img src="54.jpeg" alt="Base-vie complète sur plateforme nivelée pour travaux routiers" width="600" height="450" loading="lazy">
+            </div>
+            <div class="h-gallery__body">
+              <span class="h-gallery__tag">Base-vie d'équipe</span>
+              <h3 class="h-gallery__title">Base-vie complète sur plateforme nivelée</h3>
+              <span class="h-gallery__loc"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Chantier autoroutier, Côte d'Ivoire</span>
+            </div>
+          </article>
+
+          <article class="h-gallery__item" data-reveal>
+            <div class="h-gallery__media">
+              <img src="63.jpeg" alt="Poste de commandement modulaire climatisé pour encadrement de chantier" width="600" height="450" loading="lazy">
+            </div>
+            <div class="h-gallery__body">
+              <span class="h-gallery__tag">Poste technique</span>
+              <h3 class="h-gallery__title">Poste de commandement climatisé</h3>
+              <span class="h-gallery__loc"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Attinguié, PK 26</span>
+            </div>
+          </article>
+
+          <article class="h-gallery__item" data-reveal>
+            <div class="h-gallery__media">
+              <img src="61.jpeg" alt="Parc de conteneurs de stockage sécurisés en acier CORTEN sur site logistique" width="600" height="450" loading="lazy">
+            </div>
+            <div class="h-gallery__body">
+              <span class="h-gallery__tag">Stockage sécurisé</span>
+              <h3 class="h-gallery__title">Parc de conteneurs de stockage CORTEN</h3>
+              <span class="h-gallery__loc"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Plateforme logistique, Abidjan</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 7. PROCESSUS INDUSTRIEL (.h-process) ──────────────────── -->
+    <section class="h-process" id="processus" aria-labelledby="process-title">
+      <div class="container">
+        <div class="section-hdr center">
+          <span class="eyebrow">MÉTHODOLOGIE OPÉRATIONNELLE</span>
+          <h2 class="section-title" id="process-title">
+            De l'expression de besoin à l'installation clé en main
+          </h2>
+          <p class="section-sub">
+            Un déroulement clair, sans surprise technique ni retard logistique.
+          </p>
+        </div>
+
+        <div class="h-process__track">
+          
+          <div class="h-process__step" data-reveal>
+            <div class="h-process__marker">
+              <span class="h-process__num">01</span>
+              <span class="h-process__step-title">ÉTUDE &amp; DEVIS</span>
+            </div>
+            <h3>Étude de besoin &amp; Chiffrage sous 24h</h3>
+            <p>Définition précise des dimensions, des plans intérieurs, des contraintes d'accès et remise d'un devis ferme sous 24 heures.</p>
+          </div>
+
+          <div class="h-process__step" data-reveal>
+            <div class="h-process__marker">
+              <span class="h-process__num">02</span>
+              <span class="h-process__step-title">FABRICATION</span>
+            </div>
+            <h3>Aménagement en Atelier (Attinguié PK 26)</h3>
+            <p>Découpe, soudure, isolation thermique, électricité et peintures de protection réalisées par nos techniciens qualifiés.</p>
+          </div>
+
+          <div class="h-process__step" data-reveal>
+            <div class="h-process__marker">
+              <span class="h-process__num">03</span>
+              <span class="h-process__step-title">TRANSPORT</span>
+            </div>
+            <h3>Acheminement par Camion-Grue Dédié</h3>
+            <p>Prise en charge logistique complète par nos chauffeurs expérimentés, capables d'accéder aux terrains de chantier difficiles.</p>
+          </div>
+
+          <div class="h-process__step" data-reveal>
+            <div class="h-process__marker">
+              <span class="h-process__num">04</span>
+              <span class="h-process__step-title">INSTALLATION</span>
+            </div>
+            <h3>Pose, Calage sur Plots &amp; Mise en Service</h3>
+            <p>Déchargement sécurisé, mise à niveau au sol et raccordements pour une mise à disposition immédiate de vos équipes.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 8. BLOC DE RÉASSURANCE & ANCRAGE RÉEL (.h-trust) ──────── -->
+    <section class="h-trust" aria-labelledby="trust-title">
+      <div class="container">
+        <div class="section-hdr center">
+          <span class="eyebrow">ENGAGEMENTS &amp; FIABILITÉ</span>
+          <h2 class="section-title" id="trust-title">
+            Pourquoi confier votre projet à ETS AGBONOUGLA ?
+          </h2>
+          <p class="section-sub">
+            Des moyens techniques propres et une présence industrielle affirmée sur l'Autoroute du Nord.
+          </p>
+        </div>
+
+        <div class="h-trust__strip">
+          
+          <div class="h-trust__col" data-reveal>
+            <span class="h-trust__idx">01 // ATELIER PROPRE</span>
+            <div class="h-trust__icon">
+              <i class="fa-solid fa-industry" aria-hidden="true"></i>
+            </div>
+            <h3>Site industriel à Attinguié (PK 26)</h3>
+            <p>Un site de 2 500 m² sur l'Autoroute du Nord pour transformer, stocker et contrôler chaque conteneur avant livraison.</p>
+          </div>
+
+          <div class="h-trust__col" data-reveal>
+            <span class="h-trust__idx">02 // LOGISTIQUE INTÉGRÉE</span>
+            <div class="h-trust__icon">
+              <i class="fa-solid fa-truck-ramp-box" aria-hidden="true"></i>
+            </div>
+            <h3>Camion-grue tout-terrain dédié</h3>
+            <p>Aucun intermédiaire de transport : nous assurons nous-mêmes le chargement, le trajet et le déchargement avec grutage.</p>
+          </div>
+
+          <div class="h-trust__col" data-reveal>
+            <span class="h-trust__idx">03 // TROPICALISATION</span>
+            <div class="h-trust__icon">
+              <i class="fa-solid fa-temperature-arrow-down" aria-hidden="true"></i>
+            </div>
+            <h3>Conception tropicalisée éprouvée</h3>
+            <p>Protection anticorrosion renforcée et isolation haute densité adaptées à la forte chaleur et aux saisons des pluies ivoiriennes.</p>
+          </div>
+
+          <div class="h-trust__col" data-reveal>
+            <span class="h-trust__idx">04 // RÉACTIVITÉ DIRECTE</span>
+            <div class="h-trust__icon">
+              <i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i>
+            </div>
+            <h3>Devis gratuit garanti sous 24h</h3>
+            <p>Disponibilité immédiate de nos équipes techniques pour vous conseiller et chiffrer votre projet sans frais.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 9. CTA FINAL & FORMULAIRE EXPRESS (.h-final) ──────────── -->
+    <section class="h-final" id="devis" aria-labelledby="final-title">
+      <div class="container h-final__grid">
+        
+        <div class="h-final__info" data-reveal>
+          <span class="eyebrow on-dark">CHIFPAGE TECHNIQUE DIRECT</span>
+          <h2 class="h-final__title" id="final-title">
+            Prêt à équiper votre chantier ou sécuriser vos opérations ?
+          </h2>
+          <p class="h-final__lead">
+            Nos équipes techniques vous accompagnent pour définir le module adéquat. Contactez-nous par téléphone, WhatsApp ou remplissez notre formulaire pour recevoir un devis détaillé sous 24h.
+          </p>
+
+          <div class="h-final__contact-list">
+            <div class="h-final__contact-item">
+              <div class="h-final__contact-icon">
+                <i class="fa-solid fa-phone" aria-hidden="true"></i>
+              </div>
+              <div class="h-final__contact-meta">
+                <strong>Téléphone direct</strong>
+                <a href="tel:+2250707831791">+225 07 07 83 17 91</a>
+              </div>
+            </div>
+
+            <div class="h-final__contact-item">
+              <div class="h-final__contact-icon">
+                <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+              </div>
+              <div class="h-final__contact-meta">
+                <strong>WhatsApp Entreprise</strong>
+                <a href="https://wa.me/2250707831791" target="_blank" rel="noopener noreferrer">+225 07 07 83 17 91</a>
+              </div>
+            </div>
+
+            <div class="h-final__contact-item">
+              <div class="h-final__contact-icon">
+                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              </div>
+              <div class="h-final__contact-meta">
+                <strong>Atelier &amp; Dépôt</strong>
+                <span>Attinguié, PK 26 Autoroute du Nord, Côte d'Ivoire</span>
+              </div>
+            </div>
+
+            <div class="h-final__contact-item">
+              <div class="h-final__contact-icon">
+                <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              </div>
+              <div class="h-final__contact-meta">
+                <strong>Horaires d'ouverture</strong>
+                <span>Lundi au Samedi · 07h30 – 18h00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="h-final__form-panel" data-reveal>
+          <h3 class="h-final__form-title">Demander votre devis personnalisé</h3>
+          <p class="h-final__form-sub">Réponse technique et chiffrage garantis sous 24 heures ouvrées.</p>
+
+          <form action="#" method="POST" class="form-grid" id="homeQuoteForm">
+            <div class="form-group">
+              <label for="moduleType">1. Type d'espace souhaité *</label>
+              <select id="moduleType" name="moduleType" required>
+                <option value="bureau">Bureau de chantier climatisé</option>
+                <option value="base-vie">Base-vie d'équipe / Dortoirs</option>
+                <option value="stockage">Conteneur de stockage CORTEN (20' ou 40')</option>
+                <option value="sanitaire">Bloc sanitaire / Vestiaire</option>
+                <option value="sur-mesure">Aménagement sur-mesure spécifique</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="sector">2. Votre secteur d'activité *</label>
+              <select id="sector" name="sector" required>
+                <option value="btp">BTP &amp; Travaux Publics</option>
+                <option value="mines">Mines &amp; Carrières</option>
+                <option value="energie">Énergie &amp; Pétrole</option>
+                <option value="logistique">Logistique &amp; Transport</option>
+                <option value="industrie">Industrie &amp; Commerce</option>
+              </select>
+            </div>
+
+            <div class="form-grid--2" style="display: grid; gap: 1.25rem;">
+              <div class="form-group">
+                <label for="fullName">Nom ou Entreprise *</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Ex: Jean Kouassi / SARL BTP" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Numéro de téléphone *</label>
+                <input type="tel" id="phone" name="phone" placeholder="+225 07 ..." required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="location">Lieu de livraison / Commune *</label>
+              <input type="text" id="location" name="location" placeholder="Ex: Abidjan PK 24, San Pedro, Bouaké..." required>
+            </div>
+
+            <div class="form-group">
+              <label for="notes">Précisions sur votre besoin (optionnel)</label>
+              <textarea id="notes" name="notes" rows="3" placeholder="Dimensions souhaitées, nombre d'utilisateurs, contraintes d'accès pour camion-grue..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-green btn-full">
+              <span>Envoyer ma demande de devis</span>
+              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── 10. PIED DE PAGE (FOOTER) ────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-col--brand">
+          <a href="index.html" class="footer-logo">
+            <img src="logo-ets.png" alt="ETS AGBONOUGLA" width="76" height="38">
+            <span class="footer-logo-brand">ETS AGBONOUGLA</span>
+          </a>
+          <p class="footer-brand-desc">
+            Vente, aménagement et transport par camion-grue de modules préfabriqués et conteneurs maritimes en Côte d'Ivoire.
+          </p>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            <span>PK 26 Autoroute du Nord, Attinguié, Côte d'Ivoire</span>
+          </div>
+          <div class="footer-contact-item" style="margin-top: 8px;">
+            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+            <a href="tel:+2250707831791" style="color: #FFFFFF; font-weight: 600;">+225 07 07 83 17 91</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-col-title">Nos Solutions</p>
+          <ul class="footer-link-list">
+            <li><a href="ets_solutions.html#bureaux"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Bureaux de chantier</a></li>
+            <li><a href="ets_solutions.html#bases-vie"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Bases-vie &amp; Dortoirs</a></li>
+            <li><a href="ets_solutions.html#stockage"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Stockage CORTEN</a></li>
+            <li><a href="ets_solutions.html#sanitaires"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Blocs sanitaires</a></li>
+            <li><a href="ets_solutions.html#sur-mesure"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Aménagements spécifiques</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-col-title">L'Entreprise</p>
+          <ul class="footer-link-list">
+            <li><a href="ets_expertise.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Notre savoir-faire</a></li>
+            <li><a href="ets_references.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Nos réalisations</a></li>
+            <li><a href="ets_carriere.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Recrutement &amp; Carrières</a></li>
+            <li><a href="ets_contact.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Contact &amp; Atelier</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-col-title">Informations</p>
+          <ul class="footer-link-list">
+            <li><span><i class="fa-solid fa-truck" aria-hidden="true"></i> Camion-grue dédié</span></li>
+            <li><span><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Acier CORTEN certifié</span></li>
+            <li><span><i class="fa-solid fa-clock" aria-hidden="true"></i> Réactivité sous 24h</span></li>
+            <li><span><i class="fa-solid fa-map-pin" aria-hidden="true"></i> Abidjan &amp; Intérieur</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 ETS AGBONOUGLA. Tous droits réservés.</p>
+        <div class="footer-bottom-links">
+          <a href="mentions_legales.html">Mentions légales</a>
+          <a href="politique_confidentialite.html">Politique de confidentialité</a>
+          <span class="lamano-signature">Design &amp; développement par <a class="lamano-credit">LAMANO DESIGN</a></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bouton flottant de contact direct -->
+  <a href="https://wa.me/2250707831791" class="floating-cta" aria-label="Contacter ETS AGBONOUGLA sur WhatsApp" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    <span>Contact direct</span>
+  </a>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

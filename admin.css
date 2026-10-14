@@ -1,0 +1,1287 @@
+/* ==========================================================================
+   ETS AGBONOUGLA — Interface Administrateur (CRM · CMS · Analytics · Sécurité)
+   ADN Visuel :
+   1. Planche "Design System" (Paper #F6F4F1, Stone #E4DED2, Coral #F95C4B, Black #141413)
+   2. Architecture "Orbital Command Hub" (Barre flottante pilule, cercles concentriques,
+      cartes de notification empilées en cascade, sobriété éditoriale)
+   3. Inversion sémantique complète Mode Clair / Mode Sombre ([data-theme="dark"])
+   ========================================================================== */
+
+:root {
+  --adm-bg: #F6F4F1;
+  --adm-bg-elevated: #FFFFFF;
+  --adm-surface: #FFFFFF;
+  --adm-stone: #F3EFEA;
+  --adm-stone-mid: #E8E2D9;
+  --adm-stone-strong: #DCD5C9;
+  --adm-ink: #141413;
+  --adm-ink-soft: #4A4843;
+  --adm-ink-muted: #78746C;
+  --adm-coral: #F95C4B;
+  --adm-coral-soft: rgba(249, 92, 75, 0.12);
+  --adm-blue-glow: rgba(96, 165, 250, 0.22);
+  --adm-green: #177E49;
+  --adm-green-bg: rgba(23, 126, 73, 0.11);
+  --adm-amber: #B86B14;
+  --adm-amber-bg: rgba(184, 107, 20, 0.12);
+  --adm-red: #C9352B;
+  --adm-red-bg: rgba(201, 53, 43, 0.12);
+  --adm-border: rgba(20, 20, 19, 0.08);
+  --adm-border-mid: rgba(20, 20, 19, 0.15);
+  --adm-border-strong: #141413;
+  --adm-ring-line: rgba(20, 20, 19, 0.065);
+  --adm-shadow-sm: 0 2px 8px rgba(20, 20, 19, 0.04);
+  --adm-shadow-md: 0 12px 32px -8px rgba(20, 20, 19, 0.08), 0 2px 6px rgba(20, 20, 19, 0.04);
+  --adm-shadow-lg: 0 24px 56px -12px rgba(20, 20, 19, 0.13), 0 4px 14px rgba(20, 20, 19, 0.05);
+  --adm-font-sans: 'Plus Jakarta Sans', 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --adm-font-serif: 'Instrument Serif', 'Playfair Display', Georgia, serif;
+  --adm-font-display: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  --adm-font-mono: 'JetBrains Mono', monospace;
+  --adm-radius-card: 18px;
+  --adm-radius-sm: 10px;
+  --adm-radius-pill: 999px;
+}
+
+[data-theme="dark"] {
+  --adm-bg: #0A0A0A;
+  --adm-bg-elevated: #121212;
+  --adm-surface: #141414;
+  --adm-stone: #1C1C1B;
+  --adm-stone-mid: #252523;
+  --adm-stone-strong: #333330;
+  --adm-ink: #FAFAFA;
+  --adm-ink-soft: #C7C5C0;
+  --adm-ink-muted: #8A8780;
+  --adm-coral: #F95C4B;
+  --adm-coral-soft: rgba(249, 92, 75, 0.18);
+  --adm-blue-glow: rgba(59, 130, 246, 0.16);
+  --adm-green: #34D399;
+  --adm-green-bg: rgba(52, 211, 153, 0.14);
+  --adm-amber: #FBBF24;
+  --adm-amber-bg: rgba(251, 191, 36, 0.14);
+  --adm-red: #F87171;
+  --adm-red-bg: rgba(248, 113, 113, 0.14);
+  --adm-border: rgba(255, 255, 255, 0.10);
+  --adm-border-mid: rgba(255, 255, 255, 0.18);
+  --adm-border-strong: #FAFAFA;
+  --adm-ring-line: rgba(255, 255, 255, 0.07);
+  --adm-shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.35);
+  --adm-shadow-md: 0 16px 36px -8px rgba(0, 0, 0, 0.55);
+  --adm-shadow-lg: 0 28px 64px -12px rgba(0, 0, 0, 0.75);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.adm-body {
+  background-color: var(--adm-bg);
+  color: var(--adm-ink);
+  font-family: var(--adm-font-sans);
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Cadre éditorial externe inspiré de la planche Design System */
+.adm-frame {
+  max-width: 1480px;
+  margin: 18px auto;
+  min-height: calc(100vh - 36px);
+  background: var(--adm-bg);
+  border: 1px solid var(--adm-border-mid);
+  border-radius: 26px;
+  padding: 20px 28px 48px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--adm-shadow-sm);
+}
+
+/* ==========================================================================
+   1. BARRE DE NAVIGATION FLOTTANTE PILULE (Référence 1 : Deflexai)
+   ========================================================================== */
+.adm-pillnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  max-width: 1360px;
+  margin: 4px auto 28px;
+  padding: 8px 12px 8px 18px;
+  background: var(--adm-surface);
+  border: 1px solid var(--adm-border);
+  border-radius: var(--adm-radius-pill);
+  box-shadow: var(--adm-shadow-md);
+  position: sticky;
+  top: 14px;
+  z-index: 60;
+}
+
+.adm-pillnav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  color: var(--adm-ink);
+  font-weight: 700;
+  font-size: 0.96rem;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.adm-pillnav__logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.adm-pillnav__badge-env {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: var(--adm-radius-pill);
+  background: var(--adm-stone);
+  color: var(--adm-ink-soft);
+  border: 1px solid var(--adm-border);
+}
+
+.adm-pillnav__links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-wrap: nowrap;
+}
+
+.adm-pillnav__tab {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--adm-ink-soft);
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 7px 12px;
+  border-radius: var(--adm-radius-pill);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  transition: all 0.18s ease;
+}
+
+.adm-pillnav__tab:hover {
+  color: var(--adm-ink);
+  background: var(--adm-stone);
+}
+
+.adm-pillnav__tab.is-active {
+  background: var(--adm-ink);
+  color: var(--adm-bg-elevated);
+  font-weight: 600;
+}
+
+.adm-pillnav__new-tag {
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: rgba(59, 130, 246, 0.12);
+  color: #2563EB;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.adm-pillnav__tab.is-active .adm-pillnav__new-tag {
+  background: var(--adm-coral);
+  color: #FFFFFF;
+  border-color: transparent;
+}
+
+.adm-pillnav__count {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--adm-coral);
+  color: #FFFFFF;
+}
+
+.adm-pillnav__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ==========================================================================
+   2. HUB ORBITAL CONCENTRIQUE & CARTES EN CASCADE (Référence 1 : Deflexai)
+   ========================================================================== */
+.adm-orbital {
+  position: relative;
+  padding: 46px 24px 40px;
+  margin-bottom: 32px;
+  background: var(--adm-surface);
+  border: 1px solid var(--adm-border);
+  border-radius: 24px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: var(--adm-shadow-sm);
+}
+
+/* Cercles concentriques architecturaux */
+.adm-orbital__rings {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.adm-orbital__ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--adm-ring-line);
+}
+
+.adm-orbital__ring--1 {
+  width: 520px;
+  height: 520px;
+}
+
+.adm-orbital__ring--2 {
+  width: 780px;
+  height: 780px;
+  border-left-color: rgba(37, 99, 235, 0.38);
+  border-right-color: rgba(249, 92, 75, 0.35);
+}
+
+.adm-orbital__ring--3 {
+  width: 1040px;
+  height: 1040px;
+}
+
+.adm-orbital__ring--4 {
+  width: 1300px;
+  height: 1300px;
+  border-left-color: rgba(37, 99, 235, 0.25);
+  border-right-color: rgba(37, 99, 235, 0.25);
+}
+
+/* Nœuds satellites flottants sur les orbites */
+.adm-orbit-node {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--adm-bg-elevated);
+  border: 1px solid var(--adm-border);
+  box-shadow: var(--adm-shadow-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--adm-ink);
+  cursor: pointer;
+  z-index: 3;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.adm-orbit-node:hover {
+  transform: translateY(-4px) scale(1.06);
+  border-color: var(--adm-coral);
+  box-shadow: var(--adm-shadow-lg);
+}
+
+.adm-orbit-node svg {
+  width: 22px;
+  height: 22px;
+}
+
+.adm-orbit-node--tl { top: 14%; left: 17%; color: var(--adm-coral); }
+.adm-orbit-node--ml { top: 38%; left: 9%; color: #16A34A; }
+.adm-orbit-node--bl { top: 64%; left: 19%; color: #2563EB; }
+.adm-orbit-node--tr { top: 14%; right: 17%; color: var(--adm-coral); }
+.adm-orbit-node--mr { top: 38%; right: 9%; color: #D97706; }
+.adm-orbit-node--br { top: 64%; right: 19%; color: #0EA5E9; }
+
+.adm-orbital__inner {
+  position: relative;
+  z-index: 4;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.adm-orbital__trust-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 6px 16px;
+  border-radius: var(--adm-radius-pill);
+  background: var(--adm-stone);
+  border: 1px solid var(--adm-border);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--adm-ink-soft);
+  margin-bottom: 18px;
+}
+
+.adm-orbital__trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.adm-dot-live {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--adm-green);
+  box-shadow: 0 0 0 4px var(--adm-green-bg);
+}
+
+.adm-orbital__title {
+  font-family: var(--adm-font-display);
+  font-size: clamp(2rem, 3.8vw, 3.15rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  color: var(--adm-ink);
+  margin-bottom: 14px;
+}
+
+.adm-orbital__subtitle {
+  font-size: 0.96rem;
+  color: var(--adm-ink-muted);
+  max-width: 520px;
+  margin: 0 auto 24px;
+  line-height: 1.55;
+}
+
+.adm-orbital__ctas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 34px;
+}
+
+/* Pile de 3 cartes de notification en cascade avec halo doux (Référence 1) */
+.adm-stack-wrap {
+  position: relative;
+  max-width: 440px;
+  margin: 0 auto 26px;
+  padding: 10px 0 6px;
+}
+
+.adm-stack-glow {
+  position: absolute;
+  inset: -18px -28px;
+  background: radial-gradient(circle at 50% 55%, var(--adm-blue-glow), rgba(249, 92, 75, 0.08) 52%, transparent 74%);
+  filter: blur(18px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.adm-stack-card {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  text-align: left;
+  background: var(--adm-bg-elevated);
+  border: 1px solid var(--adm-border);
+  border-radius: 15px;
+  padding: 13px 16px;
+  box-shadow: var(--adm-shadow-md);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  cursor: pointer;
+}
+
+.adm-stack-card:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: var(--adm-shadow-lg);
+}
+
+.adm-stack-card--1 {
+  width: 100%;
+  z-index: 4;
+}
+
+.adm-stack-card--2 {
+  width: 91%;
+  margin: -6px auto 0;
+  z-index: 3;
+  opacity: 0.95;
+}
+
+.adm-stack-card--3 {
+  width: 82%;
+  margin: -6px auto 0;
+  z-index: 2;
+  opacity: 0.86;
+}
+
+.adm-stack-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--adm-stone);
+  border: 1px solid var(--adm-border-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--adm-ink);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.adm-stack-avatar__badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #2563EB;
+  border: 2px solid var(--adm-bg-elevated);
+}
+
+.adm-stack-avatar__badge--green {
+  background: #16A34A;
+}
+
+.adm-stack-avatar__badge--coral {
+  background: var(--adm-coral);
+}
+
+.adm-stack-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.adm-stack-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--adm-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.adm-stack-meta {
+  font-size: 0.75rem;
+  color: var(--adm-ink-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.adm-orbital__footer-strip {
+  position: relative;
+  z-index: 3;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--adm-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.adm-orbital__footer-label {
+  font-size: 0.75rem;
+  color: var(--adm-ink-muted);
+  font-weight: 500;
+}
+
+.adm-orbital__modules-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--adm-ink-muted);
+  letter-spacing: -0.01em;
+}
+
+/* ==========================================================================
+   3. COMPOSANTS DU DESIGN SYSTEM (Référence 2 : Planche Design System)
+   ========================================================================== */
+.ds-btn {
+  appearance: none;
+  border: 1.5px solid transparent;
+  font-family: var(--adm-font-sans);
+  font-size: 0.84rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 12px 22px;
+  border-radius: var(--adm-radius-pill);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+
+.ds-btn--black {
+  background: var(--adm-ink);
+  color: var(--adm-bg-elevated);
+  border-color: var(--adm-ink);
+}
+
+.ds-btn--black:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.ds-btn--outline {
+  background: var(--adm-surface);
+  color: var(--adm-ink);
+  border-color: var(--adm-border-strong);
+}
+
+.ds-btn--outline:hover {
+  background: var(--adm-stone);
+}
+
+.ds-btn--stone {
+  background: var(--adm-stone-mid);
+  color: var(--adm-ink);
+  border-color: transparent;
+}
+
+.ds-btn--stone:hover {
+  background: var(--adm-stone-strong);
+}
+
+.ds-btn--coral {
+  background: var(--adm-coral);
+  color: #FFFFFF;
+  border-color: var(--adm-coral);
+}
+
+.ds-btn--coral:hover {
+  filter: brightness(0.95);
+}
+
+.ds-btn--sm {
+  padding: 8px 15px;
+  font-size: 0.78rem;
+}
+
+.ds-btn--circle {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--adm-stone-mid);
+  color: var(--adm-ink);
+  border: 1px solid var(--adm-border);
+}
+
+.ds-btn--circle:hover {
+  background: var(--adm-ink);
+  color: var(--adm-bg-elevated);
+}
+
+/* Tags & Badges (Référence 2) */
+.ds-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--adm-radius-pill);
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+
+.ds-tag--coral {
+  background: var(--adm-coral);
+  color: #FFFFFF;
+}
+
+.ds-tag--stone {
+  background: var(--adm-stone);
+  color: var(--adm-ink);
+  border-color: var(--adm-border);
+}
+
+.ds-tag--stone:hover,
+.ds-tag--stone.is-active {
+  background: var(--adm-ink);
+  color: var(--adm-bg-elevated);
+}
+
+.ds-tag--micro {
+  padding: 3px 9px;
+  font-size: 0.65rem;
+  background: var(--adm-stone);
+  color: var(--adm-ink-soft);
+  border: 1px solid var(--adm-border);
+}
+
+/* Barre de recherche pilule avec filtre intégré (Référence 2 : Text Inputs) */
+.ds-search-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--adm-surface);
+  border: 1.5px solid var(--adm-border-strong);
+  border-radius: var(--adm-radius-pill);
+  padding: 5px 6px 5px 16px;
+  min-width: 280px;
+  transition: box-shadow 0.18s ease;
+}
+
+.ds-search-pill:focus-within {
+  box-shadow: 0 0 0 3px var(--adm-coral-soft);
+}
+
+.ds-search-pill input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--adm-ink);
+  font-family: inherit;
+  font-size: 0.86rem;
+  outline: none;
+  min-width: 120px;
+}
+
+.ds-search-pill__select {
+  appearance: none;
+  background: var(--adm-stone-mid);
+  color: var(--adm-ink);
+  border: none;
+  border-radius: var(--adm-radius-pill);
+  padding: 7px 14px;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Segmented Controls (Référence 2) */
+.ds-segmented {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px;
+  border-radius: var(--adm-radius-pill);
+  border: 1.5px solid var(--adm-border-strong);
+  background: var(--adm-surface);
+}
+
+.ds-segmented__btn {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--adm-ink-soft);
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 7px 16px;
+  border-radius: var(--adm-radius-pill);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.16s ease;
+}
+
+.ds-segmented__btn.is-active {
+  background: var(--adm-ink);
+  color: var(--adm-bg-elevated);
+}
+
+/* Inputs & Textareas Stone (Référence 2) */
+.ds-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ds-label {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--adm-ink-soft);
+}
+
+.ds-input,
+.ds-select,
+.ds-textarea {
+  width: 100%;
+  background: var(--adm-stone);
+  color: var(--adm-ink);
+  border: 1px solid var(--adm-border);
+  border-radius: 12px;
+  padding: 11px 14px;
+  font-family: inherit;
+  font-size: 0.86rem;
+  transition: border-color 0.16s ease, background-color 0.16s ease;
+}
+
+.ds-input:focus,
+.ds-select:focus,
+.ds-textarea:focus {
+  outline: none;
+  border-color: var(--adm-border-strong);
+  background: var(--adm-surface);
+}
+
+.ds-textarea {
+  min-height: 92px;
+  resize: vertical;
+}
+
+/* Cartes Bento Blanches (Référence 2) */
+.ds-card {
+  background: var(--adm-surface);
+  border: 1px solid var(--adm-border);
+  border-radius: var(--adm-radius-card);
+  padding: 22px 24px;
+  box-shadow: var(--adm-shadow-sm);
+}
+
+.ds-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.ds-card__eyebrow {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--adm-ink-muted);
+}
+
+.ds-card__title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--adm-ink);
+}
+
+/* Info Block & Bullets (Référence 2) */
+.ds-bullet-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--adm-stone);
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--adm-ink);
+}
+
+.ds-info-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  background: var(--adm-stone);
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-size: 0.8rem;
+  color: var(--adm-ink-soft);
+  line-height: 1.5;
+}
+
+.ds-check-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--adm-ink);
+  color: var(--adm-bg-elevated);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Accordéon (Référence 2) */
+.ds-accordion-item {
+  background: var(--adm-stone);
+  border-radius: 14px;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+  border: 1px solid var(--adm-border);
+}
+
+.ds-accordion-trigger {
+  width: 100%;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  text-align: left;
+  font-family: var(--adm-font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--adm-ink);
+  cursor: pointer;
+}
+
+.ds-accordion-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--adm-stone-mid);
+  color: var(--adm-ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--adm-font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.ds-accordion-content {
+  margin-top: 10px;
+  font-size: 0.84rem;
+  color: var(--adm-ink-soft);
+  line-height: 1.55;
+}
+
+.ds-accordion-content a,
+.ds-coral-link {
+  color: var(--adm-coral);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+/* Cells (Référence 2) */
+.ds-cell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 13px 16px;
+  border-radius: 15px;
+  border: 1.5px solid var(--adm-border-mid);
+  background: var(--adm-surface);
+  transition: border-color 0.16s ease, transform 0.16s ease;
+}
+
+.ds-cell:hover {
+  border-color: var(--adm-border-strong);
+  transform: translateY(-1px);
+}
+
+.ds-cell--stone {
+  background: var(--adm-stone);
+  border-color: transparent;
+}
+
+/* ==========================================================================
+   4. GRILLES KPI, TABLEAUX CRM, KANBAN & GRAPHIQUES ANALYTICS
+   ========================================================================== */
+.adm-section {
+  display: none;
+  animation: admFadeIn 0.22s ease;
+}
+
+.adm-section.is-active {
+  display: block;
+}
+
+@keyframes admFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.adm-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.adm-kpi-card {
+  background: var(--adm-surface);
+  border: 1px solid var(--adm-border);
+  border-radius: var(--adm-radius-card);
+  padding: 20px 22px;
+  box-shadow: var(--adm-shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.adm-kpi-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--adm-ink-muted);
+}
+
+.adm-kpi-value {
+  font-family: var(--adm-font-display);
+  font-size: 2.1rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--adm-ink);
+  line-height: 1.1;
+}
+
+.adm-kpi-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 0.76rem;
+}
+
+.adm-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.72rem;
+}
+
+.adm-trend--up {
+  background: var(--adm-green-bg);
+  color: var(--adm-green);
+}
+
+.adm-trend--neutral {
+  background: var(--adm-stone);
+  color: var(--adm-ink-soft);
+}
+
+.adm-trend--warn {
+  background: var(--adm-amber-bg);
+  color: var(--adm-amber);
+}
+
+/* Tableau CRM dense et lisible */
+.adm-table-wrap {
+  overflow-x: auto;
+  border-radius: 14px;
+  border: 1px solid var(--adm-border);
+  background: var(--adm-surface);
+}
+
+.adm-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.84rem;
+}
+
+.adm-table th {
+  padding: 13px 16px;
+  background: var(--adm-stone);
+  color: var(--adm-ink-soft);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--adm-border);
+  white-space: nowrap;
+}
+
+.adm-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--adm-border);
+  color: var(--adm-ink);
+  vertical-align: middle;
+}
+
+.adm-table tbody tr {
+  transition: background-color 0.14s ease;
+  cursor: pointer;
+}
+
+.adm-table tbody tr:hover {
+  background: var(--adm-stone);
+}
+
+/* Badges de statut CRM */
+.adm-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 11px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.adm-status--new { background: var(--adm-coral-soft); color: var(--adm-coral); }
+.adm-status--study { background: var(--adm-amber-bg); color: var(--adm-amber); }
+.adm-status--sent { background: rgba(37, 99, 235, 0.12); color: #2563EB; }
+.adm-status--won { background: var(--adm-green-bg); color: var(--adm-green); }
+.adm-status--archived { background: var(--adm-stone-mid); color: var(--adm-ink-muted); }
+
+/* Vue Kanban CRM */
+.adm-kanban {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(250px, 1fr));
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.adm-kanban__col {
+  background: var(--adm-stone);
+  border: 1px solid var(--adm-border);
+  border-radius: 16px;
+  padding: 14px;
+  min-height: 360px;
+}
+
+.adm-kanban__col-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--adm-border);
+}
+
+.adm-kanban__card {
+  background: var(--adm-surface);
+  border: 1px solid var(--adm-border);
+  border-radius: 12px;
+  padding: 13px;
+  margin-bottom: 10px;
+  box-shadow: var(--adm-shadow-sm);
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.adm-kanban__card:hover {
+  transform: translateY(-2px);
+  border-color: var(--adm-border-strong);
+}
+
+/* Grille Bento du Design System (Référence 2) */
+.ds-bento-showcase {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.ds-col-7 { grid-column: span 7; }
+.ds-col-5 { grid-column: span 5; }
+.ds-col-6 { grid-column: span 6; }
+.ds-col-4 { grid-column: span 4; }
+.ds-col-3 { grid-column: span 3; }
+.ds-col-8 { grid-column: span 8; }
+.ds-col-12 { grid-column: span 12; }
+
+.ds-showcase-title {
+  font-family: var(--adm-font-serif);
+  font-size: clamp(2rem, 3.4vw, 2.75rem);
+  font-weight: 400;
+  text-align: center;
+  color: var(--adm-ink);
+  margin: 8px 0 28px;
+  letter-spacing: -0.02em;
+}
+
+/* Slider avec bulle noire "Value" (Référence 2) */
+.ds-slider-wrap {
+  position: relative;
+  padding-top: 32px;
+  padding-bottom: 8px;
+}
+
+.ds-slider-bubble {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  background: var(--adm-ink);
+  color: var(--adm-bg-elevated);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.ds-slider-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 4px 4px 0;
+  border-style: solid;
+  border-color: var(--adm-ink) transparent transparent;
+}
+
+.ds-range {
+  width: 100%;
+  accent-color: var(--adm-ink);
+  cursor: pointer;
+}
+
+/* Modal / Drawer détail CRM & Login Overlay */
+.adm-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 120;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.adm-modal-backdrop.is-open {
+  display: flex;
+}
+
+.adm-modal {
+  background: var(--adm-surface);
+  border: 1px solid var(--adm-border-mid);
+  border-radius: 22px;
+  max-width: 680px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 28px;
+  box-shadow: var(--adm-shadow-lg);
+}
+
+/* Écran d'authentification plein cadre avec anneaux concentriques */
+.adm-auth-gate {
+  position: fixed;
+  inset: 0;
+  background: var(--adm-bg);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.adm-auth-gate.is-hidden {
+  display: none;
+}
+
+.adm-auth-card {
+  position: relative;
+  z-index: 5;
+  background: var(--adm-surface);
+  border: 1px solid var(--adm-border-mid);
+  border-radius: 24px;
+  max-width: 460px;
+  width: 100%;
+  padding: 34px 32px;
+  box-shadow: var(--adm-shadow-lg);
+}
+
+/* Toast Notification */
+.adm-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 300;
+  background: var(--adm-ink);
+  color: var(--adm-bg-elevated);
+  padding: 13px 20px;
+  border-radius: 14px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  box-shadow: var(--adm-shadow-lg);
+  transform: translateY(20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.22s ease;
+}
+
+.adm-toast.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Responsive Mobile & Tablette */
+@media (max-width: 1100px) {
+  .adm-kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .adm-orbit-node {
+    display: none;
+  }
+  .ds-col-7, .ds-col-5, .ds-col-6, .ds-col-4, .ds-col-3, .ds-col-8 {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 768px) {
+  .adm-frame {
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    padding: 12px 14px 36px;
+  }
+  .adm-pillnav {
+    border-radius: 18px;
+    flex-wrap: wrap;
+    padding: 12px;
+  }
+  .adm-pillnav__links {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+  }
+  .adm-kpi-grid {
+    grid-template-columns: 1fr;
+  }
+  .ds-col-7, .ds-col-5, .ds-col-6, .ds-col-4, .ds-col-3, .ds-col-8 {
+    grid-column: span 12;
+  }
+}

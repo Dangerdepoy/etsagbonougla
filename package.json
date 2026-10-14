@@ -1,0 +1,20 @@
+{
+  "name": "ets-agbonougla",
+  "version": "1.0.0",
+  "description": "ETS AGBONOUGLA — Solutions Modulaires & Base-Vie Conteneurs Aménagés",
+  "private": true,
+  "scripts": {
+    "dev": "node dev-server.js",
+    "serve": "php -S 127.0.0.1:8080",
+    "start": "node dev-server.js",
+    "php": "php -S 127.0.0.1:8080"
+  },
+  "keywords": [
+    "ets-agbonougla",
+    "conteneurs-modulaires",
+    "abidjan",
+    "cote-divoire"
+  ],
+  "author": "LAMANO DESIGN",
+  "license": "UNLICENSED"
+}
