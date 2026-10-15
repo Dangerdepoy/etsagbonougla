@@ -2224,13 +2224,13 @@ section[id] {
   transform: none;
   background: linear-gradient(
     180deg,
-    #FFFFFF 0%,
-    #F8FAFC 55%,
-    rgba(226, 232, 240, 0.75) 100%
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(241, 245, 249, 0.85) 55%,
+    rgba(203, 213, 225, 0.65) 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.22));
+  filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.45));
 }
 
 .h-hero__overlay {
@@ -2240,13 +2240,10 @@ section[id] {
   pointer-events: none;
   background: linear-gradient(
     180deg,
-    rgba(11, 17, 32, 0.40) 0%,
-    rgba(11, 17, 32, 0.10) 24%,
-    transparent 42%,
-    transparent 66%,
-    rgba(255, 255, 255, 0.35) 86%,
-    rgba(255, 255, 255, 0.90) 97%,
-    #FFFFFF 100%
+    rgba(10, 14, 23, 0.32) 0%,
+    transparent 22%,
+    transparent 80%,
+    rgba(10, 14, 23, 0.15) 100%
   );
 }
 
@@ -2332,17 +2329,18 @@ section[id] {
   top: 50%;
   transform: translateY(-50%) translateX(-6px);
   min-width: 200px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid #E2E8F0;
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
   padding: 10px 14px;
   opacity: 0;
   transition: all 0.22s ease;
   pointer-events: none;
   z-index: 10;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16),
+              inset 0 1px 1px rgba(255, 255, 255, 0.85);
 }
 
 .h-hero__hotspot:hover .h-hero__hotspot-card {
@@ -2353,7 +2351,7 @@ section[id] {
 .h-hero__hotspot-code {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.64rem;
-  font-weight: 700;
+  font-weight: 800;
   color: #1D68BD;
   display: block;
   margin-bottom: 2px;
@@ -2364,15 +2362,18 @@ section[id] {
   display: block;
   font-size: 0.8rem;
   font-weight: 800;
-  color: #07080A;
+  color: #000000 !important;
   line-height: 1.25;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
 }
 
 .h-hero__hotspot-card span {
   display: block;
   font-size: 0.72rem;
-  color: #64748B;
+  font-weight: 700;
+  color: #000000 !important;
   line-height: 1.3;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
 }
 
 /* Couche 4 : Conteneur principal */
@@ -2397,69 +2398,74 @@ section[id] {
   width: 100%;
 }
 
-/* Bloc gauche encadré : verre dépoli lumineux blanc, ombre subtile */
+/* Bloc gauche encadré : vitre en verre transparent, bordure fine, texte noir pur */
 .h-hero__callout {
   position: relative;
   width: 290px;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(226, 232, 240, 0.9);
+  background: rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.65);
   border-radius: 16px;
   padding: 1.5rem 1.45rem 1.4rem;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16),
+              inset 0 1px 1px rgba(255, 255, 255, 0.85);
 }
 
 .h-hero__title {
   font-family: var(--f-disp);
   font-weight: 800;
-  font-size: 1.32rem;
+  font-size: 1.35rem;
   line-height: 1.25;
   letter-spacing: -0.02em;
-  color: #07080A;
+  color: #000000 !important;
   margin-bottom: 1.15rem;
   white-space: normal;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
 }
 
 .h-hero__cta-btn {
   min-height: 42px;
   padding: 11px 22px;
   font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-weight: 800;
+  letter-spacing: 0.05em;
   border-radius: 9999px;
-  background: #1D68BD;
+  background: #000000;
   color: #FFFFFF;
-  box-shadow: 0 4px 14px rgba(29, 104, 189, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .h-hero__cta-btn:hover {
-  background: #1557A6;
+  background: #1D68BD;
   color: #FFFFFF;
+  border-color: #1D68BD;
   transform: translateY(-1px);
   box-shadow: 0 8px 24px rgba(29, 104, 189, 0.35);
 }
 
-/* Fiche technique verticale verre dépoli blanc à droite */
+/* Fiche technique verticale en verre transparent à droite */
 .h-hero__specbox {
   position: relative;
   width: 164px;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(226, 232, 240, 0.9);
+  background: rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.65);
   border-radius: 16px;
   padding: 12px 12px 14px;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16),
+              inset 0 1px 1px rgba(255, 255, 255, 0.85);
 }
 
 .h-hero__specbox-media {
   width: 100%;
   height: 96px;
   overflow: hidden;
-  background: #F1F5F9;
-  border: 1px solid #E2E8F0;
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 10px;
   margin-bottom: 12px;
 }
@@ -2468,7 +2474,7 @@ section[id] {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: none;
+  filter: contrast(1.05);
 }
 
 .h-hero__specbox-list {
@@ -2481,13 +2487,14 @@ section[id] {
 }
 
 .h-hero__specbox-list li {
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: #334155;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #000000 !important;
   display: flex;
   align-items: center;
   gap: 6px;
   white-space: nowrap;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
 }
 
 .h-hero__specbox-list li::before {
@@ -2496,13 +2503,13 @@ section[id] {
   font-weight: 900;
 }
 
-/* Zone inférieure asymétrique : cartes lumineuses avec bordure sobre */
+/* Zone inférieure asymétrique : vitre transparente sur photo */
 .h-hero__bottom-row {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   gap: 1.25rem;
-  border-top: 1px solid rgba(226, 232, 240, 0.85);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
   padding-top: 0.95rem;
   padding-bottom: 1.35rem;
 }
@@ -2521,24 +2528,30 @@ section[id] {
   gap: 8px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.68rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #1D68BD;
+  color: #000000 !important;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
   margin-bottom: 0.5rem;
 }
 
 .h-hero__why-icon {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  background: rgba(29, 104, 189, 0.1);
-  border: 1px solid rgba(29, 104, 189, 0.25);
+  background: #000000;
+  border: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-size: 0.62rem;
-  color: #1D68BD;
+  color: #FFFFFF;
 }
 
 .h-hero__why-title {
@@ -2546,33 +2559,36 @@ section[id] {
   font-weight: 800;
   font-size: clamp(1.3rem, 1.85vw, 1.55rem);
   line-height: 1.22;
-  color: #07080A;
+  color: #000000 !important;
   letter-spacing: -0.02em;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.85), 0 0 16px rgba(255, 255, 255, 0.6);
 }
 
 .h-hero__gear-card {
   width: 225px;
   height: 142px;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(226, 232, 240, 0.9);
+  background: rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.65);
   border-radius: 16px;
   padding: 13px 15px 12px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   text-decoration: none;
-  color: #07080A;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03);
-  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  color: #000000 !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16),
+              inset 0 1px 1px rgba(255, 255, 255, 0.85);
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
   flex-shrink: 0;
 }
 
 .h-hero__gear-card:hover {
-  border-color: #CBD5E1;
+  background: rgba(255, 255, 255, 0.38);
+  border-color: rgba(255, 255, 255, 0.9);
   transform: translateY(-2px);
-  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.22);
 }
 
 .h-hero__gear-head {
@@ -2581,23 +2597,24 @@ section[id] {
   justify-content: space-between;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.7rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.06em;
-  color: #07080A;
+  color: #000000 !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
 }
 
 .h-hero__gear-arrow {
   font-size: 0.95rem;
   line-height: 1;
-  color: #1D68BD;
-  font-weight: 800;
+  color: #000000 !important;
+  font-weight: 900;
 }
 
 .h-hero__gear-media {
   width: 100%;
   height: 86px;
   overflow: hidden;
-  border: 1px solid #E2E8F0;
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 8px;
 }
 
@@ -2605,22 +2622,23 @@ section[id] {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: none;
+  filter: contrast(1.05);
 }
 
 .h-hero__trust-card {
   width: 356px;
   height: 168px;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(226, 232, 240, 0.9);
+  background: rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.65);
   border-radius: 16px;
   padding: 18px 22px 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16),
+              inset 0 1px 1px rgba(255, 255, 255, 0.85);
   flex-shrink: 0;
 }
 
@@ -2633,18 +2651,21 @@ section[id] {
 
 .h-hero__trust-num {
   font-family: var(--f-disp);
-  font-size: 1.85rem;
-  font-weight: 800;
-  color: #07080A;
+  font-size: 1.9rem;
+  font-weight: 900;
+  color: #000000 !important;
   line-height: 1.1;
   margin-bottom: 2px;
   letter-spacing: -0.02em;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
 }
 
 .h-hero__trust-sub {
   font-size: 0.74rem;
-  color: #64748B;
+  font-weight: 700;
+  color: #000000 !important;
   line-height: 1.35;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
 }
 
 .h-hero__trust-avatars {
@@ -2659,7 +2680,7 @@ section[id] {
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #FFFFFF;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .h-hero__trust-avatars img + img {
@@ -2668,7 +2689,7 @@ section[id] {
 
 .h-hero__trust-divider {
   height: 1px;
-  background: #E2E8F0;
+  background: rgba(0, 0, 0, 0.15);
   margin: 10px 0;
 }
 
@@ -2677,15 +2698,16 @@ section[id] {
   align-items: center;
   gap: 10px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.68rem;
-  font-weight: 700;
+  font-size: 0.7rem;
+  font-weight: 800;
   letter-spacing: 0.05em;
-  color: #07080A;
+  color: #000000 !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
 }
 
 .h-hero__trust-badge-ico {
-  color: #1D68BD;
-  font-size: 0.82rem;
+  color: #1D68BD !important;
+  font-size: 0.85rem;
 }
 
 /* Masquer le bouton flottant dans le Hero pour ne jamais masquer la carte inférieure droite */
@@ -2756,20 +2778,22 @@ section[id] {
     width: min(292px, 86vw);
     margin: 0 auto;
     text-align: center;
-    background: rgba(255, 255, 255, 0.94);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border: 1px solid rgba(226, 232, 240, 0.9);
+    background: rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(12px) saturate(1.2);
+    -webkit-backdrop-filter: blur(12px) saturate(1.2);
+    border: 1px solid rgba(255, 255, 255, 0.65);
     border-radius: 16px;
     padding: 1.35rem 1.4rem 1.25rem;
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16),
+                inset 0 1px 1px rgba(255, 255, 255, 0.85);
   }
 
   .h-hero__title {
     font-size: 1.22rem;
     line-height: 1.28;
     margin-bottom: 1rem;
-    color: #07080A;
+    color: #000000 !important;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
   }
 
   .h-hero__cta-btn {
@@ -2777,8 +2801,9 @@ section[id] {
     padding: 10px 20px;
     font-size: 0.72rem;
     border-radius: 9999px;
-    background: #1D68BD;
+    background: #000000;
     color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.35);
   }
 }
 
@@ -5955,63 +5980,102 @@ select.form-control option,
   border-color: #CBD5E1;
 }
 
-/* ── ÉTAT HERO CINÉMATIQUE TRANSPARENT ────────────────────── */
+/* ── ÉTAT HERO CINÉMATIQUE : 100% TRANSPARENT SANS AUCUNE FINITION CAPSULE / LIQUID GLASS ── */
+.navbar-pill-wrapper.is-hero-nav {
+  top: 0;
+  padding: 0;
+  transition: top 0.35s cubic-bezier(0.16, 1, 0.3, 1), padding 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar-pill-wrapper.is-hero-nav.is-scrolled-wrapper {
+  top: 16px;
+  padding: 0 clamp(12px, 3vw, 24px);
+}
+
 .navbar-pill.is-hero-transparent {
-  background: rgba(255, 255, 255, 0.10);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-color: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  max-width: 1320px;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 24px clamp(1.25rem, 4vw, 3rem) !important;
 }
 
 .navbar-pill.is-hero-transparent:hover {
-  background: rgba(255, 255, 255, 0.18);
-  border-color: rgba(255, 255, 255, 0.38);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.navbar-pill.is-hero-transparent .nav-logo {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
 
 .navbar-pill.is-hero-transparent .nav-logo-brand {
-  color: #FFFFFF;
+  color: #FFFFFF !important;
+  font-weight: 800;
+  font-size: 1.08rem;
+  letter-spacing: -0.015em;
 }
 
 .navbar-pill.is-hero-transparent .nav-lnk {
-  color: rgba(255, 255, 255, 0.88);
+  color: #FFFFFF !important;
+  font-weight: 700;
+  font-size: 0.86rem;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+  opacity: 0.95;
+  transition: opacity 0.2s, transform 0.2s;
 }
 
 .navbar-pill.is-hero-transparent .nav-lnk:hover {
-  color: #FFFFFF;
+  opacity: 1;
+  color: #FFFFFF !important;
+  transform: translateY(-1px);
 }
 
 .navbar-pill.is-hero-transparent .nav-lnk.act {
-  color: #FFFFFF;
+  color: #FFFFFF !important;
   font-weight: 800;
+  opacity: 1;
 }
 
 .navbar-pill.is-hero-transparent .nav-lnk.act::after {
   background: #38BDF8;
+  box-shadow: 0 0 10px #38BDF8;
+  height: 2.5px;
 }
 
 .navbar-pill.is-hero-transparent .nav-pill-contact {
-  background: rgba(255, 255, 255, 0.95);
-  color: #07080A;
+  background: #1D68BD;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  font-weight: 800;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
 }
 
 .navbar-pill.is-hero-transparent .nav-pill-contact:hover {
-  background: #1D68BD;
-  color: #FFFFFF;
+  background: #1557A6;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(29, 104, 189, 0.45);
 }
 
 .navbar-pill.is-hero-transparent .hamburger .hbg-bar {
-  background: #FFFFFF;
+  background: #FFFFFF !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 }
 
-/* ── ÉTAT SCROLLED : ENTRÉE DYNAMIQUE ÉLÉGANTE (PILULE BLANCHE) ── */
+/* ── ÉTAT SCROLLED : ENTRÉE DYNAMIQUE ÉLÉGANTE (PILULE BLANCHE DEFLEXAI) ── */
 .navbar-pill.is-hero-scrolled {
+  max-width: 1140px;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-color: rgba(226, 232, 240, 0.9);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 9999px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.03);
+  padding: 8px 10px 8px 22px;
   animation: navPillPop 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 

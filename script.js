@@ -213,11 +213,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!heroPillNav.classList.contains('is-hero-scrolled')) {
           heroPillNav.classList.add('is-hero-scrolled');
           heroPillNav.classList.remove('is-hero-transparent');
+          if (navbar) navbar.classList.add('is-scrolled-wrapper');
         }
       } else {
         if (!heroPillNav.classList.contains('is-hero-transparent')) {
           heroPillNav.classList.remove('is-hero-scrolled');
           heroPillNav.classList.add('is-hero-transparent');
+          if (navbar) navbar.classList.remove('is-scrolled-wrapper');
         }
       }
       document.body.classList.toggle('is-scrolled', window.scrollY > 420);
