@@ -2203,16 +2203,18 @@ section[id] {
 /* ── 1. HERO MONUMENTAL & CINÉMATOGRAPHIQUE (.h-hero) ──────── */
 .h-hero {
   position: relative;
-  min-height: 820px;
-  height: 100svh;
-  max-height: 980px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  min-height: 100svh;
+  height: auto;
+  max-height: none;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  background: #1964B0;
+  background: #165CA2 linear-gradient(180deg, #104C8A 0%, #165CA2 140px, transparent 320px);
   color: #07080A;
   overflow: hidden;
-  padding: 5rem 0 0;
+  padding: 0;
 }
 
 /* Couches 0 & 2 : Fond ciel atmosphérique + Détourage PNG 1er plan */
@@ -2228,6 +2230,7 @@ section[id] {
 
 .h-hero__bg {
   z-index: 0;
+  background: #165CA2;
 }
 
 .h-hero__bg::after {
@@ -2243,6 +2246,13 @@ section[id] {
   );
   pointer-events: none;
   z-index: 1;
+}
+
+.h-hero__fg,
+.h-hero__leaders-svg,
+.h-hero__scene-ui {
+  transform: translate3d(0, var(--crane-y, 0px), 0);
+  will-change: transform;
 }
 
 .h-hero__fg,
@@ -2266,30 +2276,30 @@ section[id] {
   filter: brightness(1.08) contrast(1.04);
 }
 
-/* Couche 1 : Titre architectural ETS AGBONOUGLA en arrière-plan (parfaitement centré, net et épuré) */
+/* Couche 1 : Titre architectural ETS AGBONOUGLA en arrière-plan (parfaitement centré, proportionnel et puissant) */
 .h-hero__megatitle {
   position: absolute;
-  top: 18.5%;
-  left: 50.8%;
+  top: 19%;
+  left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 1320px;
+  max-width: 1440px;
   z-index: 1;
   pointer-events: none;
   user-select: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 clamp(2rem, 5vw, 4.5rem);
+  padding: 0 clamp(1.5rem, 4vw, 3.5rem);
 }
 
 .h-hero__mega-word {
   display: inline-block;
   font-family: 'Bebas Neue', 'Barlow Condensed', 'Oswald', sans-serif;
-  font-size: clamp(4.6rem, 11.4vw, 10.4rem);
+  font-size: clamp(5.4rem, 13vw, 12rem);
   font-weight: 400;
   line-height: 0.88;
-  letter-spacing: 0.032em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   white-space: nowrap;
   transform: none;
@@ -2802,14 +2812,14 @@ section[id] {
 
   /* ETS AGBONOUGLA centré au milieu et agrandi avec netteté */
   .h-hero__megatitle {
-    top: 21%;
+    top: 20%;
     left: 50%;
-    padding: 0 1.5rem;
+    padding: 0 1.25rem;
   }
 
   .h-hero__mega-word {
-    font-size: clamp(2.85rem, 11.4vw, 6.2rem);
-    letter-spacing: 0.03em;
+    font-size: clamp(3.4rem, 12.5vw, 7.2rem);
+    letter-spacing: 0.035em;
     transform: none;
   }
 
@@ -2876,21 +2886,23 @@ section[id] {
   }
 
   .h-hero {
-    min-height: 580px;
-    height: 100svh;
-    padding: 4rem 0 2.5rem;
+    min-height: 100vh;
+    min-height: 100dvh;
+    min-height: 100svh;
+    height: auto;
+    padding: 0 0 2rem;
   }
 
   /* Sur mobile, ETS AGBONOUGLA bien centré au milieu et plus grand */
   .h-hero__megatitle {
-    top: 22.5%;
+    top: 21%;
     left: 50%;
-    padding: 0 1rem;
+    padding: 0 0.75rem;
   }
 
   .h-hero__mega-word {
-    font-size: clamp(2.7rem, 11.6vw, 4.2rem);
-    letter-spacing: 0.03em;
+    font-size: clamp(3.0rem, 12.8vw, 4.8rem);
+    letter-spacing: 0.035em;
     transform: none;
   }
 
@@ -2954,10 +2966,21 @@ section[id] {
   border-bottom: 1px solid var(--border);
 }
 
-/* ── TRANSITION ANIMÉE HERO -> MANIFESTE ── */
-.h-hero[data-scroll="exit"] .h-hero__fg {
-  transform: translateY(calc(var(--p, 0) * -38px));
+/* ── TRANSITION ANIMÉE HERO -> MANIFESTE (MOUVEMENT MÉCANIQUE SYNCHRONISÉ) ── */
+.h-hero[data-scroll="exit"] .h-hero__fg,
+.h-hero[data-scroll="exit"] .h-hero__leaders-svg,
+.h-hero[data-scroll="exit"] .h-hero__scene-ui {
+  transform: translate3d(0, var(--crane-y, 0px), 0);
   will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .h-hero__fg,
+  .h-hero__leaders-svg,
+  .h-hero__scene-ui,
+  .h-hero[data-scroll="exit"] .h-hero__fg {
+    transform: none !important;
+  }
 }
 
 .h-hero[data-scroll="exit"] .h-hero__container {
@@ -5626,7 +5649,13 @@ select.form-control option,
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(7, 8, 10, 0.85) 0%, rgba(7, 8, 10, 0.3) 60%, transparent 100%);
+  background: linear-gradient(
+    to top,
+    rgba(7, 8, 10, 0.68) 0%,
+    rgba(7, 8, 10, 0.38) 45%,
+    rgba(7, 8, 10, 0.18) 75%,
+    rgba(7, 8, 10, 0.28) 100%
+  );
   z-index: 1;
 }
 
@@ -5634,7 +5663,8 @@ select.form-control option,
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.7;
+  opacity: 0.88;
+  filter: contrast(1.05) saturate(1.1);
 }
 
 .subpage-hero-content {
@@ -5677,13 +5707,15 @@ select.form-control option,
   line-height: 1.1;
   letter-spacing: -0.02em;
   margin-bottom: 0.75rem;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
 }
 
 .subpage-lead {
   font-size: clamp(0.92rem, 1.5vw, 1.05rem);
-  color: #CBD5E1;
+  color: #E2E8F0;
   line-height: 1.6;
   max-width: 52ch;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
 }
 
 /* ── EYEBROW LABEL ──────── */
@@ -6106,10 +6138,12 @@ select.form-control option,
   border-radius: 9999px !important;
   padding: 8px 12px 8px 18px !important;
   animation: navPillRecoil 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              backdrop-filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+              backdrop-filter 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+              -webkit-backdrop-filter 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes navPillRecoil {
@@ -6217,18 +6251,20 @@ select.form-control option,
 /* ── ÉTAT SCROLLED : ENTRÉE DYNAMIQUE POP BOUSCULADE ÉLÉGANTE (PILULE BLANCHE CASSÉE) ── */
 .navbar-pill.is-hero-scrolled {
   max-width: 1140px;
-  background: rgba(255, 255, 255, 0.96) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
   border: 1px solid #CBD5E1 !important;
   border-radius: 9999px !important;
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.09), 0 1px 3px rgba(0, 0, 0, 0.03) !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.10), 0 2px 6px rgba(0, 0, 0, 0.04) !important;
   padding: 8px 12px 8px 18px !important;
   animation: navPillBousculade 0.48s cubic-bezier(0.22, 1.35, 0.54, 1) forwards;
-  transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              backdrop-filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+              backdrop-filter 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+              -webkit-backdrop-filter 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.42s cubic-bezier(0.22, 1.35, 0.54, 1);
 }
 
 @keyframes navPillBousculade {

@@ -144,6 +144,27 @@ document.addEventListener('DOMContentLoaded', () => {
         else p = (vh - r.top) / (vh + r.height);
         p = clamp(p);
         el.style.setProperty('--p', p.toFixed(4));
+
+        if (el.classList.contains('h-hero')) {
+          // Mouvement mécanique de levage synchronisé (machine + conteneur) :
+          // 1. Phase descente (p=0..0.38) : descente et positionnement contrôlé (0 -> +44px)
+          // 2. Phase atterrissage (p=0.38..0.58) : pose et stabilisation au sol (+44px -> +38px)
+          // 3. Phase levage (p=0.58..1.00) : remontée ascensionnelle puissante (+38px -> -75px)
+          let craneY;
+          if (p <= 0.38) {
+            const t = p / 0.38;
+            const ease = 0.5 * (1 - Math.cos(Math.PI * t));
+            craneY = ease * 44;
+          } else if (p <= 0.58) {
+            const t = (p - 0.38) / 0.20;
+            craneY = 44 - t * 6;
+          } else {
+            const t = (p - 0.58) / 0.42;
+            const ease = t * t * (3 - 2 * t);
+            craneY = 38 - ease * 113;
+          }
+          el.style.setProperty('--crane-y', craneY.toFixed(2) + 'px');
+        }
       });
 
       // Lecture fluide mot par mot : dès que le texte entre dans la zone de lecture (85% -> 28% du viewport)
@@ -215,8 +236,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let ticking = false;
     const updateHeroNav = () => {
       const heroBottom = heroSection.getBoundingClientRect().bottom;
-      // Dès que le bas du hero quitte le viewport (seuil 80px), on bascule vers la pilule blanche
-      if (heroBottom <= 80) {
+      // Dès que le bas du hero approche le haut du viewport, on bascule vers la pilule blanche
+      const isPastHero = heroBottom <= 90 || window.scrollY > (heroSection.offsetHeight - 100);
+      if (isPastHero) {
         if (!heroPillNav.classList.contains('is-hero-scrolled')) {
           heroPillNav.classList.add('is-hero-scrolled');
           heroPillNav.classList.remove('is-hero-transparent');
