@@ -87,12 +87,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const r = el.getBoundingClientRect();
         if (r.top < vh - 20 && r.bottom > 0) {
           el.classList.add('is-in');
-        } else {
+        } else if (!el.classList.contains('is-in')) {
           revealObs.observe(el);
         }
       });
     };
     checkReveals();
+    // Re-check after full page load (images, fonts) to catch elements
+    // whose position shifted after DOMContentLoaded
+    window.addEventListener('load', () => { setTimeout(checkReveals, 100); });
 
     // Manifeste : les mots passent du gris au noir pur (#000000) mot par mot au scroll (effet de lecture au doigt)
     const manifestos = new Map();
@@ -147,20 +150,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (el.classList.contains('h-hero')) {
           // Descente continue et progressive du conteneur dans la hero section :
-          // Sur PC comme sur mobile, le conteneur descend calmement dans la hero,
-          // se limite aux limites de la section et se dissout doucement dans le dégradé blanc
-          // avant d'atteindre le texte, sans sortir de l'écran par le haut.
+          // Sur PC, le conteneur descend calmement (70px) et se dissout doucement dans le dégradé blanc.
+          // Sur mobile, descente fluide de 100px.
           const isMobile = window.innerWidth < 768;
-          const maxDescent = isMobile ? 160 : 220;
-          // Smooth ease-in-out: lent au début, accélère, ralentit à la fin
+          const maxDescent = isMobile ? 100 : 70;
           const ease = p * p * (3 - 2 * p);
           const craneY = ease * maxDescent;
           el.style.setProperty('--crane-y', craneY.toFixed(2) + 'px');
 
           const callout = el.querySelector('.h-hero__callout');
           if (callout) {
-            callout.style.pointerEvents = p > 0.55 ? 'none' : 'auto';
+            callout.style.pointerEvents = p > 0.50 ? 'none' : 'auto';
           }
+        }
+      });
+
+      // Contrôle de secours continu pour révéler sans faille tous les éléments [data-reveal]
+      document.querySelectorAll('[data-reveal]:not(.is-in)').forEach(revEl => {
+        const rect = revEl.getBoundingClientRect();
+        if (rect.top < vh - 10 && rect.bottom > 0) {
+          revEl.classList.add('is-in');
         }
       });
 

@@ -2206,7 +2206,7 @@ section[id] {
 
 /* ── 1. HERO MONUMENTAL & CINÉMATOGRAPHIQUE (.h-hero) ──────── */
 .h-hero {
-  --crane-base-y: -85px;
+  --crane-base-y: 0px;
   position: relative;
   min-height: 100vh;
   min-height: 100dvh;
@@ -2218,37 +2218,19 @@ section[id] {
   justify-content: flex-end;
   background: #B5DCFA;
   color: #07080A;
-  overflow-x: clip;
-  overflow-y: visible;
+  overflow: hidden;
   padding: 0;
 }
 
-/* Couches 0 & 2 : Fond ciel atmosphérique + Détourage PNG 1er plan */
-.h-hero__bg,
-.h-hero__fg,
-.h-hero__leaders-svg {
+/* Couche 0 : Fond ciel atmosphérique */
+.h-hero__bg {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
-}
-
-.h-hero__bg {
   z-index: 0;
   background: #B5DCFA;
-}
-
-.h-hero__fg,
-.h-hero__leaders-svg,
-.h-hero__scene-ui {
-  transform: translate3d(0, calc(var(--crane-base-y, -85px) + var(--crane-y, 0px)), 0);
-  will-change: transform;
-}
-
-.h-hero__fg,
-.h-hero__leaders-svg {
-  z-index: 2;
 }
 
 .h-hero__bg img {
@@ -2259,18 +2241,10 @@ section[id] {
   filter: contrast(1.02) saturate(1.05);
 }
 
-.h-hero__fg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  filter: brightness(1.04) contrast(1.03);
-}
-
-/* Couche 1 : Titre architectural ETS AGBONOUGLA en arrière-plan (parfaitement centré, proportionnel et puissant) */
+/* Couche 1 : Titre architectural ETS AGBONOUGLA en arrière-plan */
 .h-hero__megatitle {
   position: absolute;
-  top: clamp(80px, 12.5vh, 120px);
+  top: clamp(140px, 20vh, 220px);
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
@@ -2281,13 +2255,13 @@ section[id] {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 clamp(1.5rem, 4vw, 3.5rem);
+  padding: 0 clamp(1rem, 3vw, 2.5rem);
 }
 
 .h-hero__mega-word {
   display: inline-block;
   font-family: 'Bebas Neue', 'Barlow Condensed', 'Oswald', sans-serif;
-  font-size: clamp(5.8rem, 14.5vw, 14rem);
+  font-size: clamp(4.8rem, 11.5vw, 11.5rem);
   font-weight: 400;
   line-height: 0.88;
   letter-spacing: 0.04em;
@@ -2305,21 +2279,54 @@ section[id] {
   filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.35));
 }
 
+/* Couche 1b : Dégradé ciel doux vers blanc en bas (derrière le conteneur) */
 .h-hero__overlay {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 1;
   pointer-events: none;
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0) 50%,
-    rgba(255, 255, 255, 0.12) 62%,
-    rgba(255, 255, 255, 0.35) 74%,
-    rgba(255, 255, 255, 0.62) 84%,
-    rgba(255, 255, 255, 0.88) 92%,
+    rgba(255, 255, 255, 0) 68%,
+    rgba(255, 255, 255, 0.18) 80%,
+    rgba(255, 255, 255, 0.55) 90%,
+    rgba(255, 255, 255, 0.90) 97%,
     #FFFFFF 100%
   );
+}
+
+/* Couche 2 : Conteneur suspendu monumental centré avec câble jusqu'au bord supérieur */
+.h-hero__fg {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  width: clamp(620px, 48vw, 840px);
+  height: auto;
+  transform: translateX(-50%) translate3d(0, calc(var(--crane-base-y, 0px) + var(--crane-y, 0px)), 0);
+  pointer-events: none;
+  z-index: 2;
+  will-change: transform;
+  -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent 98%);
+  mask-image: linear-gradient(to bottom, #000 82%, transparent 98%);
+}
+
+.h-hero__fg img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: brightness(1.03) contrast(1.02);
+}
+
+.h-hero__leaders-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  transform: translate3d(0, calc(var(--crane-base-y, 0px) + var(--crane-y, 0px)), 0);
+  will-change: transform;
 }
 
 /* Couche 3 : Hotspots sur le conteneur */
@@ -2474,7 +2481,7 @@ section[id] {
 .h-hero__callout {
   position: relative;
   width: clamp(275px, 22vw, 310px);
-  margin-top: clamp(160px, 23vh, 230px);
+  margin-top: clamp(220px, 32vh, 340px);
   background: #F1EDE4;
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 22px;
@@ -2529,7 +2536,7 @@ section[id] {
   padding: 10px 10px 12px;
   box-shadow: 0 12px 36px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.02);
   align-self: flex-end;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0;
 }
 
 .h-hero__specbox-media {
@@ -2598,7 +2605,7 @@ section[id] {
   align-items: center;
   gap: 8px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -2607,7 +2614,7 @@ section[id] {
   border: none !important;
   padding: 0 !important;
   margin-bottom: 0.5rem;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8), 0 2px 12px rgba(0, 0, 0, 0.6);
 }
 
 .h-hero__why-icon {
@@ -2630,7 +2637,7 @@ section[id] {
   line-height: 1.2;
   color: #FFFFFF !important;
   letter-spacing: -0.02em;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.85), 0 4px 18px rgba(0, 0, 0, 0.65), 0 8px 36px rgba(0, 0, 0, 0.45);
 }
 
 .h-hero__gear-card {
@@ -2786,9 +2793,10 @@ section[id] {
 }
 
 /* Responsive Tablet & Mobile : Sobre, mature et aéré (uniquement ETS AGBONOUGLA + conteneur 3D + module devis centré) */
+/* Responsive Tablet & Mobile : Sobre, mature et aéré (uniquement ETS AGBONOUGLA + conteneur 3D + module devis centré) */
 @media (max-width: 1024px) {
   .h-hero {
-    --crane-base-y: -25px;
+    --crane-base-y: 0px;
     min-height: 640px;
     height: 100svh;
     max-height: 860px;
@@ -2805,25 +2813,40 @@ section[id] {
   }
 
   .h-hero__fg {
-    transform: translate3d(0, calc(var(--crane-base-y, -25px) + var(--crane-y, 0px)), 0) !important;
+    top: 0px;
+    left: 50%;
+    width: clamp(340px, 60vw, 560px);
+    transform: translateX(-50%) translate3d(0, calc(var(--crane-base-y, 0px) + var(--crane-y, 0px)), 0) !important;
+    -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 98%);
+    mask-image: linear-gradient(to bottom, #000 80%, transparent 98%);
   }
 
-  .h-hero__bg img,
   .h-hero__fg img {
+    width: 100%;
+    height: auto;
+    transform: none !important;
+  }
+
+  .h-hero__bg img {
     object-position: 50% top;
   }
 
   /* ETS AGBONOUGLA centré au milieu et agrandi avec netteté */
   .h-hero__megatitle {
-    top: clamp(75px, 11vh, 105px);
+    top: clamp(90px, 14vh, 140px);
     left: 50%;
+    transform: translateX(-50%);
     padding: 0 1.25rem;
+    width: 100%;
   }
 
   .h-hero__mega-word {
-    font-size: clamp(3.8rem, 13vw, 8rem);
-    letter-spacing: 0.035em;
+    font-size: clamp(3.2rem, 9.5vw, 6.5rem);
+    letter-spacing: 0.04em;
     transform: none;
+    white-space: nowrap;
+    text-align: center;
+    line-height: 1;
   }
 
   /* Module Devis centré au milieu avec finition fermée, léger radius et ombre sobre */
@@ -2898,28 +2921,46 @@ section[id] {
     padding: 0 0 2rem;
   }
 
-  /* Sur mobile, ETS AGBONOUGLA bien centré au milieu et plus grand */
-  .h-hero__megatitle {
-    top: 21%;
+  .h-hero__fg {
+    top: clamp(35px, 6vh, 60px);
     left: 50%;
+    width: clamp(310px, 86vw, 380px);
+    transform: translateX(-50%) translate3d(0, calc(var(--crane-base-y, 0px) + var(--crane-y, 0px)), 0) !important;
+    -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 98%);
+    mask-image: linear-gradient(to bottom, #000 80%, transparent 98%);
+  }
+
+  .h-hero__fg img {
+    width: 100%;
+    height: auto;
+    transform: none !important;
+  }
+
+  /* Sur mobile, ETS AGBONOUGLA bien centré au milieu sans déborder */
+  .h-hero__megatitle {
+    top: clamp(95px, 14vh, 130px);
+    left: 50%;
+    transform: translateX(-50%);
     padding: 0 0.75rem;
+    width: 100%;
   }
 
   .h-hero__mega-word {
-    font-size: clamp(3.4rem, 14vw, 5.6rem);
-    letter-spacing: 0.035em;
+    font-size: clamp(2.3rem, 8.4vw, 3.2rem);
+    letter-spacing: 0.04em;
     transform: none;
-    white-space: normal;
+    white-space: nowrap;
     text-align: center;
-    word-spacing: 0.15em;
+    line-height: 1;
   }
 
   .h-hero__callout {
-    width: min(300px, 88vw);
-    padding: 1.2rem 1.25rem 1.15rem;
-    background: #F8FAFC;
-    border: 1px solid #E2E8F0;
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    width: min(310px, 88vw);
+    padding: 1.25rem 1.35rem 1.2rem;
+    background: #F1EDE4;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 22px;
+    box-shadow: 0 12px 36px rgba(15, 23, 42, 0.08);
   }
 
   .h-hero__title {
@@ -2965,11 +3006,16 @@ section[id] {
 }
 
 /* ── TRANSITION ANIMÉE HERO -> MANIFESTE (DESCENTE ET DISSOLUTION DU CONTENEUR) ── */
-.h-hero[data-scroll="exit"] .h-hero__fg,
+.h-hero[data-scroll="exit"] .h-hero__fg {
+  transform: translateX(-50%) translate3d(0, calc(var(--crane-base-y, 0px) + var(--crane-y, 0px)), 0);
+  opacity: clamp(0, calc(1 - var(--p, 0) * 1.55), 1);
+  will-change: transform, opacity;
+}
+
 .h-hero[data-scroll="exit"] .h-hero__leaders-svg,
 .h-hero[data-scroll="exit"] .h-hero__scene-ui {
-  transform: translate3d(0, calc(var(--crane-base-y, -85px) + var(--crane-y, 0px)), 0);
-  opacity: clamp(0, calc(1 - var(--p, 0) * 1.15), 1);
+  transform: translate3d(0, calc(var(--crane-base-y, 0px) + var(--crane-y, 0px)), 0);
+  opacity: clamp(0, calc(1 - var(--p, 0) * 1.55), 1);
   will-change: transform, opacity;
 }
 
@@ -2989,9 +3035,12 @@ section[id] {
 
 @media (prefers-reduced-motion: reduce) {
   .h-hero__fg,
-  .h-hero__leaders-svg,
-  .h-hero__scene-ui,
   .h-hero[data-scroll="exit"] .h-hero__fg {
+    transform: translateX(-50%) translate3d(0, var(--crane-base-y, 0px), 0) !important;
+    opacity: 1 !important;
+  }
+  .h-hero__leaders-svg,
+  .h-hero__scene-ui {
     transform: translate3d(0, var(--crane-base-y, 0px), 0) !important;
     opacity: 1 !important;
   }
