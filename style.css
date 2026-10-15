@@ -562,23 +562,24 @@ input, textarea, select {
   }
 }
 
-/* ── 6. MENU MOBILE (DRAWER) ──────────────────────────────── */
+/* ── 6. MENU MOBILE (DRAWER) — SWISS INDUSTRIAL LIGHT PALETTE ── */
 .drawer {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   width: min(340px, 100vw);
-  z-index: 550;
-  background: var(--graphite);
-  color: #FFFFFF;
+  z-index: 1050;
+  background: #FFFFFF;
+  color: #07080A;
   transform: translateX(100%);
-  transition: transform 0.45s var(--ease);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
-  padding: calc(var(--navh) + 1.25rem) 24px 2rem;
+  padding: calc(var(--navh) + 1rem) 22px 2rem;
   overflow-y: auto;
-  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.4);
+  box-shadow: -8px 0 36px rgba(0, 0, 0, 0.12);
+  border-left: 1px solid #E2E8F0;
 }
 
 .drawer.open {
@@ -588,12 +589,13 @@ input, textarea, select {
 .drawer-overlay {
   position: fixed;
   inset: 0;
-  z-index: 540;
-  background: rgba(10, 13, 18, 0.65);
+  z-index: 1040;
+  background: rgba(7, 8, 10, 0.45);
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   opacity: 0;
   pointer-events: none;
-  transition: opacity var(--tb);
+  transition: opacity 0.3s ease;
 }
 
 .drawer-overlay.open {
@@ -606,75 +608,99 @@ input, textarea, select {
   align-items: center;
   justify-content: space-between;
   padding-bottom: 1rem;
-  border-bottom: 1px solid var(--steel-border);
+  border-bottom: 1px solid #E2E8F0;
 }
 
 .drawer-header span {
-  font-family: var(--f-disp);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-weight: 700;
-  font-size: 0.85rem;
-  letter-spacing: 0.05em;
-  color: var(--slate);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: #64748B;
   text-transform: uppercase;
 }
 
 .drawer-close {
   width: 36px;
   height: 36px;
-  border-radius: var(--r-sm);
-  color: #FFFFFF;
+  border-radius: 9999px;
+  color: #07080A;
+  background: #F8FAFC;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--steel-border);
+  border: 1px solid #E2E8F0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.drawer-close:hover {
+  background: #07080A;
+  color: #FFFFFF;
+  border-color: #07080A;
 }
 
 .drawer-links {
   display: flex;
   flex-direction: column;
-  margin-top: 1rem;
+  margin-top: 0.75rem;
+  gap: 4px;
 }
 
 .drawer-lnk {
-  font-family: var(--f-disp);
+  font-family: 'Plus Jakarta Sans', var(--f-disp), sans-serif;
   font-weight: 700;
-  font-size: 1.15rem;
-  color: rgba(255, 255, 255, 0.82);
-  padding: 14px 0;
-  border-bottom: 1px solid var(--steel-border);
+  font-size: 1.05rem;
+  color: #07080A;
+  padding: 13px 12px;
+  border-bottom: 1px solid #F1F5F9;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: color var(--tf), padding-left var(--tf);
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.drawer-lnk:hover,
+.drawer-lnk:hover {
+  background: #F8FAFC;
+  color: #1D68BD;
+  padding-left: 18px;
+}
+
 .drawer-lnk.act {
-  color: #FFFFFF;
-  padding-left: 6px;
+  color: #1D68BD;
+  background: #EEF4FC;
+  font-weight: 800;
 }
 
 .drawer-lnk i {
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   color: #94A3B8;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.drawer-lnk:hover i {
+  color: #1D68BD;
+  transform: translateX(3px);
 }
 
 .drawer-foot {
   margin-top: auto;
-  padding-top: 2rem;
-  border-top: 1px solid var(--steel-border);
+  padding-top: 1.5rem;
+  border-top: 1px solid #E2E8F0;
 }
 
 .drawer-foot p {
   font-size: 0.82rem;
-  color: var(--slate);
+  color: #64748B;
   margin-bottom: 1rem;
 }
 
 .drawer-contact-quick {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   margin-bottom: 1.25rem;
 }
 
@@ -682,13 +708,44 @@ input, textarea, select {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 0.85rem;
-  color: #FFFFFF;
+  font-size: 0.84rem;
+  color: #475569;
 }
 
 .drawer-cq-item i {
-  color: #CBD5E1;
+  color: #1D68BD;
   width: 16px;
+  font-size: 0.88rem;
+}
+
+.drawer-cq-item a {
+  color: #07080A;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.drawer-cq-item a:hover {
+  color: #1D68BD;
+}
+
+.drawer-foot .btn {
+  border-radius: 9999px;
+  background: #07080A;
+  color: #FFFFFF;
+  border: 1px solid #07080A;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  transition: all 0.2s ease;
+}
+
+.drawer-foot .btn:hover {
+  background: #1D68BD;
+  border-color: #1D68BD;
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(29, 104, 189, 0.28);
 }
 
 /* ── 7. BOUTONS & CONTRÔLES ÉPURÉS ───────────────────────── */
@@ -4725,22 +4782,19 @@ section[id] {
   border-radius: 12px;
 }
 
-/* ── MODERNIZED FOOTER (index.html) ──────── */
+/* ── MODERNIZED FOOTER (index.html) — SWISS INDUSTRIAL LIGHT PALETTE ── */
 .footer {
-  background: #07080A;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: #F8FAFC;
+  border-top: 1px solid #E2E8F0;
+  color: #07080A;
 }
 
-.footer-logo img {
-  height: 28px;
-  width: auto;
-}
-
-.footer-logo-brand {
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
-  font-weight: 700;
-  font-size: 1.05rem;
-  letter-spacing: -0.01em;
+.footer-logo img,
+.footer-logo-img {
+  width: 175px;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* ── SECONDARY PAGE SECTIONS ──────── */
@@ -5124,12 +5178,12 @@ select.form-control option,
   }
 }
 
-/* ── SECONDARY PAGE FOOTER (.footer-industrial) ──────── */
+/* ── SECONDARY PAGE FOOTER (.footer-industrial) — SWISS INDUSTRIAL LIGHT PALETTE ── */
 .footer-industrial {
-  background: #07080A;
-  color: #FFFFFF;
-  padding: clamp(3rem, 6vw, 5rem) 0 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: #F8FAFC;
+  color: #07080A;
+  padding: clamp(3.5rem, 6vw, 5.5rem) 0 0;
+  border-top: 1px solid #E2E8F0;
 }
 
 .footer-top {
@@ -5146,78 +5200,89 @@ select.form-control option,
   }
 }
 
+.footer-logo-img {
+  width: 175px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 .footer-brand-col p {
   font-size: 0.88rem;
-  color: #94A3B8;
-  line-height: 1.6;
-  margin-top: 1rem;
-  max-width: 34ch;
+  color: #64748B;
+  line-height: 1.65;
+  margin-top: 1.2rem;
+  max-width: 36ch;
 }
 
 .footer-industrial .footer-col-title {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: #94A3B8;
-  margin-bottom: 1rem;
+  color: #07080A;
+  margin-bottom: 1.1rem;
 }
 
 .footer-industrial .footer-link-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .footer-industrial .footer-link-list a,
 .footer-industrial .footer-link-list span {
   font-size: 0.88rem;
-  color: #CBD5E1;
+  color: #475569;
   display: flex;
   align-items: center;
   gap: 8px;
-  transition: color 0.2s;
+  text-decoration: none;
+  transition: color 0.2s, transform 0.2s;
 }
 
 .footer-industrial .footer-link-list a:hover {
-  color: #FFFFFF;
+  color: #1D68BD;
+  transform: translateX(3px);
 }
 
 .footer-industrial .footer-link-list i {
-  font-size: 0.78rem;
-  color: #64748B;
+  font-size: 0.72rem;
+  color: #94A3B8;
   width: 16px;
 }
 
 .footer-industrial .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid #E2E8F0;
   padding: 1.5rem 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 14px;
 }
 
 .footer-industrial .footer-bottom p {
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   color: #64748B;
 }
 
 .footer-industrial .footer-bottom-links {
   display: flex;
   gap: 18px;
+  flex-wrap: wrap;
 }
 
 .footer-industrial .footer-bottom-links a {
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   color: #64748B;
+  text-decoration: none;
   transition: color 0.2s;
 }
 
 .footer-industrial .footer-bottom-links a:hover {
-  color: #FFFFFF;
+  color: #07080A;
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -5624,33 +5689,25 @@ select.form-control option,
 }
 
 .footer-logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: #FFFFFF;
+  display: inline-block;
   text-decoration: none;
 }
 
-.footer-logo img {
-  height: 28px;
-  width: auto;
-  flex-shrink: 0;
-}
-
-.footer-logo-brand {
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
-  font-weight: 700;
-  font-size: 1.05rem;
-  color: #FFFFFF;
-  letter-spacing: -0.01em;
+.footer-logo img,
+.footer-brand-col .footer-logo-img,
+.footer-col--brand .footer-logo-img {
+  width: 175px;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .footer-brand-desc {
   font-size: 0.88rem;
-  color: #94A3B8;
+  color: #64748B;
   line-height: 1.65;
-  max-width: 34ch;
-  margin-top: 1rem;
+  max-width: 36ch;
+  margin-top: 1.2rem;
 }
 
 .footer-contact-item {
@@ -5658,36 +5715,37 @@ select.form-control option,
   align-items: center;
   gap: 8px;
   font-size: 0.85rem;
-  color: #94A3B8;
+  color: #475569;
   margin-top: 0.5rem;
 }
 
 .footer-contact-item i {
-  color: #64748B;
-  font-size: 0.8rem;
+  color: #1D68BD;
+  font-size: 0.82rem;
   width: 16px;
   flex-shrink: 0;
 }
 
 .footer-contact-item a {
-  color: #FFFFFF;
-  font-weight: 600;
+  color: #07080A;
+  font-weight: 700;
   transition: color 0.2s;
+  text-decoration: none;
 }
 
 .footer-contact-item a:hover {
-  color: #CBD5E1;
+  color: #1D68BD;
 }
 
 /* ── INDEX FOOTER .footer-col styling ── */
 .footer-col .footer-col-title {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: #94A3B8;
-  margin-bottom: 1rem;
+  color: #07080A;
+  margin-bottom: 1.1rem;
 }
 
 .footer-col .footer-link-list {
@@ -5696,7 +5754,7 @@ select.form-control option,
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .footer-col .footer-link-list li {
@@ -5705,23 +5763,68 @@ select.form-control option,
 
 .footer-col .footer-link-list a,
 .footer-col .footer-link-list span {
-  font-size: 0.85rem;
-  color: #CBD5E1;
+  font-size: 0.86rem;
+  color: #475569;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  transition: color 0.2s;
+  transition: color 0.2s, transform 0.2s;
   text-decoration: none;
 }
 
 .footer-col .footer-link-list a:hover {
-  color: #FFFFFF;
+  color: #1D68BD;
+  transform: translateX(3px);
 }
 
 .footer-col .footer-link-list i {
-  font-size: 0.68rem;
-  color: #64748B;
+  font-size: 0.72rem;
+  color: #94A3B8;
   width: 14px;
+}
+
+/* ── UNIVERSAL FOOTER BOTTOM BAR — SWISS INDUSTRIAL LIGHT PALETTE ── */
+.footer-bottom {
+  border-top: 1px solid #E2E8F0 !important;
+  padding: 1.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.footer-bottom p {
+  font-size: 0.82rem;
+  color: #64748B !important;
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.footer-bottom-links a {
+  font-size: 0.82rem;
+  color: #64748B !important;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-bottom-links a:hover {
+  color: #07080A !important;
+}
+
+.lamano-signature {
+  color: #64748B !important;
+  font-size: 0.82rem;
+}
+
+.lamano-credit {
+  color: #07080A !important;
+  font-weight: 700;
+  text-decoration: none;
 }
 
 /* ── LEGAL PAGE CONTENT STYLING ── */
