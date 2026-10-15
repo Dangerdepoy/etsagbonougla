@@ -2209,7 +2209,7 @@ section[id] {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  background: #153C66;
+  background: #1964B0;
   color: #07080A;
   overflow: hidden;
   padding: 5rem 0 0;
@@ -2236,14 +2236,11 @@ section[id] {
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(25, 85, 155, 0.72) 0%,
-    rgba(40, 115, 195, 0.58) 25%,
-    rgba(80, 155, 225, 0.38) 50%,
-    rgba(145, 195, 245, 0.22) 72%,
-    rgba(220, 238, 255, 0.10) 90%,
-    transparent 100%
+    rgba(10, 40, 80, 0.08) 0%,
+    transparent 35%,
+    transparent 65%,
+    rgba(210, 232, 250, 0.3) 100%
   );
-  mix-blend-mode: overlay;
   pointer-events: none;
   z-index: 1;
 }
@@ -2257,8 +2254,8 @@ section[id] {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
-  filter: brightness(1.26) contrast(1.06) saturate(1.12);
+  object-position: center top;
+  filter: contrast(1.02) saturate(1.05);
 }
 
 .h-hero__fg img {
@@ -2266,7 +2263,7 @@ section[id] {
   height: 100%;
   object-fit: cover;
   object-position: center center;
-  filter: brightness(1.24) contrast(1.05) saturate(1.1);
+  filter: brightness(1.08) contrast(1.04);
 }
 
 /* Couche 1 : Titre architectural ETS AGBONOUGLA en arrière-plan (parfaitement centré, net et épuré) */
@@ -2298,13 +2295,13 @@ section[id] {
   transform: none;
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.95) 0%,
-    rgba(241, 245, 249, 0.85) 55%,
-    rgba(203, 213, 225, 0.65) 100%
+    rgba(255, 255, 255, 0.96) 0%,
+    rgba(241, 245, 249, 0.88) 55%,
+    rgba(215, 228, 242, 0.75) 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.45));
+  filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.35));
 }
 
 .h-hero__overlay {
@@ -2314,12 +2311,13 @@ section[id] {
   pointer-events: none;
   background: linear-gradient(
     180deg,
-    rgba(15, 45, 80, 0.15) 0%,
+    rgba(15, 45, 80, 0.08) 0%,
     transparent 22%,
-    transparent 65%,
-    rgba(215, 232, 248, 0.35) 82%,
-    rgba(248, 250, 252, 0.88) 96%,
-    #FFFFFF 100%
+    transparent 60%,
+    rgba(200, 226, 250, 0.45) 78%,
+    rgba(224, 239, 253, 0.82) 90%,
+    rgba(232, 242, 250, 0.98) 98%,
+    #E8F2FA 100%
   );
 }
 
@@ -2940,7 +2938,7 @@ section[id] {
 
 /* ── 2. MANIFESTE MÉTIER SCROLL REVEAL (.h-manifesto) ──────── */
 .h-manifesto {
-  background: #FFFFFF;
+  background: linear-gradient(180deg, #E8F2FA 0%, #F3F7FC 90px, #FFFFFF 220px, #FFFFFF 100%);
   padding: clamp(5rem, 9vw, 8rem) 0;
   position: relative;
   border-bottom: 1px solid var(--border);
@@ -6040,32 +6038,30 @@ select.form-control option,
 
 /* ── ÉTAT HERO CINÉMATIQUE : 100% TRANSPARENT SANS AUCUNE FINITION CAPSULE / LIQUID GLASS ── */
 .navbar-pill-wrapper.is-hero-nav {
-  top: 0;
-  padding: 0;
-  transition: top 0.35s cubic-bezier(0.16, 1, 0.3, 1), padding 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.navbar-pill-wrapper.is-hero-nav.is-scrolled-wrapper {
   top: 16px;
   padding: 0 clamp(12px, 3vw, 24px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .navbar-pill.is-hero-transparent {
-  max-width: 1320px;
-  background: transparent !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border: none !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
-  padding: 24px clamp(1.5rem, 5vw, 3.5rem) !important;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  max-width: 1140px;
+  background: rgba(255, 255, 255, 0) !important;
+  backdrop-filter: blur(0px) !important;
+  -webkit-backdrop-filter: blur(0px) !important;
+  border: 1px solid rgba(226, 232, 240, 0) !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0) !important;
+  border-radius: 9999px !important;
+  padding: 8px 12px 8px 18px !important;
+  transition: background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              backdrop-filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .navbar-pill.is-hero-transparent:hover {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
+  background: rgba(255, 255, 255, 0) !important;
+  border-color: rgba(226, 232, 240, 0) !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0) !important;
 }
 
 .navbar-pill.is-hero-transparent .nav-logo {
@@ -6075,12 +6071,26 @@ select.form-control option,
 .navbar-pill.is-hero-transparent .nav-logo img {
   height: 32px;
   width: auto;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35));
 }
 
-/* Pas de texte de marque au sommet du Hero */
+/* Texte de marque replié avec fluidité totale au sommet du Hero */
 .navbar-pill.is-hero-transparent .nav-logo-brand {
-  display: none !important;
+  display: inline-block !important;
+  max-width: 0;
+  opacity: 0;
+  margin-left: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  pointer-events: none;
+  font-family: 'Plus Jakarta Sans', var(--f-disp), sans-serif;
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+  color: #07080A !important;
+  transition: max-width 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              margin-left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Aucun lien textuel au sommet du Hero */
@@ -6094,22 +6104,28 @@ select.form-control option,
   gap: 14px;
 }
 
+/* Bouton Contact tout blanc dans le Hero : parfaitement défini, lisible et premium */
 .navbar-pill.is-hero-transparent .nav-pill-contact {
-  background: #1D68BD;
-  color: #FFFFFF !important;
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: #FFFFFF !important;
+  color: #07080A !important;
+  border: 1px solid rgba(255, 255, 255, 0.95) !important;
   font-weight: 800;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22), 0 1px 3px rgba(0, 0, 0, 0.1);
   padding: 8px 22px;
   border-radius: 9999px;
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   letter-spacing: 0.02em;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .navbar-pill.is-hero-transparent .nav-pill-contact:hover {
-  background: #155296;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(29, 104, 189, 0.45);
+  background: #F8FAFC !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
 }
 
 .navbar-pill.is-hero-transparent .hamburger {
@@ -6122,52 +6138,50 @@ select.form-control option,
   gap: 5px;
 }
 
-.navbar-pill.is-hero-transparent .hamburger .hbg-bar {
-  background: #FFFFFF !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+.navbar-pill .hamburger .hbg-bar {
   width: 22px;
   height: 2px;
   border-radius: 2px;
+  transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar-pill.is-hero-transparent .hamburger .hbg-bar {
+  background: #FFFFFF !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
 
 /* ── ÉTAT SCROLLED : ENTRÉE DYNAMIQUE ÉLÉGANTE (PILULE BLANCHE CASSÉE) ── */
 .navbar-pill.is-hero-scrolled {
   max-width: 1140px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(226, 232, 240, 0.9);
-  border-radius: 9999px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.03);
-  padding: 8px 12px 8px 22px;
-  animation: navPillPop 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@keyframes navPillPop {
-  0% {
-    transform: translateY(-8px) scale(0.98);
-    opacity: 0.85;
-  }
-  100% {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(226, 232, 240, 0.9) !important;
+  border-radius: 9999px !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.03) !important;
+  padding: 8px 12px 8px 18px !important;
+  transition: background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              backdrop-filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .navbar-pill.is-hero-scrolled .nav-logo-brand {
   display: inline-block !important;
+  max-width: 220px;
+  opacity: 1;
+  margin-left: 10px;
+  overflow: hidden;
+  white-space: nowrap;
   font-family: 'Plus Jakarta Sans', var(--f-disp), sans-serif;
   font-weight: 800;
   font-size: 1.05rem;
   letter-spacing: -0.02em;
   color: #07080A !important;
-  animation: fadeInText 0.3s ease forwards;
-}
-
-@keyframes fadeInText {
-  from { opacity: 0; transform: translateX(-4px); }
-  to { opacity: 1; transform: translateX(0); }
+  transition: max-width 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              margin-left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .navbar-pill.is-hero-scrolled .nav-links {
@@ -6181,13 +6195,25 @@ select.form-control option,
 }
 
 .navbar-pill.is-hero-scrolled .nav-pill-contact {
-  background: #07080A;
+  background: #07080A !important;
   color: #FFFFFF !important;
-  border: none;
+  border: 1px solid #07080A !important;
+  font-weight: 700;
+  padding: 8px 22px;
+  border-radius: 9999px;
+  font-size: 0.84rem;
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .navbar-pill.is-hero-scrolled .nav-pill-contact:hover {
-  background: #1D68BD;
+  background: #1D68BD !important;
+  border-color: #1D68BD !important;
+  transform: translateY(-1px);
 }
 
 .navbar-pill.is-hero-scrolled .hamburger {

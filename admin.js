@@ -35,7 +35,7 @@
         category: 'Bureaux & Bases-vie',
         dimensions: '20 pieds (6,05 × 2,44 × 2,59 m)',
         short_desc: 'Module isolé thermiquement, climatisation split, menuiserie aluminium, tableau électrique étanche et câblage réseau.',
-        image_path: '12.jpg',
+        image_path: 'assets/images/conteneurs-amenages-toitures.jpg',
         published: 1
       },
       {
@@ -44,7 +44,7 @@
         category: 'Bureaux & Bases-vie',
         dimensions: '40 pieds High Cube (12,19 × 2,44 × 2,89 m)',
         short_desc: 'Espace de direction de chantier, salle de planification ou réfectoire avec cloisons modulables et double accès.',
-        image_path: '15.jpg',
+        image_path: 'assets/images/poste-garde-logistique.jpg',
         published: 1
       },
       {
@@ -53,7 +53,7 @@
         category: 'Sanitaires & Hygiène',
         dimensions: '20 pieds / Sur-mesure',
         short_desc: 'Unités autonomes ou raccordables comprenant cabines douches, WC, lavabos collectifs et casiers vestiaires ventilés.',
-        image_path: '21.jpg',
+        image_path: 'assets/images/bureau-conteneur-split.jpg',
         published: 1
       },
       {
@@ -62,7 +62,7 @@
         category: 'Stockage & Technique',
         dimensions: "20' / 40' Dry & Open Side",
         short_desc: 'Stockage sécurisé d’outillage, pièces détachées, groupe électrogène ou local technique pré-équipé avec établis.',
-        image_path: '27.jpg',
+        image_path: 'assets/images/equipe-technique-atelier.jpg',
         published: 1
       }
     ],
@@ -100,7 +100,7 @@
         need_text: 'Contrôler les flux logistiques à l’entrée d’un site industriel avec visibilité panoramique.',
         solution_text: 'Module 20 pieds avec baies vitrées aluminium sur trois façades, comptoir intégré et climatisation.',
         result_text: 'Installé en une demi-journée sans travaux de maçonnerie lourds.',
-        image_path: '61.jpeg',
+        image_path: 'assets/images/conteneur-40ft-corten.jpg',
         published: 1
       }
     ],
@@ -122,12 +122,12 @@
       }
     ],
     seo: [
-      { page_path: 'index.html', page_title: 'ETS AGBONOUGLA — Conteneurs Modulaires & Bases-Vie de Chantier en Côte d’Ivoire', meta_description: 'Fabrication et aménagement de conteneurs préfabriqués, bureaux de chantier et bases-vie à Attinguié (PK 26, Abidjan). Devis sous 24h.', og_image: 'hero-container-crane.jpg' },
-      { page_path: 'ets_solutions.html', page_title: 'Solutions Modulaires & Conteneurs Aménagés — ETS AGBONOUGLA', meta_description: 'Découvrez nos gammes de conteneurs 20 et 40 pieds : bureaux de chantier, bases-vie, blocs sanitaires et stockage sécurisé.', og_image: '12.jpg' },
-      { page_path: 'ets_expertise.html', page_title: 'Expertise Industrielle & Atelier PK 26 — ETS AGBONOUGLA', meta_description: '2 500 m² d’atelier à Attinguié : chaudronnerie Corten, isolation thermique, électricité aux normes et logistique grue.', og_image: '15.jpg' },
+      { page_path: 'index.html', page_title: 'ETS AGBONOUGLA — Conteneurs Modulaires & Bases-Vie de Chantier en Côte d’Ivoire', meta_description: 'Fabrication et aménagement de conteneurs préfabriqués, bureaux de chantier et bases-vie à Attinguié (PK 26, Abidjan). Devis sous 24h.', og_image: 'assets/images/hero-crane.jpg' },
+      { page_path: 'ets_solutions.html', page_title: 'Solutions Modulaires & Conteneurs Aménagés — ETS AGBONOUGLA', meta_description: 'Découvrez nos gammes de conteneurs 20 et 40 pieds : bureaux de chantier, bases-vie, blocs sanitaires et stockage sécurisé.', og_image: 'assets/images/conteneurs-amenages-toitures.jpg' },
+      { page_path: 'ets_expertise.html', page_title: 'Expertise Industrielle & Atelier PK 26 — ETS AGBONOUGLA', meta_description: '2 500 m² d’atelier à Attinguié : chaudronnerie Corten, isolation thermique, électricité aux normes et logistique grue.', og_image: 'assets/images/poste-garde-logistique.jpg' },
       { page_path: 'ets_references.html', page_title: 'Réalisations & Projets Livrés — ETS AGBONOUGLA', meta_description: 'Galerie de nos conteneurs aménagés et bases-vie déployés sur les chantiers et sites industriels en Côte d’Ivoire.', og_image: '19.jpg' },
-      { page_path: 'ets_contact.html', page_title: 'Demander un Devis Conteneur sous 24h — ETS AGBONOUGLA', meta_description: 'Contactez notre bureau d’études à Attinguié (PK 26 Autoroute du Nord) pour chiffrer votre projet modulaire.', og_image: '61.jpeg' },
-      { page_path: 'ets_carriere.html', page_title: 'Carrières & Métiers d’Atelier — ETS AGBONOUGLA', meta_description: 'Rejoignez nos équipes de soudeurs, électriciens, menuisiers aluminium et techniciens à Attinguié.', og_image: '27.jpg' }
+      { page_path: 'ets_contact.html', page_title: 'Demander un Devis Conteneur sous 24h — ETS AGBONOUGLA', meta_description: 'Contactez notre bureau d’études à Attinguié (PK 26 Autoroute du Nord) pour chiffrer votre projet modulaire.', og_image: 'assets/images/conteneur-40ft-corten.jpg' },
+      { page_path: 'ets_carriere.html', page_title: 'Carrières & Métiers d’Atelier — ETS AGBONOUGLA', meta_description: 'Rejoignez nos équipes de soudeurs, électriciens, menuisiers aluminium et techniciens à Attinguié.', og_image: 'assets/images/equipe-technique-atelier.jpg' }
     ]
   };
 

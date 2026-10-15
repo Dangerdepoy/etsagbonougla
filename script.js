@@ -206,6 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroSection = document.querySelector('.h-hero');
 
   if (heroPillNav && heroSection) {
+    let ticking = false;
     const updateHeroNav = () => {
       const heroBottom = heroSection.getBoundingClientRect().bottom;
       // Dès que le bas du hero quitte le viewport (seuil 80px), on bascule vers la pilule blanche
@@ -223,8 +224,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
       document.body.classList.toggle('is-scrolled', window.scrollY > 420);
+      ticking = false;
     };
-    window.addEventListener('scroll', updateHeroNav, { passive: true });
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateHeroNav);
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
     updateHeroNav();
   } else if (navbar) {
     const handleScroll = () => {
