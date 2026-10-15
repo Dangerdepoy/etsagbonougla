@@ -2105,14 +2105,14 @@ section[id] {
   white-space: nowrap;
 }
 
-.home .nav-logo-sub,
-.home .nav-links,
-.home .nav-phone,
-.home .nav-cta {
+.home .legacy-nav .nav-logo-sub,
+.home .legacy-nav .nav-links,
+.home .legacy-nav .nav-phone,
+.home .legacy-nav .nav-cta {
   display: none !important;
 }
 
-.home .hamburger {
+.home .legacy-nav .hamburger {
   display: flex !important;
   width: 38px;
   height: 32px;
