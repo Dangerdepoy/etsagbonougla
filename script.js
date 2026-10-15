@@ -146,32 +146,20 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.setProperty('--p', p.toFixed(4));
 
         if (el.classList.contains('h-hero')) {
-          // Cinématique de levage du conteneur au scroll :
-          // À scroll 0, le conteneur est en haut dans le ciel (palonnier niché dans le titre).
-          // Dès le début du scroll, les blocs CTA et spécifications s'estompent rapidement.
-          // Avant d'arriver au niveau du texte « Notre engagement », le palonnier treuille
-          // et remonte le conteneur vers le ciel supérieur (remontée maîtrisée),
-          // dégageant entièrement le texte pour une lecture claire sans collision.
+          // Descente continue et progressive du conteneur dans la hero section :
+          // Sur PC comme sur mobile, le conteneur descend calmement dans la hero,
+          // se limite aux limites de la section et se dissout doucement dans le dégradé blanc
+          // avant d'atteindre le texte, sans sortir de l'écran par le haut.
           const isMobile = window.innerWidth < 768;
-          let craneY;
-          if (p <= 0.18) {
-            // Phase 1 : micro-amorce mécanique calme
-            const t = p / 0.18;
-            const ease = 0.5 * (1 - Math.cos(Math.PI * t));
-            craneY = ease * (isMobile ? 15 : 22);
-          } else {
-            // Phase 2 : treuillage ascensionnel (remontée) avant d'atteindre Notre engagement
-            const t = (p - 0.18) / 0.82;
-            const ease = t * t * (3 - 2 * t);
-            const peak = isMobile ? 15 : 22;
-            const maxLift = isMobile ? -160 : -260;
-            craneY = peak + ease * (maxLift - peak);
-          }
+          const maxDescent = isMobile ? 160 : 220;
+          // Smooth ease-in-out: lent au début, accélère, ralentit à la fin
+          const ease = p * p * (3 - 2 * p);
+          const craneY = ease * maxDescent;
           el.style.setProperty('--crane-y', craneY.toFixed(2) + 'px');
 
           const callout = el.querySelector('.h-hero__callout');
           if (callout) {
-            callout.style.pointerEvents = p > 0.08 ? 'none' : 'auto';
+            callout.style.pointerEvents = p > 0.55 ? 'none' : 'auto';
           }
         }
       });
