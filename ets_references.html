@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="motion">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,9 +14,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Maven+Pro:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Maven+Pro:wght@500;600;700;800;900&family=Oswald:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=14">
 </head>
 <body>
 
@@ -41,12 +41,9 @@
   <!-- Navigation principale -->
   <header class="navbar" id="appNavbar">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo" aria-label="ETS AGBONOUGLA Accueil">
-        <img src="logo-ets.png" alt="Logo ETS AGBONOUGLA" width="76" height="38">
-        <div class="nav-logo-text">
-          <span class="nav-logo-brand">ETS AGBONOUGLA</span>
-          <span class="nav-logo-sub">Solutions Modulaires</span>
-        </div>
+      <a href="index.html" class="nav-logo" aria-label="Ets Agbonougla, retour à l'accueil">
+        <img src="logoetsa.png" alt="Ets Agbonougla" width="36" height="23">
+        <span class="nav-logo-brand">Ets Agbonougla</span>
       </a>
 
       <nav class="nav-links" aria-label="Menu principal">
@@ -132,28 +129,36 @@
     </section>
 
     <!-- ═══════════════════════ GALERIE AVEC FILTRE OPÉRATIONNEL ═══════════════════════ -->
-    <section class="section-py">
+    <section class="swiss-section">
+      <div class="c-cross c-cross--tl">+</div>
+      <div class="c-cross c-cross--tr">+</div>
       <div class="container">
         
-        <div class="section-hdr">
-          <div class="eyebrow">Portfolio de Réalisations</div>
-          <h2 class="section-title">Filtrer par type d'installation</h2>
+        <div class="section-hdr center" style="margin-bottom: 2rem;">
+          <div class="c-index-bracket">[ 01 // RÉALISATIONS TERRAIN CI ]</div>
+          <h2 class="section-title">PORTFOLIO INDUSTRIEL &amp; PROJETS DÉPLOYÉS</h2>
+          <div class="c-meta-bracket">
+            <span>[ bases-vie ]</span>
+            <span>[ bureaux de chantier ]</span>
+            <span>[ stockage CORTEN ]</span>
+            <span>[ Abidjan &amp; Intérieur ]</span>
+          </div>
         </div>
 
-        <!-- Boutons de filtre fonctionnels -->
-        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 2.5rem;">
-          <button class="filter-btn qualif-chip act" data-filter="all" style="background: var(--coral); color: #fff; border-color: var(--coral);">Tous les projets</button>
-          <button class="filter-btn qualif-chip" data-filter="bases-vie">Bases-vie &amp; Chantiers</button>
-          <button class="filter-btn qualif-chip" data-filter="bureaux">Bureaux modulaires</button>
-          <button class="filter-btn qualif-chip" data-filter="stockage">Stockage Corten 20'/40'</button>
-          <button class="filter-btn qualif-chip" data-filter="technique">Ateliers &amp; Sur-mesure</button>
+        <!-- Boutons de filtre fonctionnels pill chips -->
+        <div class="c-pills-row center" style="margin-bottom: 3rem;">
+          <button class="c-pill-item filter-btn act" data-filter="all"><i class="fa-solid fa-layer-group"></i> Tous les projets</button>
+          <button class="c-pill-item filter-btn" data-filter="bases-vie"><i class="fa-solid fa-campground"></i> Bases-vie &amp; Chantiers</button>
+          <button class="c-pill-item filter-btn" data-filter="bureaux"><i class="fa-solid fa-building"></i> Bureaux modulaires</button>
+          <button class="c-pill-item filter-btn" data-filter="stockage"><i class="fa-solid fa-box"></i> Stockage CORTEN 20'/40'</button>
+          <button class="c-pill-item filter-btn" data-filter="technique"><i class="fa-solid fa-wrench"></i> Ateliers &amp; Sur-mesure</button>
         </div>
 
         <!-- Grille des réalisations avec photos réelles -->
         <div class="realisations-grid">
           
           <!-- Projet 1 -->
-          <article class="real-card" data-cat="bases-vie">
+          <article class="real-card" data-reveal data-cat="bases-vie">
             <div class="real-media">
               <img src="45.jpg" alt="Ensemble de base-vie de chantier en U sur terrain gravillonné" width="1000" height="750" loading="lazy">
               <span class="real-loc"><i class="fa-solid fa-location-dot"></i> Attinguié, CI</span>
@@ -168,7 +173,7 @@
           </article>
 
           <!-- Projet 2 -->
-          <article class="real-card" data-cat="bureaux">
+          <article class="real-card" data-reveal data-cat="bureaux">
             <div class="real-media">
               <img src="2.jpg" alt="Installation d'un module par grue sur fondations béton" width="1008" height="567" loading="lazy">
               <span class="real-loc"><i class="fa-solid fa-location-dot"></i> Abidjan</span>
@@ -183,7 +188,7 @@
           </article>
 
           <!-- Projet 3 -->
-          <article class="real-card" data-cat="bases-vie">
+          <article class="real-card" data-reveal data-cat="bases-vie">
             <div class="real-media">
               <img src="12.jpg" alt="Trois conteneurs aménagés avec toitures isolées en extérieur" width="1280" height="720" loading="lazy">
               <span class="real-loc"><i class="fa-solid fa-location-dot"></i> Côte d'Ivoire</span>
@@ -198,7 +203,7 @@
           </article>
 
           <!-- Projet 4 -->
-          <article class="real-card" data-cat="stockage">
+          <article class="real-card" data-reveal data-cat="stockage">
             <div class="real-media">
               <img src="61.jpeg" alt="Conteneur maritime 40 pieds Corten posé sur sol herbeux" width="810" height="1080" loading="lazy">
               <span class="real-loc"><i class="fa-solid fa-location-dot"></i> Abidjan</span>
@@ -213,7 +218,7 @@
           </article>
 
           <!-- Projet 5 -->
-          <article class="real-card" data-cat="bureaux">
+          <article class="real-card" data-reveal data-cat="bureaux">
             <div class="real-media">
               <img src="21.jpg" alt="Module de bureau équipé d'une climatisation split extérieure" width="720" height="1280" loading="lazy">
               <span class="real-loc"><i class="fa-solid fa-location-dot"></i> Attinguié, CI</span>
@@ -228,7 +233,7 @@
           </article>
 
           <!-- Projet 6 -->
-          <article class="real-card" data-cat="technique">
+          <article class="real-card" data-reveal data-cat="technique">
             <div class="real-media">
               <img src="56.jpeg" alt="Pose de plancher en contreplaqué Marineplex sur structure acier" width="960" height="1280" loading="lazy">
               <span class="real-loc"><i class="fa-solid fa-location-dot"></i> Atelier Attinguié</span>
@@ -243,7 +248,7 @@
           </article>
 
           <!-- Projet 7 -->
-          <article class="real-card" data-cat="bases-vie">
+          <article class="real-card" data-reveal data-cat="bases-vie">
             <div class="real-media">
               <img src="43.jpg" alt="Alignement de modules blancs et bleus sur terrain aménagé" width="1000" height="750" loading="lazy">
               <span class="real-loc"><i class="fa-solid fa-location-dot"></i> Chantier BTP</span>
@@ -258,7 +263,7 @@
           </article>
 
           <!-- Projet 8 -->
-          <article class="real-card" data-cat="stockage">
+          <article class="real-card" data-reveal data-cat="stockage">
             <div class="real-media">
               <img src="64.jpeg" alt="Conteneur maritime Corten avec crémones et joints d'étanchéité" width="698" height="602" loading="lazy">
               <span class="real-loc"><i class="fa-solid fa-location-dot"></i> Abidjan</span>
@@ -273,7 +278,7 @@
           </article>
 
           <!-- Projet 9 -->
-          <article class="real-card" data-cat="bureaux">
+          <article class="real-card" data-reveal data-cat="bureaux">
             <div class="real-media">
               <img src="7.jpg" alt="Module blanc avec finitions bleues posé sur parpaings" width="1280" height="720" loading="lazy">
               <span class="real-loc"><i class="fa-solid fa-location-dot"></i> Côte d'Ivoire</span>
@@ -313,11 +318,8 @@
         
         <div class="footer-brand-col">
           <a href="index.html" class="nav-logo" style="color: #FFFFFF;">
-            <img src="logo-ets.png" alt="Logo ETS AGBONOUGLA" width="76" height="38">
-            <div class="nav-logo-text">
-              <span class="nav-logo-brand" style="color: #FFFFFF;">ETS AGBONOUGLA</span>
-              <span class="nav-logo-sub" style="color: var(--slate);">Architecture Modulaire</span>
-            </div>
+            <img src="logoetsa.png" alt="Ets Agbonougla" width="36" height="23">
+            <span class="nav-logo-brand" style="color: #FFFFFF;">Ets Agbonougla</span>
           </a>
           <p>
             Vente et aménagement de conteneurs maritimes et modulaires de chantier en Côte d'Ivoire. Robustesse, isolation tropicalisée et pose professionnelle sur site.

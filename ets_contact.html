@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="motion">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,9 +14,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Maven+Pro:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Maven+Pro:wght@500;600;700;800;900&family=Oswald:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=14">
 </head>
 <body>
 
@@ -41,12 +41,9 @@
   <!-- Navigation principale -->
   <header class="navbar" id="appNavbar">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo" aria-label="ETS AGBONOUGLA Accueil">
-        <img src="logo-ets.png" alt="Logo ETS AGBONOUGLA" width="76" height="38">
-        <div class="nav-logo-text">
-          <span class="nav-logo-brand">ETS AGBONOUGLA</span>
-          <span class="nav-logo-sub">Solutions Modulaires</span>
-        </div>
+      <a href="index.html" class="nav-logo" aria-label="Ets Agbonougla, retour à l'accueil">
+        <img src="logoetsa.png" alt="Ets Agbonougla" width="36" height="23">
+        <span class="nav-logo-brand">Ets Agbonougla</span>
       </a>
 
       <nav class="nav-links" aria-label="Menu principal">
@@ -138,7 +135,7 @@
         <div class="form-layout">
           
           <!-- Formulaire de demande de devis -->
-          <div class="form-card">
+          <div class="form-card" data-reveal>
             <div class="eyebrow">Formulaire Professionnel</div>
             <h2 style="font-family: var(--f-disp); font-weight: 800; font-size: 1.5rem; color: var(--ink); margin-bottom: 0.5rem;">Détaillez votre projet modulaire</h2>
             <p style="font-size: 0.88rem; color: var(--muted); margin-bottom: 1.75rem;">
@@ -233,8 +230,8 @@
           </div>
 
           <!-- Coordonnées et accès atelier -->
-          <div class="contact-meta-card">
-            <div class="eyebrow">Nos Coordonnées</div>
+          <div class="contact-meta-card" data-reveal>
+            <div class="eyebrow on-dark">Nos Coordonnées</div>
             <h3 class="contact-meta-title">Atelier &amp; Bureau Technique</h3>
             <p class="contact-meta-desc">
               Notre équipe est joignable du lundi au samedi pour répondre à vos questions techniques et organiser une visite de nos modules témoins à Attinguié.
@@ -288,9 +285,9 @@
             </div>
 
             <!-- Manutention / Logistique camion-grue -->
-            <div style="margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--stone-dark);">
-              <h4 style="font-family: var(--f-disp); font-weight: 800; font-size: 0.92rem; color: var(--ink); margin-bottom: 4px;">Informations d'accès pour livraison :</h4>
-              <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">
+            <div style="margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+              <h4 style="font-family: var(--f-disp); font-weight: 800; font-size: 0.92rem; color: #FFFFFF; margin-bottom: 6px;">Informations d'accès pour livraison :</h4>
+              <p style="font-size: 0.82rem; color: #94A3B8; line-height: 1.55;">
                 Prévoyez une voie carrossable dégagée (largeur minimale 3,50 m et hauteur sous câbles 4,50 m) pour le passage de notre camion-grue jusqu'au point de dépose.
               </p>
             </div>
@@ -311,11 +308,8 @@
         
         <div class="footer-brand-col">
           <a href="index.html" class="nav-logo" style="color: #FFFFFF;">
-            <img src="logo-ets.png" alt="Logo ETS AGBONOUGLA" width="76" height="38">
-            <div class="nav-logo-text">
-              <span class="nav-logo-brand" style="color: #FFFFFF;">ETS AGBONOUGLA</span>
-              <span class="nav-logo-sub" style="color: var(--slate);">Architecture Modulaire</span>
-            </div>
+            <img src="logoetsa.png" alt="Ets Agbonougla" width="36" height="23">
+            <span class="nav-logo-brand" style="color: #FFFFFF;">Ets Agbonougla</span>
           </a>
           <p>
             Vente et aménagement de conteneurs maritimes et modulaires de chantier en Côte d'Ivoire. Robustesse, isolation tropicalisée et pose professionnelle sur site.

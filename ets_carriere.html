@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="motion">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,9 +14,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Maven+Pro:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Maven+Pro:wght@500;600;700;800;900&family=Oswald:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=14">
 </head>
 <body>
 
@@ -41,12 +41,9 @@
   <!-- Navigation principale -->
   <header class="navbar" id="appNavbar">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo" aria-label="ETS AGBONOUGLA Accueil">
-        <img src="logo-ets.png" alt="Logo ETS AGBONOUGLA" width="76" height="38">
-        <div class="nav-logo-text">
-          <span class="nav-logo-brand">ETS AGBONOUGLA</span>
-          <span class="nav-logo-sub">Solutions Modulaires</span>
-        </div>
+      <a href="index.html" class="nav-logo" aria-label="Ets Agbonougla, retour à l'accueil">
+        <img src="logoetsa.png" alt="Ets Agbonougla" width="36" height="23">
+        <span class="nav-logo-brand">Ets Agbonougla</span>
       </a>
 
       <nav class="nav-links" aria-label="Menu principal">
@@ -145,15 +142,15 @@
             <div style="margin-top: 1.5rem;">
               <ul style="display: flex; flex-direction: column; gap: 10px; font-size: 0.92rem; color: var(--ink);">
                 <li style="display: flex; align-items: center; gap: 10px;">
-                  <i class="fa-solid fa-check" style="color: var(--coral);"></i>
+                  <i class="fa-solid fa-check" style="color: var(--blue-vivid);"></i>
                   <span>Équipements de protection individuelle (EPI) fournis</span>
                 </li>
                 <li style="display: flex; align-items: center; gap: 10px;">
-                  <i class="fa-solid fa-check" style="color: var(--coral);"></i>
+                  <i class="fa-solid fa-check" style="color: var(--blue-vivid);"></i>
                   <span>Atelier structuré avec outillage professionnel</span>
                 </li>
                 <li style="display: flex; align-items: center; gap: 10px;">
-                  <i class="fa-solid fa-check" style="color: var(--coral);"></i>
+                  <i class="fa-solid fa-check" style="color: var(--blue-vivid);"></i>
                   <span>Possibilité de montée en compétences techniques</span>
                 </li>
               </ul>
@@ -178,7 +175,7 @@
         <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 3.5rem;">
           
           <!-- Poste 1 -->
-          <div class="step-card" style="padding: 1.5rem; display: flex; flex-direction: column; gap: 10px;">
+          <div class="step-card" data-reveal style="padding: 1.5rem; display: flex; flex-direction: column; gap: 10px;">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px;">
               <div>
                 <h3 style="font-family: var(--f-disp); font-weight: 800; font-size: 1.15rem; color: var(--ink);">Chef de Chantier — Pose Modulaire</h3>
@@ -198,7 +195,7 @@
           </div>
 
           <!-- Poste 2 -->
-          <div class="step-card" style="padding: 1.5rem; display: flex; flex-direction: column; gap: 10px;">
+          <div class="step-card" data-reveal style="padding: 1.5rem; display: flex; flex-direction: column; gap: 10px;">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px;">
               <div>
                 <h3 style="font-family: var(--f-disp); font-weight: 800; font-size: 1.15rem; color: var(--ink);">Soudeur-Chaudronnier Métallique</h3>
@@ -218,7 +215,7 @@
           </div>
 
           <!-- Poste 3 -->
-          <div class="step-card" style="padding: 1.5rem; display: flex; flex-direction: column; gap: 10px;">
+          <div class="step-card" data-reveal style="padding: 1.5rem; display: flex; flex-direction: column; gap: 10px;">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px;">
               <div>
                 <h3 style="font-family: var(--f-disp); font-weight: 800; font-size: 1.15rem; color: var(--ink);">Électricien Bâtiment &amp; Climatisation</h3>
@@ -240,11 +237,12 @@
         </div>
 
         <!-- Candidature spontanée -->
-        <div style="background: var(--stone-light); border: 1px solid var(--stone-dark); border-radius: var(--r-md); padding: clamp(1.5rem, 4vw, 2.5rem); display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+        <div class="step-card" data-reveal style="padding: clamp(1.5rem, 4vw, 2.5rem); display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
           <div>
-            <h3 style="font-family: var(--f-disp); font-weight: 800; font-size: 1.2rem; color: var(--ink); margin-bottom: 0.4rem;">Candidature spontanée</h3>
-            <p style="font-size: 0.88rem; color: var(--muted); max-width: 48ch;">
-              Vous avez une expérience avérée en montage modulaire, menuiserie aluminium ou transport lourd ? Contactez-nous.
+            <span class="c-index-bracket" style="margin-bottom: 0.4rem; display: inline-block;">[ CANDIDATURE LIBRE ]</span>
+            <h3 style="font-family: var(--f-disp); font-weight: 800; font-size: 1.25rem; color: #07080A; margin-bottom: 0.4rem;">Candidature spontanée</h3>
+            <p style="font-size: 0.88rem; color: #64748B; max-width: 52ch; line-height: 1.6;">
+              Vous avez une expérience avérée en montage modulaire, chaudronnerie, électricité industrielle ou conduite de camion-grue ? Contactez notre atelier directement.
             </p>
           </div>
           <a href="https://wa.me/2250707831791?text=Bonjour%20ETS%20AGBONOUGLA,%20je%20souhaite%20soumettre%20ma%20candidature%20spontan%C3%A9e." class="btn btn-wa" target="_blank" rel="noopener noreferrer">
@@ -265,11 +263,8 @@
         
         <div class="footer-brand-col">
           <a href="index.html" class="nav-logo" style="color: #FFFFFF;">
-            <img src="logo-ets.png" alt="Logo ETS AGBONOUGLA" width="76" height="38">
-            <div class="nav-logo-text">
-              <span class="nav-logo-brand" style="color: #FFFFFF;">ETS AGBONOUGLA</span>
-              <span class="nav-logo-sub" style="color: var(--slate);">Architecture Modulaire</span>
-            </div>
+            <img src="logoetsa.png" alt="Ets Agbonougla" width="36" height="23">
+            <span class="nav-logo-brand" style="color: #FFFFFF;">Ets Agbonougla</span>
           </a>
           <p>
             Vente et aménagement de conteneurs maritimes et modulaires de chantier en Côte d'Ivoire. Robustesse, isolation tropicalisée et pose professionnelle sur site.

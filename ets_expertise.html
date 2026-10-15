@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="motion">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,9 +14,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Maven+Pro:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Maven+Pro:wght@500;600;700;800;900&family=Oswald:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=14">
 </head>
 <body>
 
@@ -41,12 +41,9 @@
   <!-- Navigation principale -->
   <header class="navbar" id="appNavbar">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo" aria-label="ETS AGBONOUGLA Accueil">
-        <img src="logo-ets.png" alt="Logo ETS AGBONOUGLA" width="76" height="38">
-        <div class="nav-logo-text">
-          <span class="nav-logo-brand">ETS AGBONOUGLA</span>
-          <span class="nav-logo-sub">Solutions Modulaires</span>
-        </div>
+      <a href="index.html" class="nav-logo" aria-label="Ets Agbonougla, retour à l'accueil">
+        <img src="logoetsa.png" alt="Ets Agbonougla" width="36" height="23">
+        <span class="nav-logo-brand">Ets Agbonougla</span>
       </a>
 
       <nav class="nav-links" aria-label="Menu principal">
@@ -132,62 +129,66 @@
     </section>
 
     <!-- ═══════════════════════ PÔLES D'EXPERTISE TECHNIQUE ═══════════════════════ -->
-    <section class="section-py">
+    <section class="swiss-section">
+      <div class="c-cross c-cross--tl">+</div>
+      <div class="c-cross c-cross--tr">+</div>
       <div class="container">
-        <div class="section-hdr">
-          <div class="eyebrow">Ingénierie &amp; Atelier</div>
-          <h2 class="section-title">Les piliers de notre fabrication à Attinguié</h2>
-          <p class="section-sub">
-            Chaque conteneur transformé subit des étapes rigoureuses de renforcement et de traitement pour résister à des années d'exploitation sur chantier.
-          </p>
+        <div class="section-hdr center" data-reveal style="margin-bottom: 2.5rem;">
+          <div class="c-index-bracket">[ 01 // INGÉNIERIE &amp; ATELIER ATTINGUIÉ ]</div>
+          <h2 class="section-title">Les Piliers de Notre Fabrication</h2>
+          <div class="c-meta-bracket">
+            <span>[ découpe plasma &amp; soudure ]</span>
+            <span>isolation tropicalisée polyuréthane</span>
+            <span>[ conformité électrique &amp; sécurité ]</span>
+          </div>
         </div>
 
         <div class="tech-grid" style="margin-bottom: 3.5rem;">
           
-          <div class="tech-card" style="background: #FFFFFF; border-color: var(--border); color: var(--ink);">
+          <div class="tech-card" data-reveal>
             <div class="tech-icon"><i class="fa-solid fa-shield-halved"></i></div>
-            <h3 style="color: var(--ink);">Structure &amp; Soudure Renforcée</h3>
-            <p style="color: var(--muted);">
+            <h3>Structure &amp; Soudure Renforcée</h3>
+            <p>
               Découpe au plasma, mise en place de cadres de renfort en profilés acier creux autour de chaque baie (portes et fenêtres), et soudures continues certifiées pour préserver la rigidité géométrique du conteneur.
             </p>
           </div>
 
-          <div class="tech-card" style="background: #FFFFFF; border-color: var(--border); color: var(--ink);">
+          <div class="tech-card" data-reveal>
             <div class="tech-icon"><i class="fa-solid fa-temperature-arrow-down"></i></div>
-            <h3 style="color: var(--ink);">Isolation Thermique Tropicale</h3>
-            <p style="color: var(--muted);">
+            <h3>Isolation Thermique Tropicale</h3>
+            <p>
               Pose de panneaux sandwich ou projection de mousse polyuréthane (PU) haute densité (60–80 mm), complétée par une barrière vapeur pour stopper la condensation et réduire la charge thermique intérieure de 8 à 12 °C.
             </p>
           </div>
 
-          <div class="tech-card" style="background: #FFFFFF; border-color: var(--border); color: var(--ink);">
+          <div class="tech-card" data-reveal>
             <div class="tech-icon"><i class="fa-solid fa-bolt"></i></div>
-            <h3 style="color: var(--ink);">Électricité &amp; Sécurité</h3>
-            <p style="color: var(--muted);">
+            <h3>Électricité &amp; Sécurité</h3>
+            <p>
               Tableaux électriques étanches avec disjoncteurs différentiels 30mA, prises de terre normalisées, goulottes rigides anti-choc et éclairage LED basse consommation.
             </p>
           </div>
 
-          <div class="tech-card" style="background: #FFFFFF; border-color: var(--border); color: var(--ink);">
+          <div class="tech-card" data-reveal>
             <div class="tech-icon"><i class="fa-solid fa-layer-group"></i></div>
-            <h3 style="color: var(--ink);">Planchers Techniques Marins</h3>
-            <p style="color: var(--muted);">
+            <h3>Planchers Techniques Marins</h3>
+            <p>
               Remplacement ou renforcement du sol par des dalles en contreplaqué marine Marineplex ou bac acier, avec revêtements étanches (PVC grand passage ou carrelage antidérapant pour pièces humides).
             </p>
           </div>
 
-          <div class="tech-card" style="background: #FFFFFF; border-color: var(--border); color: var(--ink);">
+          <div class="tech-card" data-reveal>
             <div class="tech-icon"><i class="fa-solid fa-lock"></i></div>
-            <h3 style="color: var(--ink);">Menuiseries &amp; Anti-Intrusion</h3>
-            <p style="color: var(--muted);">
+            <h3>Menuiseries &amp; Anti-Intrusion</h3>
+            <p>
               Portes pleines en acier ou aluminium avec serrures de sécurité, fenêtres coulissantes en double vitrage équipées de barreaudages de protection directement soudés au châssis.
             </p>
           </div>
 
-          <div class="tech-card" style="background: #FFFFFF; border-color: var(--border); color: var(--ink);">
+          <div class="tech-card" data-reveal>
             <div class="tech-icon"><i class="fa-solid fa-paint-roller"></i></div>
-            <h3 style="color: var(--ink);">Protection Anticorrosion</h3>
-            <p style="color: var(--muted);">
+            <h3>Protection Anticorrosion</h3>
+            <p>
               Décapage, application de primaires époxy anticorrosion et laque de finition polyuréthane haute résistance aux UV et au brouillard salin de la côte ivoirienne.
             </p>
           </div>
@@ -195,15 +196,15 @@
         </div>
 
         <!-- Section Fiche Technique ISO confirmée -->
-        <div class="section-hdr">
-          <div class="eyebrow">Standards Industriels</div>
-          <h2 class="section-title">Spécifications techniques des conteneurs ISO</h2>
+        <div class="section-hdr center" data-reveal style="margin-top: 4rem; margin-bottom: 2rem;">
+          <div class="c-index-bracket">[ 02 // STANDARDS INDUSTRIELS ISO ]</div>
+          <h2 class="section-title">Spécifications Techniques des Conteneurs</h2>
           <p class="section-sub">
-            Données dimensionnelles et caractéristiques de nos bases métalliques standards (Acier Corten).
+            Données dimensionnelles et caractéristiques certifiées de nos bases métalliques standards (Acier CORTEN).
           </p>
         </div>
 
-        <div class="spec-box">
+        <div class="spec-box" data-reveal>
           <div class="table-responsive">
             <table class="data-table">
               <thead>
@@ -219,52 +220,51 @@
               </thead>
               <tbody>
                 <tr>
-                  <td class="highlight">20 Pieds Dry (Standard)</td>
-                  <td>6 058 mm</td>
-                  <td>2 438 mm</td>
-                  <td>2 591 mm</td>
-                  <td>~33 m³</td>
-                  <td>28 200 kg</td>
-                  <td>Acier Corten A / Plancher bois dur</td>
+                  <td class="highlight" style="color: var(--blue-vivid); font-weight: 700;">20 Pieds Dry (Standard)</td>
+                  <td style="font-family:'JetBrains Mono';">6 058 mm</td>
+                  <td style="font-family:'JetBrains Mono';">2 438 mm</td>
+                  <td style="font-family:'JetBrains Mono';">2 591 mm</td>
+                  <td style="font-family:'JetBrains Mono'; font-weight:700;">~33,2 m³</td>
+                  <td style="font-family:'JetBrains Mono';">28 200 kg</td>
+                  <td>Acier CORTEN A / Bois marin</td>
                 </tr>
                 <tr>
-                  <td class="highlight">40 Pieds Dry (Standard)</td>
-                  <td>12 192 mm</td>
-                  <td>2 438 mm</td>
-                  <td>2 591 mm</td>
-                  <td>~67 m³</td>
-                  <td>26 700 kg</td>
-                  <td>Acier Corten A / Plancher bois dur</td>
+                  <td class="highlight" style="color: var(--blue-vivid); font-weight: 700;">40 Pieds Dry (Standard)</td>
+                  <td style="font-family:'JetBrains Mono';">12 192 mm</td>
+                  <td style="font-family:'JetBrains Mono';">2 438 mm</td>
+                  <td style="font-family:'JetBrains Mono';">2 591 mm</td>
+                  <td style="font-family:'JetBrains Mono'; font-weight:700;">~67,7 m³</td>
+                  <td style="font-family:'JetBrains Mono';">26 700 kg</td>
+                  <td>Acier CORTEN A / Bois marin</td>
                 </tr>
                 <tr>
-                  <td class="highlight">40 Pieds High Cube (HC)</td>
-                  <td>12 192 mm</td>
-                  <td>2 438 mm</td>
-                  <td>2 896 mm</td>
-                  <td>~76 m³</td>
-                  <td>26 500 kg</td>
-                  <td>Acier Corten A / Hauteur sous plafond +30 cm</td>
+                  <td class="highlight" style="color: var(--blue-vivid); font-weight: 700;">40 Pieds High Cube (HC)</td>
+                  <td style="font-family:'JetBrains Mono';">12 192 mm</td>
+                  <td style="font-family:'JetBrains Mono';">2 438 mm</td>
+                  <td style="font-family:'JetBrains Mono';">2 896 mm</td>
+                  <td style="font-family:'JetBrains Mono'; font-weight:700;">~76,2 m³</td>
+                  <td style="font-family:'JetBrains Mono';">26 500 kg</td>
+                  <td>Acier CORTEN A / Hauteur +30 cm</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
 
-        <!-- Visite et contact atelier -->
-        <div class="hero-floating-card" style="position: static; margin-top: 3rem; background: var(--graphite); color: #FFFFFF;">
-          <div class="hero-floating-info">
-            <div class="hero-floating-icon" style="background: var(--coral-light); color: var(--coral);">
-              <i class="fa-solid fa-warehouse"></i>
-            </div>
-            <div class="hero-floating-text">
-              <h4 style="color: #FFFFFF;">Atelier de fabrication à Attinguié</h4>
-              <p style="color: var(--slate);">Venez examiner les modules témoins et constater la qualité des assemblages métalliques.</p>
+        <!-- Visite et contact atelier style Norea Capture 2 -->
+        <div class="c-split-story__content dark-callout" data-reveal style="margin-top: 3.5rem; display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+          <div style="max-width: 580px;">
+            <span class="c-split-story__tag" style="color: #60A5FA;">[ ATELIER OUVERT AUX PROFESSIONNELS ]</span>
+            <h3 style="font-family: var(--f-disp); font-weight: 800; font-size: 1.45rem; color: #FFFFFF; margin-top: 6px; margin-bottom: 6px;">Visite technique à Attinguié PK 26</h3>
+            <p style="color: #94A3B8; font-size: 0.9rem; line-height: 1.6;">Venez examiner nos modules témoins en cours d'assemblage et constater la qualité des soudures et de l'isolation.</p>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+            <a href="ets_contact.html" class="c-btn-pill c-btn-pill--blue">Prendre rendez-vous</a>
+            <div class="c-phone-pill-box" style="background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.15);">
+              <input type="text" value="+225 07 07 83 17 91" readonly aria-label="Numéro direct" style="color: #FFFFFF;">
+              <a href="tel:+2250707831791" class="c-btn-pill c-btn-pill--white" style="padding: 6px 14px; font-size: 0.75rem;">Appeler</a>
             </div>
           </div>
-          <a href="ets_contact.html" class="btn btn-coral btn-sm">
-            <span>Prendre rendez-vous</span>
-            <i class="fa-solid fa-arrow-right"></i>
-          </a>
         </div>
 
       </div>
@@ -279,11 +279,8 @@
         
         <div class="footer-brand-col">
           <a href="index.html" class="nav-logo" style="color: #FFFFFF;">
-            <img src="logo-ets.png" alt="Logo ETS AGBONOUGLA" width="76" height="38">
-            <div class="nav-logo-text">
-              <span class="nav-logo-brand" style="color: #FFFFFF;">ETS AGBONOUGLA</span>
-              <span class="nav-logo-sub" style="color: var(--slate);">Architecture Modulaire</span>
-            </div>
+            <img src="logoetsa.png" alt="Ets Agbonougla" width="36" height="23">
+            <span class="nav-logo-brand" style="color: #FFFFFF;">Ets Agbonougla</span>
           </a>
           <p>
             Vente et aménagement de conteneurs maritimes et modulaires de chantier en Côte d'Ivoire. Robustesse, isolation tropicalisée et pose professionnelle sur site.

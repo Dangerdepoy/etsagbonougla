@@ -17,8 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const root = document.documentElement;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const motionOn = !reduceMotion && root.classList.contains('motion') && 'IntersectionObserver' in window;
-  if (!motionOn) root.classList.remove('motion');
+  
+  // Active le mode motion sur toutes les pages automatiquement
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    root.classList.add('motion');
+  } else {
+    root.classList.remove('motion');
+  }
+  const motionOn = !reduceMotion && 'IntersectionObserver' in window;
 
   // 1. Signature LAMANO DESIGN (lien uniquement si une URL vérifiée est configurée)
   document.querySelectorAll('.lamano-credit').forEach(link => {

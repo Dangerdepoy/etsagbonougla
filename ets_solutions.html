@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="motion">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,9 +14,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Maven+Pro:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Maven+Pro:wght@500;600;700;800;900&family=Oswald:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=14">
 </head>
 <body>
 
@@ -41,12 +41,9 @@
   <!-- Navigation principale -->
   <header class="navbar" id="appNavbar">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo" aria-label="ETS AGBONOUGLA Accueil">
-        <img src="logo-ets.png" alt="Logo ETS AGBONOUGLA" width="76" height="38">
-        <div class="nav-logo-text">
-          <span class="nav-logo-brand">ETS AGBONOUGLA</span>
-          <span class="nav-logo-sub">Solutions Modulaires</span>
-        </div>
+      <a href="index.html" class="nav-logo" aria-label="Ets Agbonougla, retour à l'accueil">
+        <img src="logoetsa.png" alt="Ets Agbonougla" width="36" height="23">
+        <span class="nav-logo-brand">Ets Agbonougla</span>
       </a>
 
       <nav class="nav-links" aria-label="Menu principal">
@@ -132,96 +129,96 @@
     </section>
 
     <!-- ═══════════════════════ CATALOGUE DÉTAILLÉ DES SOLUTIONS ═══════════════════════ -->
-    <section class="section-py">
+    <section class="swiss-section">
+      <div class="c-cross c-cross--tl">+</div>
+      <div class="c-cross c-cross--tr">+</div>
       <div class="container">
 
         <!-- Solution 1 : Bases-vie -->
-        <article class="bento-card" id="bases-vie" style="margin-bottom: 3.5rem;">
-          <div style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
-            <div style="display: grid; grid-template-columns: 1fr; gap: clamp(1.5rem, 4vw, 3rem);" class="hero-grid">
-              <div class="bento-media" style="aspect-ratio: 16/10;">
-                <img src="43.jpg" alt="Module de base-vie de chantier avec portes renforcées et menuiseries sécurisées" width="1000" height="750" loading="lazy">
+        <article class="bento-card" data-reveal id="bases-vie">
+          <div class="hero-grid">
+            <div class="bento-media">
+              <img src="43.jpg" alt="Module de base-vie de chantier avec portes renforcées et menuiseries sécurisées" width="1000" height="750" loading="lazy">
+            </div>
+            <div class="bento-content">
+              <div class="c-index-bracket">[ SOLUTION // 01 · BASES-VIE &amp; DORTOIRS ]</div>
+              <h2 class="bento-title">Bases-Vie &amp; Cantonnements de Chantier</h2>
+              <p class="bento-desc">
+                Conçues pour accueillir vos équipes d'encadrement et de terrain dans d'excellentes conditions d'hygiène et de sécurité. Nos modules de base-vie peuvent être assemblés en batterie pour former des complexes autonomes avec dortoirs, réfectoires, infirmeries et vestiaires.
+              </p>
+              <div style="margin: 1.25rem 0;">
+                <h4 class="eyebrow" style="margin-bottom: 0.75rem;">Équipements &amp; Spécifications :</h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                  <span class="c-pill-item"><i class="fa-solid fa-circle-check"></i> Isolation polyuréthane 60–80 mm</span>
+                  <span class="c-pill-item"><i class="fa-solid fa-circle-check"></i> Fenêtres coulissantes avec barreaux</span>
+                  <span class="c-pill-item"><i class="fa-solid fa-circle-check"></i> Tableau de protection différentiel</span>
+                  <span class="c-pill-item"><i class="fa-solid fa-circle-check"></i> Revêtement sol PVC grand passage</span>
+                </div>
               </div>
-              <div class="bento-content" style="padding: 1.5rem 0;">
-                <div class="eyebrow">Chantiers &amp; Exploitations</div>
-                <h2 class="bento-title" style="font-size: clamp(1.5rem, 3vw, 2.2rem);">Bases-Vie &amp; Cantonnements de Chantier</h2>
-                <p class="bento-desc">
-                  Conçues pour accueillir vos équipes d'encadrement et de terrain dans d'excellentes conditions d'hygiène et de sécurité. Nos modules de base-vie peuvent être assemblés en batterie pour former des complexes autonomes avec dortoirs, réfectoires, infirmeries et vestiaires.
-                </p>
-                <div style="margin: 1rem 0;">
-                  <h4 style="font-family: var(--f-disp); font-size: 0.85rem; color: var(--ink); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Caractéristiques techniques confirmées :</h4>
-                  <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; font-size: 0.85rem; color: var(--ink-secondary);">
-                    <li><i class="fa-solid fa-check" style="color: var(--coral); margin-right: 6px;"></i> Isolation polyuréthane 60–80 mm</li>
-                    <li><i class="fa-solid fa-check" style="color: var(--coral); margin-right: 6px;"></i> Fenêtres coulissantes avec barreaux</li>
-                    <li><i class="fa-solid fa-check" style="color: var(--coral); margin-right: 6px;"></i> Tableau de protection différentiel</li>
-                    <li><i class="fa-solid fa-check" style="color: var(--coral); margin-right: 6px;"></i> Revêtement de sol PVC grand passage</li>
-                  </ul>
-                </div>
-                <div style="margin-top: 1.5rem;">
-                  <a href="ets_contact.html" class="btn btn-coral">
-                    <span>Devis pour base-vie</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                  </a>
-                </div>
+              <div style="margin-top: 1.75rem;">
+                <a href="ets_contact.html" class="c-btn-pill c-btn-pill--blue">
+                  <span>Devis pour base-vie</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
               </div>
             </div>
           </div>
         </article>
 
         <!-- Solution 2 : Bureaux Modulaires -->
-        <article class="bento-card" id="bureaux" style="margin-bottom: 3.5rem;">
-          <div style="display: grid; grid-template-columns: 1fr; gap: clamp(1.5rem, 4vw, 3rem);" class="hero-grid">
-            <div class="bento-content" style="padding: 1.5rem 0;">
-              <div class="eyebrow">Espaces Administratifs</div>
-              <h2 class="bento-title" style="font-size: clamp(1.5rem, 3vw, 2.2rem);">Bureaux Modulaires Prêts à l'Emploi</h2>
+        <article class="bento-card" data-reveal id="bureaux">
+          <div class="hero-grid">
+            <div class="bento-content">
+              <div class="c-index-bracket">[ SOLUTION // 02 · BUREAUX MODULAIRES ]</div>
+              <h2 class="bento-title">Bureaux Modulaires Prêts à l'Emploi</h2>
               <p class="bento-desc">
                 Des espaces de travail professionnels, confortables et insonorisés, déployables en quelques heures sur vos sites de production, zones logistiques ou plateformes portuaires.
               </p>
-              <div style="margin: 1rem 0;">
-                <h4 style="font-family: var(--f-disp); font-size: 0.85rem; color: var(--ink); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Équipements intégrés :</h4>
-                <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; font-size: 0.85rem; color: var(--ink-secondary);">
-                  <li><i class="fa-solid fa-check" style="color: var(--coral); margin-right: 6px;"></i> Précâblage réseau et prises de courant</li>
-                  <li><i class="fa-solid fa-check" style="color: var(--coral); margin-right: 6px;"></i> Climatisation split tropicalisée</li>
-                  <li><i class="fa-solid fa-check" style="color: var(--coral); margin-right: 6px;"></i> Éclairage LED basse consommation</li>
-                  <li><i class="fa-solid fa-check" style="color: var(--coral); margin-right: 6px;"></i> Porte sécurisée 3 points avec serrure</li>
-                </ul>
+              <div style="margin: 1.25rem 0;">
+                <h4 class="eyebrow" style="margin-bottom: 0.75rem;">Équipements intégrés :</h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                  <span class="c-pill-item"><i class="fa-solid fa-circle-check"></i> Précâblage réseau et prises 220V</span>
+                  <span class="c-pill-item"><i class="fa-solid fa-circle-check"></i> Climatisation split tropicalisée</span>
+                  <span class="c-pill-item"><i class="fa-solid fa-circle-check"></i> Éclairage LED basse consommation</span>
+                  <span class="c-pill-item"><i class="fa-solid fa-circle-check"></i> Porte sécurisée 3 points avec serrure</span>
+                </div>
               </div>
-              <div style="margin-top: 1.5rem;">
-                <a href="ets_contact.html" class="btn btn-coral">
+              <div style="margin-top: 1.75rem;">
+                <a href="ets_contact.html" class="c-btn-pill c-btn-pill--blue">
                   <span>Devis bureau modulaire</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </a>
               </div>
             </div>
-            <div class="bento-media" style="aspect-ratio: 16/10;">
+            <div class="bento-media">
               <img src="21.jpg" alt="Bureau conteneur climatisé avec fenêtres et finitions extérieures propres" width="720" height="1280" loading="lazy">
             </div>
           </div>
         </article>
 
         <!-- Solution 3 : Conteneurs de Stockage CORTEN -->
-        <article class="bento-card" id="stockage" style="margin-bottom: 3.5rem;">
-          <div style="display: grid; grid-template-columns: 1fr; gap: clamp(1.5rem, 4vw, 3rem);" class="hero-grid">
-            <div class="bento-media" style="aspect-ratio: 16/10;">
+        <article class="bento-card" data-reveal id="stockage">
+          <div class="hero-grid">
+            <div class="bento-media">
               <img src="61.jpeg" alt="Conteneur maritime 40 pieds Corten sur site avec marquages industriels" width="810" height="1080" loading="lazy">
             </div>
-            <div class="bento-content" style="padding: 1.5rem 0;">
-              <div class="eyebrow">Stockage &amp; Logistique</div>
-              <h2 class="bento-title" style="font-size: clamp(1.5rem, 3vw, 2.2rem);">Conteneurs Maritimes 20' &amp; 40' Dry / HC</h2>
+            <div class="bento-content">
+              <div class="c-index-bracket">[ SOLUTION // 03 · STOCKAGE CORTEN ]</div>
+              <h2 class="bento-title">Conteneurs Maritimes 20' &amp; 40' Dry / HC</h2>
               <p class="bento-desc">
                 Disponibles à l'état neuf (premier voyage) ou reconditionnés (occasion révisée étanche), nos conteneurs maritimes en acier Corten assurent une sécurité totale contre les effractions et les infiltrations d'eau pour vos stocks et outillages.
               </p>
-              <div style="margin: 1rem 0;">
-                <h4 style="font-family: var(--f-disp); font-size: 0.85rem; color: var(--ink); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Spécifications standards :</h4>
-                <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; font-size: 0.85rem; color: var(--ink-secondary);">
-                  <li><i class="fa-solid fa-check" style="color: var(--coral); margin-right: 6px;"></i> 20 pieds Dry : 33 m³ de volume utile</li>
-                  <li><i class="fa-solid fa-check" style="color: var(--coral); margin-right: 6px;"></i> 40 pieds Dry : 67 m³ de volume utile</li>
-                  <li><i class="fa-solid fa-check" style="color: var(--coral); margin-right: 6px;"></i> 40 pieds High Cube : 76 m³ (hauteur 2,90 m)</li>
-                  <li><i class="fa-solid fa-check" style="color: var(--coral); margin-right: 6px;"></i> Crémones en acier galvanisé étanches</li>
-                </ul>
+              <div style="margin: 1.25rem 0;">
+                <h4 class="eyebrow" style="margin-bottom: 0.75rem;">Spécifications standards :</h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                  <span class="c-pill-item"><i class="fa-solid fa-circle-check"></i> 20 pieds Dry : 33 m³ utile (6,05 m)</span>
+                  <span class="c-pill-item"><i class="fa-solid fa-circle-check"></i> 40 pieds Dry : 67 m³ utile (12,19 m)</span>
+                  <span class="c-pill-item"><i class="fa-solid fa-circle-check"></i> 40 pieds HC : 76 m³ (H 2,90 m)</span>
+                  <span class="c-pill-item"><i class="fa-solid fa-circle-check"></i> Crémones acier galvanisé étanches</span>
+                </div>
               </div>
-              <div style="margin-top: 1.5rem;">
-                <a href="ets_contact.html" class="btn btn-coral">
+              <div style="margin-top: 1.75rem;">
+                <a href="ets_contact.html" class="c-btn-pill c-btn-pill--blue">
                   <span>Tarif conteneur maritime</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </a>
@@ -231,31 +228,31 @@
         </article>
 
         <!-- Solution 4 : Locaux techniques sur mesure -->
-        <article class="bento-card" id="sur-mesure">
-          <div style="display: grid; grid-template-columns: 1fr; gap: clamp(1.5rem, 4vw, 3rem);" class="hero-grid">
-            <div class="bento-content" style="padding: 1.5rem 0;">
-              <div class="eyebrow">Fabrication Spéciale</div>
-              <h2 class="bento-title" style="font-size: clamp(1.5rem, 3vw, 2.2rem);">Locaux Techniques &amp; Ateliers Mobiles</h2>
+        <article class="bento-card" data-reveal id="sur-mesure">
+          <div class="hero-grid">
+            <div class="bento-content">
+              <div class="c-index-bracket">[ SOLUTION // 04 · LOCAUX TECHNIQUES ]</div>
+              <h2 class="bento-title">Locaux Techniques &amp; Ateliers Mobiles</h2>
               <p class="bento-desc">
                 Découpe spécifique, renforts d'ossature, pose de planchers techniques marins et aménagements sur mesure pour locaux de serveurs, abris pour compresseurs, groupes électrogènes ou laboratoires de contrôle de matériaux.
               </p>
-              <div style="margin: 1rem 0;">
-                <h4 style="font-family: var(--f-disp); font-size: 0.85rem; color: var(--ink); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Aménagements réalisables :</h4>
-                <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; font-size: 0.85rem; color: var(--ink-secondary);">
-                  <li><i class="fa-solid fa-check" style="color: var(--coral); margin-right: 6px;"></i> Plancher lourd Marineplex</li>
-                  <li><i class="fa-solid fa-check" style="color: var(--coral); margin-right: 6px;"></i> Ouvertures persiennes d'aération forcée</li>
-                  <li><i class="fa-solid fa-check" style="color: var(--coral); margin-right: 6px;"></i> Passages de câbles et gaines étanches</li>
-                  <li><i class="fa-solid fa-check" style="color: var(--coral); margin-right: 6px;"></i> Isolation ignifuge et acoustique</li>
-                </ul>
+              <div style="margin: 1.25rem 0;">
+                <h4 class="eyebrow" style="margin-bottom: 0.75rem;">Aménagements réalisables :</h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                  <span class="c-pill-item"><i class="fa-solid fa-circle-check"></i> Plancher lourd Marineplex 28 mm</span>
+                  <span class="c-pill-item"><i class="fa-solid fa-circle-check"></i> Ouvertures persiennes aération forcée</span>
+                  <span class="c-pill-item"><i class="fa-solid fa-circle-check"></i> Passages de câbles et gaines étanches</span>
+                  <span class="c-pill-item"><i class="fa-solid fa-circle-check"></i> Isolation ignifuge et acoustique</span>
+                </div>
               </div>
-              <div style="margin-top: 1.5rem;">
-                <a href="ets_contact.html" class="btn btn-coral">
+              <div style="margin-top: 1.75rem;">
+                <a href="ets_contact.html" class="c-btn-pill c-btn-pill--blue">
                   <span>Étude de projet technique</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </a>
               </div>
             </div>
-            <div class="bento-media" style="aspect-ratio: 16/10;">
+            <div class="bento-media">
               <img src="56.jpeg" alt="Plancher structurel et aménagement métallique en cours de réalisation" width="960" height="1280" loading="lazy">
             </div>
           </div>
@@ -264,24 +261,24 @@
       </div>
     </section>
 
-    <!-- ═══════════════════════ BLOC DE CONTACT DIRECT ═══════════════════════ -->
-    <section class="section-py" style="background: var(--graphite); color: #FFFFFF;">
+    <!-- ═══════════════════════ BLOC DE CONTACT DIRECT STYLE NOREA ═══════════════════════ -->
+    <section class="swiss-section" data-reveal style="background: #0D0F14; color: #FFFFFF; border: none;">
       <div class="container">
-        <div class="section-hdr center">
-          <div class="eyebrow on-dark">Accompagnement Technique</div>
+        <div class="section-hdr center" style="margin-bottom: 1.5rem;">
+          <div class="c-index-bracket" style="color: #60A5FA;">[ ACCOMPAGNEMENT DIRECT · PK 26 ]</div>
           <h2 class="section-title on-dark">Vous avez un cahier des charges précis ?</h2>
           <p class="section-sub on-dark">
             Notre équipe d'Attinguié vous conseille sur le bon choix de dimensions, l'isolation thermique et les accès grue requis sur votre terrain.
           </p>
-          <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
-            <a href="ets_contact.html" class="btn btn-coral">
+          <div style="display: flex; gap: 14px; justify-content: center; align-items: center; flex-wrap: wrap; margin-top: 2rem;">
+            <a href="ets_contact.html" class="c-btn-pill c-btn-pill--blue">
               <span>Demander un devis détaillé</span>
               <i class="fa-solid fa-arrow-right"></i>
             </a>
-            <a href="tel:+2250707831791" class="btn btn-outline-light">
-              <i class="fa-solid fa-phone"></i>
-              <span>+225 07 07 83 17 91</span>
-            </a>
+            <div class="c-phone-pill-box" style="background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.15);">
+              <input type="text" value="+225 07 07 83 17 91" readonly aria-label="Numéro direct" style="color: #FFFFFF;">
+              <a href="tel:+2250707831791" class="c-btn-pill c-btn-pill--white" style="padding: 6px 14px; font-size: 0.75rem;">Appeler</a>
+            </div>
           </div>
         </div>
       </div>
@@ -296,11 +293,8 @@
         
         <div class="footer-brand-col">
           <a href="index.html" class="nav-logo" style="color: #FFFFFF;">
-            <img src="logo-ets.png" alt="Logo ETS AGBONOUGLA" width="76" height="38">
-            <div class="nav-logo-text">
-              <span class="nav-logo-brand" style="color: #FFFFFF;">ETS AGBONOUGLA</span>
-              <span class="nav-logo-sub" style="color: var(--slate);">Architecture Modulaire</span>
-            </div>
+            <img src="logoetsa.png" alt="Ets Agbonougla" width="36" height="23">
+            <span class="nav-logo-brand" style="color: #FFFFFF;">Ets Agbonougla</span>
           </a>
           <p>
             Vente et aménagement de conteneurs maritimes et modulaires de chantier en Côte d'Ivoire. Robustesse, isolation tropicalisée et pose professionnelle sur site.

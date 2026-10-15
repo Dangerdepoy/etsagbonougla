@@ -24,7 +24,7 @@
   
   <link rel="preload" as="image" href="hero-container-bg.jpg" fetchpriority="high">
   <link rel="preload" as="image" href="hero-container-fg.png" fetchpriority="high">
-  <link rel="stylesheet" href="style.css?v=11">
+  <link rel="stylesheet" href="style.css?v=14">
 </head>
 <body class="home">
 
@@ -51,10 +51,7 @@
     <div class="nav-inner">
       <a href="index.html" class="nav-logo" aria-label="Ets Agbonougla, retour à l'accueil">
         <img src="logoetsa.png" alt="Ets Agbonougla" width="36" height="23">
-        <div class="nav-logo-text">
-          <span class="nav-logo-brand"></span>
-          <span class="nav-logo-sub"></span>
-        </div>
+        <span class="nav-logo-brand">Ets Agbonougla</span>
       </a>
       <nav class="nav-links" aria-label="Menu principal">
         <a href="index.html" class="nav-lnk act" aria-current="page">Accueil</a>
@@ -281,112 +278,162 @@
       </div>
     </section>
 
-    <!-- ── 3. CATALOGUE ARCHITECTURAL DES SOLUTIONS (.h-bento) ── -->
-    <section class="h-bento" id="solutions" aria-labelledby="bento-title">
+    <!-- ── 3. CAPTURE 1 : BENTO TRIO ARCHITECTURAL (STYLE STÉIN LAB) ── -->
+    <section class="swiss-section" id="solutions" aria-labelledby="bento-title">
+      <div class="c-cross c-cross--tl">+</div>
+      <div class="c-cross c-cross--tr">+</div>
       <div class="container">
-        <div class="section-hdr center">
-          <span class="eyebrow">CATALOGUE MODULAIRE PROFESSIONNEL</span>
-          <h2 class="section-title" id="bento-title">
-            Des structures adaptées à chaque impératif terrain
+        
+        <div class="section-hdr center" style="margin-bottom: 2rem;">
+          <div class="c-index-bracket">[ 02 — 06 ]</div>
+          <h2 class="section-title" id="bento-title" style="text-transform: uppercase;">
+            VOTRE <span style="color: var(--blue-vivid);">PARTENAIRE STRATÉGIQUE</span> EN CONTENEURS
           </h2>
-          <p class="section-sub">
-            Conteneurs maritimes transformés et modules préfabriqués répondant aux normes de sécurité et de robustesse les plus strictes.
-          </p>
+          <div class="c-meta-bracket">
+            <span>[ chantiers BTP &amp; mines ]</span>
+            <span>avec des solutions sur mesure</span>
+            <span>[ présence &amp; livraison Côte d'Ivoire ]</span>
+          </div>
         </div>
 
-        <div class="h-bento__grid">
+        <!-- Ligne de pill tags flottants au-dessus des cartes (Capture 1) -->
+        <div class="c-pills-row center" data-reveal>
+          <span class="c-pill-item"><i class="fa-solid fa-circle-check"></i> acier CORTEN 2.0 mm</span>
+          <span class="c-pill-item"><i class="fa-solid fa-circle-check"></i> isolation tropicalisée</span>
+          <span class="c-pill-item"><i class="fa-solid fa-circle-check"></i> chiffrage sous 24h</span>
+          <span class="c-pill-item"><i class="fa-solid fa-circle-check"></i> transport camion-grue</span>
+        </div>
 
-          <!-- Solution 01 : Bases-vie & Dortoirs d'équipes -->
-          <article class="h-bento__item h-bento__item--large" data-reveal>
-            <div class="h-bento__media">
-              <img src="5.jpg" alt="Ensemble de modules préfabriqués formant une allée de base-vie d'équipe" width="720" height="450" loading="lazy">
-              <span class="h-bento__tag">SÉRIE 01 // BASES-VIE</span>
+        <!-- Les 3 cartes Capture 1 : Texture CORTEN (+), Bloc Bleu Vif (↗), Photo Trajectoire -->
+        <div class="c-stein-grid">
+
+          <!-- Carte 1 : Maîtrise Technique (Texture tôle avec bouton +) -->
+          <article class="c-stein-card c-stein-card--ribbed" data-reveal>
+            <div class="c-stein-media" aria-label="Texture tôle CORTEN ondulée">
+              <img src="container-ribbed-panel.svg" alt="Tôle ondulée CORTEN acier industriel" width="400" height="240">
+              <span class="c-btn-circle-plus" aria-hidden="true">+</span>
             </div>
-            <div class="h-bento__body">
-              <h3 class="h-bento__title">Bases-vie &amp; Dortoirs d'équipes</h3>
-              <p class="h-bento__desc">
-                Complexes modulaires complets pour loger, restaurer et accueillir vos effectifs sur chantiers isolés, projets routiers et sites miniers. Confort thermique optimal et raccordements rapides.
+            <div class="c-stein-footer">
+              <h3 class="c-stein-title">MAÎTRISE TECHNIQUE</h3>
+              <p class="c-stein-desc">
+                Structure en acier CORTEN ondulé haute ténacité. Résistance anticorrosion tropicale et étanchéité ISO certifiée pour chantiers exigeants.
               </p>
-              <div class="h-bento__specs">
-                <span class="h-bento__spec-item"><i class="fa-solid fa-check" aria-hidden="true"></i> Climatisation tropicalisée</span>
-                <span class="h-bento__spec-item"><i class="fa-solid fa-check" aria-hidden="true"></i> Dortoirs &amp; réfectoires</span>
-                <span class="h-bento__spec-item"><i class="fa-solid fa-check" aria-hidden="true"></i> Raccordement rapide</span>
-              </div>
-              <a href="ets_solutions.html#bases-vie" class="h-bento__link">
-                <span>Consulter nos bases-vie</span>
-                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-              </a>
             </div>
           </article>
 
-          <!-- Solution 02 : Bureaux de chantier climatisés -->
-          <article class="h-bento__item h-bento__item--side" data-reveal>
-            <div class="h-bento__media">
-              <img src="21.jpg" alt="Module de bureau préfabriqué avec fenêtres sécurisées et climatiseur" width="720" height="450" loading="lazy">
-              <span class="h-bento__tag">SÉRIE 02 // BUREAUX</span>
-            </div>
-            <div class="h-bento__body">
-              <h3 class="h-bento__title">Bureaux de chantier climatisés</h3>
-              <p class="h-bento__desc">
-                Espaces administratifs et postes de commandement opérationnels prêts à l'emploi. Isolation renforcée, éclairage LED, tableau divisionnaire et fenêtres à barreaux sécurisées.
+          <!-- Carte 2 : Bloc Bleu Vif Plein (↗) -->
+          <article class="c-stein-card c-stein-card--vivid" data-reveal>
+            <a href="ets_solutions.html" class="c-btn-circle-arrow" aria-label="Découvrir les modules sur mesure">↗</a>
+            <span class="c-vivid-tag">[ AMÉNAGEMENTS SUR MESURE ]</span>
+            <div>
+              <h3 class="c-vivid-title">MODULES &amp; BASES-VIE PRÊTS À L'EMPLOI</h3>
+              <p class="c-vivid-desc">
+                Bureaux climatisés, réfectoires, blocs sanitaires ou locaux techniques : configuration sur mesure et raccordements directs.
               </p>
-              <div class="h-bento__specs">
-                <span class="h-bento__spec-item"><i class="fa-solid fa-check" aria-hidden="true"></i> Prêt-à-brancher</span>
-                <span class="h-bento__spec-item"><i class="fa-solid fa-check" aria-hidden="true"></i> Fenêtres sécurisées</span>
-              </div>
-              <a href="ets_solutions.html#bureaux" class="h-bento__link">
-                <span>Découvrir les bureaux</span>
-                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-              </a>
             </div>
           </article>
 
-          <!-- Solution 03 : Stockage sécurisé CORTEN -->
-          <article class="h-bento__item h-bento__item--alt-side" data-reveal>
-            <div class="h-bento__media">
-              <img src="61.jpeg" alt="Conteneur maritime 40 pieds en acier CORTEN pour stockage sécurisé sur site" width="720" height="450" loading="lazy">
-              <span class="h-bento__tag">SÉRIE 03 // STOCKAGE CORTEN</span>
+          <!-- Carte 3 : Photo avec Trajectoire Arquée -->
+          <article class="c-stein-card c-stein-card--photo" data-reveal>
+            <div class="c-stein-media">
+              <img src="hero-container-crane.jpg" alt="Grutage et manutention de conteneur ETS AGBONOUGLA" width="640" height="360" loading="lazy">
+              <!-- SVG Trajectoire arquée inspirée de la Capture 1 -->
+              <svg class="c-trajectory-overlay" viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 30 150 Q 160 40 290 120" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-dasharray="4 4"/>
+                <circle cx="80" cy="115" r="4" fill="#1D68BD" stroke="#FFFFFF" stroke-width="2"/>
+                <circle cx="240" cy="88" r="4" fill="#FFFFFF" stroke="#1D68BD" stroke-width="2"/>
+              </svg>
             </div>
-            <div class="h-bento__body">
-              <h3 class="h-bento__title">Stockage sécurisé (20' &amp; 40')</h3>
-              <p class="h-bento__desc">
-                Conteneurs maritimes en acier CORTEN étanche aux intempéries et hautement résistants à l'effraction pour outillages de valeur, pièces détachées et matériels sensibles.
+            <div class="c-stein-footer">
+              <h3 class="c-stein-title">LOGISTIQUE &amp; GRUTAGE DÉDIÉ</h3>
+              <p class="c-stein-desc">
+                Acheminement sans intermédiaire et pose directe sur plots de niveau grâce à notre flotte de camions-grues tout-terrain.
               </p>
-              <div class="h-bento__specs">
-                <span class="h-bento__spec-item"><i class="fa-solid fa-check" aria-hidden="true"></i> Acier CORTEN étanche</span>
-                <span class="h-bento__spec-item"><i class="fa-solid fa-check" aria-hidden="true"></i> Verrouillage blindé</span>
-              </div>
-              <a href="ets_solutions.html#stockage" class="h-bento__link">
-                <span>Voir le stockage CORTEN</span>
-                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-              </a>
-            </div>
-          </article>
-
-          <!-- Solution 04 : Blocs sanitaires & Modules techniques -->
-          <article class="h-bento__item h-bento__item--alt-large" data-reveal>
-            <div class="h-bento__media">
-              <img src="24.jpg" alt="Module sanitaire préfabriqué avec raccordements autonomes pour chantier" width="720" height="450" loading="lazy">
-              <span class="h-bento__tag">SÉRIE 04 // HYGIÈNE &amp; TECHNIQUE</span>
-            </div>
-            <div class="h-bento__body">
-              <h3 class="h-bento__title">Blocs sanitaires &amp; Modules techniques</h3>
-              <p class="h-bento__desc">
-                Cabines de douches, WC autonomes, vestiaires et locaux techniques raccordables. Conçus pour un entretien simple et une conformité d'hygiène exemplaire sur vos chantiers.
-              </p>
-              <div class="h-bento__specs">
-                <span class="h-bento__spec-item"><i class="fa-solid fa-check" aria-hidden="true"></i> Plomberie intégrée</span>
-                <span class="h-bento__spec-item"><i class="fa-solid fa-check" aria-hidden="true"></i> Ventilation mécanique</span>
-                <span class="h-bento__spec-item"><i class="fa-solid fa-check" aria-hidden="true"></i> Surfaces lessivables</span>
-              </div>
-              <a href="ets_solutions.html#sanitaires" class="h-bento__link">
-                <span>Découvrir les sanitaires</span>
-                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-              </a>
             </div>
           </article>
 
         </div>
+
+        <!-- ── CAPTURE 2 : SECTION 50/50 "OUR STORY" (ATELIER ATTINGUIÉ PK 26) ── -->
+        <div class="c-split-story" data-reveal>
+          <div class="c-split-story__media">
+            <img src="61.jpeg" alt="Parc logistique et conteneurs maritimes à Attinguié PK 26" width="800" height="600" loading="lazy">
+          </div>
+          <div class="c-split-story__content">
+            <span class="c-split-story__tag">[ NOTRE SAVOIR-FAIRE INDUSTRIEL ]</span>
+            <h3 class="c-split-story__title">Atelier &amp; Parc de 2 500 m² à Attinguié (PK 26)</h3>
+            <p class="c-split-story__desc">
+              Sur l'Autoroute du Nord, ETS AGBONOUGLA transforme, révise et tropicalise chaque conteneur maritime. De la chaudronnerie lourde à l'isolation thermique haute densité et la menuiserie aluminium sécurisée, notre site garantit des modules fiables, disponibles immédiatement ou sur mesure.
+            </p>
+            <div class="c-split-story__actions">
+              <a href="ets_contact.html" class="c-btn-pill c-btn-pill--white">Visiter l'Atelier PK 26</a>
+              <div class="c-phone-pill-box">
+                <input type="text" value="+225 07 07 83 17 91" readonly aria-label="Numéro atelier">
+                <a href="tel:+2250707831791" class="c-btn-pill c-btn-pill--blue" style="padding:6px 14px;font-size:0.75rem;">Appeler</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── CAPTURE 2 : SECTION "PARAMETERS & BLUEPRINT" ── -->
+        <div class="c-parameters-grid" data-reveal>
+          
+          <!-- Carte gauche : Schéma Blueprint technique avec cotations -->
+          <div class="c-param-blueprint">
+            <div>
+              <div class="c-index-bracket" style="margin-bottom:0.4rem;">[ 03 // COTATIONS STANDARDS ]</div>
+              <h3 class="c-param-blueprint__title">Paramètres &amp; Dimensions Normalisées</h3>
+              <p class="c-param-blueprint__sub">Dimensions ISO certifiées pour transport maritime, routier et implantation chantier.</p>
+              
+              <!-- Schéma SVG Wireframe Blueprint Container -->
+              <div class="c-blueprint-frame">
+                <svg viewBox="0 0 360 160" width="100%" height="150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Wireframe isométrique du conteneur -->
+                  <polygon points="60,95 240,40 320,70 140,125" stroke="#1D68BD" stroke-width="1.5" fill="rgba(29, 104, 189, 0.05)"/>
+                  <polygon points="60,95 140,125 140,155 60,125" stroke="#1D68BD" stroke-width="1.5" fill="rgba(29, 104, 189, 0.08)"/>
+                  <polygon points="140,125 320,70 320,100 140,155" stroke="#1D68BD" stroke-width="1.5" fill="rgba(29, 104, 189, 0.03)"/>
+                  <!-- Lignes de nervures -->
+                  <line x1="170" y1="116" x2="170" y2="146" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="2 2"/>
+                  <line x1="200" y1="107" x2="200" y2="137" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="2 2"/>
+                  <line x1="230" y1="98" x2="230" y2="128" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="2 2"/>
+                  <line x1="260" y1="89" x2="260" y2="119" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="2 2"/>
+                  <line x1="290" y1="80" x2="290" y2="110" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="2 2"/>
+                  <!-- Lignes de cote longueur -->
+                  <line x1="140" y1="158" x2="320" y2="103" stroke="#0F172A" stroke-width="1.2"/>
+                  <text x="170" y="145" fill="#0F172A" font-family="JetBrains Mono" font-size="10" font-weight="700">Longueur : 6,05 m (20') / 12,19 m (40')</text>
+                  <!-- Ligne de cote largeur -->
+                  <line x1="55" y1="128" x2="135" y2="158" stroke="#0F172A" stroke-width="1.2"/>
+                  <text x="50" y="152" fill="#0F172A" font-family="JetBrains Mono" font-size="9" font-weight="700">Largeur : 2,44 m</text>
+                  <!-- Ligne de cote hauteur -->
+                  <line x1="325" y1="70" x2="325" y2="100" stroke="#0F172A" stroke-width="1.2"/>
+                  <text x="328" y="88" fill="#1D68BD" font-family="JetBrains Mono" font-size="9" font-weight="700">H : 2,59 / 2,90 m</text>
+                </svg>
+              </div>
+
+              <!-- Tableau des caractéristiques techniques -->
+              <table class="c-spec-table">
+                <tr><td class="lbl">Gamme 20 pieds Dry</td><td class="val">6,05 × 2,44 × 2,59 m · 33,2 m³</td></tr>
+                <tr><td class="lbl">Gamme 40 pieds High Cube</td><td class="val">12,19 × 2,44 × 2,90 m · 76,2 m³</td></tr>
+                <tr><td class="lbl">Structure &amp; Plancher</td><td class="val">Acier CORTEN 2,0 mm · Marin 28 mm</td></tr>
+                <tr><td class="lbl">Isolation Thermique</td><td class="val">Laine de roche / PUR 60–80 mm</td></tr>
+              </table>
+            </div>
+            <div>
+              <a href="ets_contact.html" class="c-btn-pill c-btn-pill--black" style="width:100%;">Demander la Fiche Technique Complète</a>
+            </div>
+          </div>
+
+          <!-- Carte droite : Conteneur 3D bleu vif isolé avec badge et CTA -->
+          <div class="c-param-vivid-container">
+            <span class="c-param-badge">Disponibilité Immédiate en Parc</span>
+            <img src="container-3d-blue.jpg" alt="Conteneur maritime 3D bleu vif ETS AGBONOUGLA" class="c-param-container-render" width="480" height="320" loading="lazy">
+            <h4 class="c-param-callout-title">Conteneurs Neufs &amp; Premier Voyage</h4>
+            <p class="c-param-callout-desc">Unités révisées étanches, certifiées CSC avec serrures blindées et crémones galvanisées prêtes pour transport immédiat.</p>
+            <a href="ets_solutions.html" class="c-btn-pill c-btn-pill--blue">Explorer le Catalogue Modulaire</a>
+          </div>
+
+        </div>
+
       </div>
     </section>
 
@@ -703,7 +750,7 @@
       <div class="container h-final__grid">
         
         <div class="h-final__info" data-reveal>
-          <span class="eyebrow on-dark">CHIFPAGE TECHNIQUE DIRECT</span>
+          <span class="eyebrow on-dark">CHIFFRAGE TECHNIQUE DIRECT</span>
           <h2 class="h-final__title" id="final-title">
             Prêt à équiper votre chantier ou sécuriser vos opérations ?
           </h2>
@@ -820,8 +867,8 @@
       <div class="footer-grid">
         <div class="footer-col footer-col--brand">
           <a href="index.html" class="footer-logo">
-            <img src="logo-ets.png" alt="ETS AGBONOUGLA" width="76" height="38">
-            <span class="footer-logo-brand">ETS AGBONOUGLA</span>
+            <img src="logoetsa.png" alt="Ets Agbonougla" width="36" height="23">
+            <span class="footer-logo-brand">Ets Agbonougla</span>
           </a>
           <p class="footer-brand-desc">
             Vente, aménagement et transport par camion-grue de modules préfabriqués et conteneurs maritimes en Côte d'Ivoire.
