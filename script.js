@@ -147,21 +147,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (el.classList.contains('h-hero')) {
           // Mouvement mécanique de levage synchronisé (machine + conteneur) :
-          // 1. Phase descente (p=0..0.38) : descente et positionnement contrôlé (0 -> +44px)
-          // 2. Phase atterrissage (p=0.38..0.58) : pose et stabilisation au sol (+44px -> +38px)
-          // 3. Phase levage (p=0.58..1.00) : remontée ascensionnelle puissante (+38px -> -75px)
+          // Amplitude cinématique amplifiée pour un ressenti physique net au scroll :
+          // 1. Phase descente (p=0..0.35) : descente et positionnement contrôlé (0 -> +75px)
+          // 2. Phase atterrissage (p=0.35..0.55) : stabilisation et assiette (+75px -> +60px)
+          // 3. Phase levage (p=0.55..1.00) : remontée ascensionnelle puissante (+60px -> -150px)
           let craneY;
-          if (p <= 0.38) {
-            const t = p / 0.38;
+          if (p <= 0.35) {
+            const t = p / 0.35;
             const ease = 0.5 * (1 - Math.cos(Math.PI * t));
-            craneY = ease * 44;
-          } else if (p <= 0.58) {
-            const t = (p - 0.38) / 0.20;
-            craneY = 44 - t * 6;
+            craneY = ease * 75;
+          } else if (p <= 0.55) {
+            const t = (p - 0.35) / 0.20;
+            craneY = 75 - t * 15;
           } else {
-            const t = (p - 0.58) / 0.42;
+            const t = (p - 0.55) / 0.45;
             const ease = t * t * (3 - 2 * t);
-            craneY = 38 - ease * 113;
+            craneY = 60 - ease * 210;
           }
           el.style.setProperty('--crane-y', craneY.toFixed(2) + 'px');
         }
@@ -235,9 +236,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (heroPillNav && heroSection) {
     let ticking = false;
     const updateHeroNav = () => {
-      const heroBottom = heroSection.getBoundingClientRect().bottom;
-      // Dès que le bas du hero approche le haut du viewport, on bascule vers la pilule blanche
-      const isPastHero = heroBottom <= 90 || window.scrollY > (heroSection.offsetHeight - 100);
+      // Dès que l'utilisateur commence à scroller (100px), la navbar bascule en pilule blanche pop dynamique
+      const isPastHero = window.scrollY > 100;
       if (isPastHero) {
         if (!heroPillNav.classList.contains('is-hero-scrolled')) {
           heroPillNav.classList.add('is-hero-scrolled');

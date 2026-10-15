@@ -99,7 +99,7 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  background-color: var(--paper);
+  background-color: #165CA2;
   overflow-x: hidden;
   max-width: 100vw;
 }
@@ -115,6 +115,10 @@ body {
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body.home {
+  background-color: #165CA2;
 }
 
 img, picture, video, svg, canvas {
@@ -2251,7 +2255,7 @@ section[id] {
 .h-hero__fg,
 .h-hero__leaders-svg,
 .h-hero__scene-ui {
-  transform: translate3d(0, var(--crane-y, 0px), 0);
+  transform: translate3d(0, calc(var(--crane-base-y, 85px) + var(--crane-y, 0px)), 0);
   will-change: transform;
 }
 
@@ -2272,14 +2276,14 @@ section[id] {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
+  object-position: center 72%;
   filter: brightness(1.08) contrast(1.04);
 }
 
 /* Couche 1 : Titre architectural ETS AGBONOUGLA en arrière-plan (parfaitement centré, proportionnel et puissant) */
 .h-hero__megatitle {
   position: absolute;
-  top: 19%;
+  top: clamp(80px, 12.5vh, 120px);
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
@@ -2474,7 +2478,7 @@ section[id] {
 /* Zone médiane : Boîte CTA à gauche + Conteneur libre au centre + Fiche spec à droite */
 .h-hero__mid-row {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   width: 100%;
 }
@@ -2483,21 +2487,22 @@ section[id] {
 .h-hero__callout {
   position: relative;
   width: 290px;
+  margin-top: clamp(65px, 12vh, 130px);
   background: #F8FAFC;
   border: 1px solid #E2E8F0;
   border-radius: 16px;
-  padding: 1.5rem 1.45rem 1.4rem;
+  padding: 1.35rem 1.4rem 1.25rem;
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.03);
 }
 
 .h-hero__title {
   font-family: var(--f-disp);
   font-weight: 800;
-  font-size: 1.35rem;
+  font-size: 1.22rem;
   line-height: 1.25;
   letter-spacing: -0.02em;
   color: #07080A !important;
-  margin-bottom: 1.15rem;
+  margin-bottom: 1rem;
   white-space: normal;
   text-shadow: none;
 }
@@ -2805,14 +2810,18 @@ section[id] {
     display: none !important;
   }
 
+  .h-hero__fg {
+    transform: translate3d(0, calc(115px + var(--crane-y, 0px)), 0) !important;
+  }
+
   .h-hero__bg img,
   .h-hero__fg img {
-    object-position: 52% center;
+    object-position: 52% 70%;
   }
 
   /* ETS AGBONOUGLA centré au milieu et agrandi avec netteté */
   .h-hero__megatitle {
-    top: 20%;
+    top: clamp(75px, 11vh, 105px);
     left: 50%;
     padding: 0 1.25rem;
   }
@@ -2970,7 +2979,7 @@ section[id] {
 .h-hero[data-scroll="exit"] .h-hero__fg,
 .h-hero[data-scroll="exit"] .h-hero__leaders-svg,
 .h-hero[data-scroll="exit"] .h-hero__scene-ui {
-  transform: translate3d(0, var(--crane-y, 0px), 0);
+  transform: translate3d(0, calc(var(--crane-base-y, 60px) + var(--crane-y, 0px)), 0);
   will-change: transform;
 }
 
@@ -2979,7 +2988,7 @@ section[id] {
   .h-hero__leaders-svg,
   .h-hero__scene-ui,
   .h-hero[data-scroll="exit"] .h-hero__fg {
-    transform: none !important;
+    transform: translate3d(0, var(--crane-base-y, 60px), 0) !important;
   }
 }
 
