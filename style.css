@@ -3522,7 +3522,7 @@ section[id] {
 
 @media (min-width: 1024px) {
   .h-gallery__grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
