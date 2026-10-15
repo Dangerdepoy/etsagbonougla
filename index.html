@@ -24,35 +24,18 @@
   
   <link rel="preload" as="image" href="hero-container-bg.jpg" fetchpriority="high">
   <link rel="preload" as="image" href="hero-container-fg.png" fetchpriority="high">
-  <link rel="stylesheet" href="style.css?v=16">
+  <link rel="stylesheet" href="style.css?v=17">
 </head>
 <body class="home">
 
-  <!-- ── 1. BARRE DE CONTACT SUPÉRIEURE (TOPBAR) ─────────────── -->
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <div class="topbar-left">
-        <a href="tel:+2250707831791" class="topbar-phone" aria-label="Appeler ETS AGBONOUGLA au +225 07 07 83 17 91">
-          <i class="fa-solid fa-phone" aria-hidden="true"></i>
-          <span>Appelez-nous &gt;</span>
-          <strong>+225 07 07 83 17 91</strong>
-        </a>
-      </div>
-      <div class="topbar-right">
-        <span class="topbar-badge"><i class="fa-solid fa-clock" aria-hidden="true"></i> Devis gratuit sous 24h</span>
-        <span class="topbar-badge"><i class="fa-solid fa-truck-ramp-box" aria-hidden="true"></i> Livraison &amp; grutage Abidjan &amp; intérieur CI</span>
-        <span class="topbar-badge topbar-badge--highlight"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Atelier : Attinguié, PK 26</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── 2. NAVIGATION PRINCIPALE ─────────────────────────────── -->
-  <header class="navbar" id="appNavbar">
-    <div class="nav-inner">
+  <!-- ── NAVIGATION FLOTTANTE DYNAMIQUE (HERO TRANSPARENT -> PILL BLANCHE AU SCROLL) ── -->
+  <header class="navbar-pill-wrapper is-hero-nav" id="appNavbar">
+    <div class="navbar-pill is-hero-transparent" id="heroPillNav">
       <a href="index.html" class="nav-logo" aria-label="Ets Agbonougla, retour à l'accueil">
         <img src="logoetsa.png" alt="Ets Agbonougla" width="36" height="23">
         <span class="nav-logo-brand">Ets Agbonougla</span>
       </a>
+
       <nav class="nav-links" aria-label="Menu principal">
         <a href="index.html" class="nav-lnk act" aria-current="page">Accueil</a>
         <a href="ets_solutions.html" class="nav-lnk">Solutions</a>
@@ -61,15 +44,9 @@
         <a href="ets_carriere.html" class="nav-lnk">Carrières</a>
         <a href="ets_contact.html" class="nav-lnk">Contact</a>
       </nav>
+
       <div class="nav-actions">
-        <a href="tel:+2250707831791" class="nav-phone" aria-label="Appeler le +225 07 07 83 17 91">
-          <i class="fa-solid fa-phone" aria-hidden="true"></i>
-          <span>+225 07 07 83 17 91</span>
-        </a>
-        <a href="#devis" class="nav-cta">
-          <span>Demander un devis</span>
-          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-        </a>
+        <a href="ets_contact.html" class="nav-pill-contact">Contact</a>
         <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="drawer">
           <span class="hbg-bar"></span>
           <span class="hbg-bar"></span>
@@ -750,7 +727,7 @@
       <div class="container h-final__grid">
         
         <div class="h-final__info" data-reveal>
-          <span class="eyebrow on-dark">CHIFFRAGE TECHNIQUE DIRECT</span>
+          <span class="eyebrow">CHIFFRAGE TECHNIQUE DIRECT</span>
           <h2 class="h-final__title" id="final-title">
             Prêt à équiper votre chantier ou sécuriser vos opérations ?
           </h2>
@@ -931,6 +908,6 @@
     <span>Contact direct</span>
   </a>
 
-  <script src="script.js" defer></script>
+  <script src="script.js?v=17" defer></script>
 </body>
 </html>

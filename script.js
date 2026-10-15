@@ -200,9 +200,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 2. Barre de navigation au scroll
+  // 2. Barre de navigation au scroll & transition dynamique Hero transparent -> Pill blanche
   const navbar = document.getElementById('appNavbar');
-  if (navbar) {
+  const heroPillNav = document.getElementById('heroPillNav');
+  const heroSection = document.querySelector('.h-hero');
+
+  if (heroPillNav && heroSection) {
+    const updateHeroNav = () => {
+      const heroBottom = heroSection.getBoundingClientRect().bottom;
+      // Dès que le bas du hero quitte le viewport (seuil 80px), on bascule vers la pilule blanche
+      if (heroBottom <= 80) {
+        if (!heroPillNav.classList.contains('is-hero-scrolled')) {
+          heroPillNav.classList.add('is-hero-scrolled');
+          heroPillNav.classList.remove('is-hero-transparent');
+        }
+      } else {
+        if (!heroPillNav.classList.contains('is-hero-transparent')) {
+          heroPillNav.classList.remove('is-hero-scrolled');
+          heroPillNav.classList.add('is-hero-transparent');
+        }
+      }
+      document.body.classList.toggle('is-scrolled', window.scrollY > 420);
+    };
+    window.addEventListener('scroll', updateHeroNav, { passive: true });
+    updateHeroNav();
+  } else if (navbar) {
     const handleScroll = () => {
       navbar.classList.toggle('scrolled', window.scrollY > 20);
       document.body.classList.toggle('is-scrolled', window.scrollY > 420);
