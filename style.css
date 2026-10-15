@@ -2311,13 +2311,13 @@ section[id] {
   pointer-events: none;
   background: linear-gradient(
     180deg,
-    rgba(15, 45, 80, 0.08) 0%,
-    transparent 22%,
-    transparent 60%,
-    rgba(200, 226, 250, 0.45) 78%,
-    rgba(224, 239, 253, 0.82) 90%,
-    rgba(232, 242, 250, 0.98) 98%,
-    #E8F2FA 100%
+    rgba(15, 45, 80, 0.05) 0%,
+    transparent 25%,
+    transparent 84%,
+    rgba(50, 140, 225, 0.08) 88%,
+    rgba(40, 132, 218, 0.22) 93%,
+    rgba(32, 122, 210, 0.45) 97%,
+    rgba(25, 115, 202, 0.68) 100%
   );
 }
 
@@ -2938,7 +2938,16 @@ section[id] {
 
 /* ── 2. MANIFESTE MÉTIER SCROLL REVEAL (.h-manifesto) ──────── */
 .h-manifesto {
-  background: linear-gradient(180deg, #E8F2FA 0%, #F3F7FC 90px, #FFFFFF 220px, #FFFFFF 100%);
+  background: linear-gradient(
+    180deg,
+    #B5DCFA 0%,
+    #C6E5FC 70px,
+    #D9EDFD 150px,
+    #EBF5FE 240px,
+    #F6FAFF 340px,
+    #FFFFFF 440px,
+    #FFFFFF 100%
+  );
   padding: clamp(5rem, 9vw, 8rem) 0;
   position: relative;
   border-bottom: 1px solid var(--border);
@@ -6052,10 +6061,20 @@ select.form-control option,
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0) !important;
   border-radius: 9999px !important;
   padding: 8px 12px 8px 18px !important;
-  transition: background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              backdrop-filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: navPillRecoil 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              backdrop-filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes navPillRecoil {
+  0% {
+    transform: translateY(2px) scale(1.01);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
 }
 
 .navbar-pill.is-hero-transparent:hover {
@@ -6151,20 +6170,39 @@ select.form-control option,
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
 
-/* ── ÉTAT SCROLLED : ENTRÉE DYNAMIQUE ÉLÉGANTE (PILULE BLANCHE CASSÉE) ── */
+/* ── ÉTAT SCROLLED : ENTRÉE DYNAMIQUE POP BOUSCULADE ÉLÉGANTE (PILULE BLANCHE CASSÉE) ── */
 .navbar-pill.is-hero-scrolled {
   max-width: 1140px;
-  background: rgba(255, 255, 255, 0.95) !important;
+  background: rgba(255, 255, 255, 0.96) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
   border: 1px solid rgba(226, 232, 240, 0.9) !important;
   border-radius: 9999px !important;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.03) !important;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.09), 0 1px 3px rgba(0, 0, 0, 0.03) !important;
   padding: 8px 12px 8px 18px !important;
-  transition: background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              backdrop-filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: navPillBousculade 0.48s cubic-bezier(0.22, 1.35, 0.54, 1) forwards;
+  transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              backdrop-filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes navPillBousculade {
+  0% {
+    transform: translateY(-22px) scale(0.92);
+    opacity: 0.65;
+  }
+  60% {
+    transform: translateY(4px) scale(1.025);
+    opacity: 1;
+  }
+  82% {
+    transform: translateY(-1.5px) scale(0.995);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
 }
 
 .navbar-pill.is-hero-scrolled .nav-logo-brand {
