@@ -146,24 +146,15 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.setProperty('--p', p.toFixed(4));
 
         if (el.classList.contains('h-hero')) {
-          // Mouvement mécanique de levage synchronisé (machine + conteneur) :
-          // Amplitude cinématique amplifiée pour un ressenti physique net au scroll :
-          // 1. Phase descente (p=0..0.35) : descente et positionnement contrôlé (0 -> +75px)
-          // 2. Phase atterrissage (p=0.35..0.55) : stabilisation et assiette (+75px -> +60px)
-          // 3. Phase levage (p=0.55..1.00) : remontée ascensionnelle puissante (+60px -> -150px)
-          let craneY;
-          if (p <= 0.35) {
-            const t = p / 0.35;
-            const ease = 0.5 * (1 - Math.cos(Math.PI * t));
-            craneY = ease * 75;
-          } else if (p <= 0.55) {
-            const t = (p - 0.35) / 0.20;
-            craneY = 75 - t * 15;
-          } else {
-            const t = (p - 0.55) / 0.45;
-            const ease = t * t * (3 - 2 * t);
-            craneY = 60 - ease * 210;
-          }
+          // Descente cinématique continue et maîtrisée du conteneur au scroll :
+          // Le conteneur et ses câbles descendent progressivement et naturellement
+          // depuis le haut du ciel jusqu'au niveau de la section « Notre engagement »,
+          // sans inversion, saut ni changement d'image.
+          const isMobile = window.innerWidth < 768;
+          const maxDescent = isMobile ? 180 : 300;
+          // Easing progressif fluide (smoothstep) assurant un démarrage et un atterrissage calmes
+          const ease = p * p * (3 - 2 * p);
+          const craneY = ease * maxDescent;
           el.style.setProperty('--crane-y', craneY.toFixed(2) + 'px');
         }
       });

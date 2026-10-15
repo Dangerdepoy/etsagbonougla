@@ -2215,9 +2215,10 @@ section[id] {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  background: #165CA2 linear-gradient(180deg, #104C8A 0%, #165CA2 140px, transparent 320px);
+  background: #165CA2;
   color: #07080A;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
   padding: 0;
 }
 
@@ -2255,7 +2256,7 @@ section[id] {
 .h-hero__fg,
 .h-hero__leaders-svg,
 .h-hero__scene-ui {
-  transform: translate3d(0, calc(var(--crane-base-y, 85px) + var(--crane-y, 0px)), 0);
+  transform: translate3d(0, calc(var(--crane-base-y, 0px) + var(--crane-y, 0px)), 0);
   will-change: transform;
 }
 
@@ -2276,8 +2277,8 @@ section[id] {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 72%;
-  filter: brightness(1.08) contrast(1.04);
+  object-position: center top;
+  filter: brightness(1.04) contrast(1.03);
 }
 
 /* Couche 1 : Titre architectural ETS AGBONOUGLA en arrière-plan (parfaitement centré, proportionnel et puissant) */
@@ -2811,12 +2812,12 @@ section[id] {
   }
 
   .h-hero__fg {
-    transform: translate3d(0, calc(115px + var(--crane-y, 0px)), 0) !important;
+    transform: translate3d(0, calc(var(--crane-base-y, 10px) + var(--crane-y, 0px)), 0) !important;
   }
 
   .h-hero__bg img,
   .h-hero__fg img {
-    object-position: 52% 70%;
+    object-position: 50% top;
   }
 
   /* ETS AGBONOUGLA centré au milieu et agrandi avec netteté */
@@ -2975,11 +2976,11 @@ section[id] {
   border-bottom: 1px solid var(--border);
 }
 
-/* ── TRANSITION ANIMÉE HERO -> MANIFESTE (MOUVEMENT MÉCANIQUE SYNCHRONISÉ) ── */
+/* ── TRANSITION ANIMÉE HERO -> MANIFESTE (DESCENTE CONTINUE DU CONTENEUR) ── */
 .h-hero[data-scroll="exit"] .h-hero__fg,
 .h-hero[data-scroll="exit"] .h-hero__leaders-svg,
 .h-hero[data-scroll="exit"] .h-hero__scene-ui {
-  transform: translate3d(0, calc(var(--crane-base-y, 60px) + var(--crane-y, 0px)), 0);
+  transform: translate3d(0, calc(var(--crane-base-y, 0px) + var(--crane-y, 0px)), 0);
   will-change: transform;
 }
 
@@ -2988,7 +2989,7 @@ section[id] {
   .h-hero__leaders-svg,
   .h-hero__scene-ui,
   .h-hero[data-scroll="exit"] .h-hero__fg {
-    transform: translate3d(0, var(--crane-base-y, 60px), 0) !important;
+    transform: translate3d(0, var(--crane-base-y, 0px), 0) !important;
   }
 }
 
