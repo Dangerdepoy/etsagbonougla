@@ -16,31 +16,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Maven+Pro:wght@500;600;700;800;900&family=Oswald:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="style.css?v=14">
-</head>
-<body>
+  <link rel="stylesheet" href="style.css?v=15">
+<body class="has-navbar-pill">
 
-  <!-- Barre de contact supérieure (Topbar) -->
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <div class="topbar-left">
-        <a href="tel:+2250707831791" class="topbar-phone" aria-label="Appeler ETS AGBONOUGLA au +225 07 07 83 17 91">
-          <i class="fa-solid fa-phone" aria-hidden="true"></i>
-          <span>Appelez-nous &gt;</span>
-          <strong>+225 07 07 83 17 91</strong>
-        </a>
-      </div>
-      <div class="topbar-right">
-        <span class="topbar-badge"><i class="fa-solid fa-clock" aria-hidden="true"></i> Devis gratuit sous 24h</span>
-        <span class="topbar-badge"><i class="fa-solid fa-truck-ramp-box" aria-hidden="true"></i> Livraison &amp; grutage Abidjan &amp; intérieur CI</span>
-        <span class="topbar-badge topbar-badge--highlight"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Atelier : Attinguié, PK 26</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Navigation principale -->
-  <header class="navbar" id="appNavbar">
-    <div class="nav-inner">
+  <!-- Navigation Flottante Style Deflexai -->
+  <header class="navbar-pill-wrapper" id="appNavbar">
+    <div class="navbar-pill">
       <a href="index.html" class="nav-logo" aria-label="Ets Agbonougla, retour à l'accueil">
         <img src="logoetsa.png" alt="Ets Agbonougla" width="36" height="23">
         <span class="nav-logo-brand">Ets Agbonougla</span>
@@ -56,14 +37,7 @@
       </nav>
 
       <div class="nav-actions">
-        <a href="tel:+2250707831791" class="nav-phone" title="Appeler directement">
-          <i class="fa-solid fa-phone"></i>
-          <span>+225 07 07 83 17 91</span>
-        </a>
-        <a href="ets_contact.html" class="nav-cta">
-          <span>Demander un devis</span>
-          <i class="fa-solid fa-arrow-right"></i>
-        </a>
+        <a href="ets_contact.html" class="nav-pill-contact">Contact</a>
         <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="drawer">
           <span class="hbg-bar"></span>
           <span class="hbg-bar"></span>
@@ -295,12 +269,13 @@
         </div>
 
         <!-- Appel à projet -->
-        <div style="background: var(--stone-light); border: 1px solid var(--stone-dark); border-radius: var(--r-md); padding: clamp(1.5rem, 4vw, 2.5rem); margin-top: 3.5rem; text-align: center;">
-          <h3 style="font-family: var(--f-disp); font-weight: 800; font-size: 1.25rem; color: var(--ink); margin-bottom: 0.5rem;">Vous avez un projet similaire ?</h3>
-          <p style="font-size: 0.88rem; color: var(--muted); max-width: 50ch; margin: 0 auto 1.5rem;">
-            Transmettez-nous les dimensions de votre site et le nombre d'utilisateurs prévus pour recevoir une recommandation technique.
+        <div class="light-callout" data-reveal style="margin-top: 3.5rem; text-align: center; max-width: 760px; margin-left: auto; margin-right: auto;">
+          <span class="c-index-bracket" style="color: #1D68BD; display: inline-block; margin-bottom: 0.35rem;">[ ÉTUDE TECHNIQUE &amp; CHIFFRAGE ]</span>
+          <h3 style="font-family: 'Plus Jakarta Sans', var(--f-disp), sans-serif; font-weight: 800; font-size: 1.45rem; color: #07080A; margin-top: 4px; margin-bottom: 8px;">Vous avez un projet similaire ?</h3>
+          <p style="font-size: 0.92rem; color: #64748B; max-width: 56ch; margin: 0 auto 1.5rem; line-height: 1.6;">
+            Transmettez-nous les dimensions de votre site et le nombre d'utilisateurs prévus pour recevoir une recommandation technique et un chiffrage sous 24h.
           </p>
-          <a href="ets_contact.html" class="btn btn-coral">
+          <a href="ets_contact.html" class="c-btn-pill c-btn-pill--blue" style="padding: 12px 28px; font-size: 0.9rem;">
             <span>Demander une étude personnalisée</span>
             <i class="fa-solid fa-arrow-right"></i>
           </a>

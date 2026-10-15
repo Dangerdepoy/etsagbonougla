@@ -16,31 +16,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Maven+Pro:wght@500;600;700;800;900&family=Oswald:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="style.css?v=14">
-</head>
-<body>
+  <link rel="stylesheet" href="style.css?v=15">
+<body class="has-navbar-pill">
 
-  <!-- Barre de contact supérieure (Topbar) -->
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <div class="topbar-left">
-        <a href="tel:+2250707831791" class="topbar-phone" aria-label="Appeler ETS AGBONOUGLA au +225 07 07 83 17 91">
-          <i class="fa-solid fa-phone" aria-hidden="true"></i>
-          <span>Appelez-nous &gt;</span>
-          <strong>+225 07 07 83 17 91</strong>
-        </a>
-      </div>
-      <div class="topbar-right">
-        <span class="topbar-badge"><i class="fa-solid fa-clock" aria-hidden="true"></i> Devis gratuit sous 24h</span>
-        <span class="topbar-badge"><i class="fa-solid fa-truck-ramp-box" aria-hidden="true"></i> Livraison &amp; grutage Abidjan &amp; intérieur CI</span>
-        <span class="topbar-badge topbar-badge--highlight"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Atelier : Attinguié, PK 26</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Navigation principale -->
-  <header class="navbar" id="appNavbar">
-    <div class="nav-inner">
+  <!-- Navigation Flottante Style Deflexai -->
+  <header class="navbar-pill-wrapper" id="appNavbar">
+    <div class="navbar-pill">
       <a href="index.html" class="nav-logo" aria-label="Ets Agbonougla, retour à l'accueil">
         <img src="logoetsa.png" alt="Ets Agbonougla" width="36" height="23">
         <span class="nav-logo-brand">Ets Agbonougla</span>
@@ -56,14 +37,7 @@
       </nav>
 
       <div class="nav-actions">
-        <a href="tel:+2250707831791" class="nav-phone" title="Appeler directement">
-          <i class="fa-solid fa-phone"></i>
-          <span>+225 07 07 83 17 91</span>
-        </a>
-        <a href="ets_contact.html" class="nav-cta">
-          <span>Demander un devis</span>
-          <i class="fa-solid fa-arrow-right"></i>
-        </a>
+        <a href="ets_contact.html" class="nav-pill-contact">Contact</a>
         <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="drawer">
           <span class="hbg-bar"></span>
           <span class="hbg-bar"></span>
@@ -261,13 +235,13 @@
       </div>
     </section>
 
-    <!-- ═══════════════════════ BLOC DE CONTACT DIRECT STYLE NOREA ═══════════════════════ -->
-    <section class="swiss-section" data-reveal style="background: #0D0F14; color: #FFFFFF; border: none;">
+    <!-- ═══════════════════════ BLOC D'ACCOMPAGNEMENT DIRECT (HARMONIE BLANC & GRIS) ═══════════════════════ -->
+    <section class="swiss-section" data-reveal style="background: #F8FAFC; border-top: 1px solid #E2E8F0;">
       <div class="container">
         <div class="section-hdr center" style="margin-bottom: 1.5rem;">
-          <div class="c-index-bracket" style="color: #60A5FA;">[ ACCOMPAGNEMENT DIRECT · PK 26 ]</div>
-          <h2 class="section-title on-dark">Vous avez un cahier des charges précis ?</h2>
-          <p class="section-sub on-dark">
+          <div class="c-index-bracket" style="color: #1D68BD;">[ ACCOMPAGNEMENT DIRECT · PK 26 ]</div>
+          <h2 class="section-title" style="color: #07080A;">Vous avez un cahier des charges précis ?</h2>
+          <p class="section-sub" style="color: #64748B;">
             Notre équipe d'Attinguié vous conseille sur le bon choix de dimensions, l'isolation thermique et les accès grue requis sur votre terrain.
           </p>
           <div style="display: flex; gap: 14px; justify-content: center; align-items: center; flex-wrap: wrap; margin-top: 2rem;">
@@ -275,9 +249,9 @@
               <span>Demander un devis détaillé</span>
               <i class="fa-solid fa-arrow-right"></i>
             </a>
-            <div class="c-phone-pill-box" style="background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.15);">
-              <input type="text" value="+225 07 07 83 17 91" readonly aria-label="Numéro direct" style="color: #FFFFFF;">
-              <a href="tel:+2250707831791" class="c-btn-pill c-btn-pill--white" style="padding: 6px 14px; font-size: 0.75rem;">Appeler</a>
+            <div class="c-phone-pill-box" style="background: #FFFFFF; border-color: #CBD5E1;">
+              <input type="text" value="+225 07 07 83 17 91" readonly aria-label="Numéro direct" style="color: #07080A;">
+              <a href="tel:+2250707831791" class="c-btn-pill c-btn-pill--blue" style="padding: 6px 14px; font-size: 0.75rem;">Appeler</a>
             </div>
           </div>
         </div>

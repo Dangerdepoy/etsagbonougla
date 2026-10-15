@@ -16,31 +16,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Maven+Pro:wght@500;600;700;800;900&family=Oswald:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="style.css?v=14">
-</head>
-<body>
+  <link rel="stylesheet" href="style.css?v=15">
+<body class="has-navbar-pill">
 
-  <!-- Barre de contact supérieure (Topbar) -->
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <div class="topbar-left">
-        <a href="tel:+2250707831791" class="topbar-phone" aria-label="Appeler ETS AGBONOUGLA au +225 07 07 83 17 91">
-          <i class="fa-solid fa-phone" aria-hidden="true"></i>
-          <span>Appelez-nous &gt;</span>
-          <strong>+225 07 07 83 17 91</strong>
-        </a>
-      </div>
-      <div class="topbar-right">
-        <span class="topbar-badge"><i class="fa-solid fa-clock" aria-hidden="true"></i> Devis gratuit sous 24h</span>
-        <span class="topbar-badge"><i class="fa-solid fa-truck-ramp-box" aria-hidden="true"></i> Livraison &amp; grutage Abidjan &amp; intérieur CI</span>
-        <span class="topbar-badge topbar-badge--highlight"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Atelier : Attinguié, PK 26</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Navigation principale -->
-  <header class="navbar" id="appNavbar">
-    <div class="nav-inner">
+  <!-- Navigation Flottante Style Deflexai -->
+  <header class="navbar-pill-wrapper" id="appNavbar">
+    <div class="navbar-pill">
       <a href="index.html" class="nav-logo" aria-label="Ets Agbonougla, retour à l'accueil">
         <img src="logoetsa.png" alt="Ets Agbonougla" width="36" height="23">
         <span class="nav-logo-brand">Ets Agbonougla</span>
@@ -56,14 +37,7 @@
       </nav>
 
       <div class="nav-actions">
-        <a href="tel:+2250707831791" class="nav-phone" title="Appeler directement">
-          <i class="fa-solid fa-phone"></i>
-          <span>+225 07 07 83 17 91</span>
-        </a>
-        <a href="ets_contact.html" class="nav-cta">
-          <span>Demander un devis</span>
-          <i class="fa-solid fa-arrow-right"></i>
-        </a>
+        <a href="ets_contact.html" class="nav-pill-contact">Contact</a>
         <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="drawer">
           <span class="hbg-bar"></span>
           <span class="hbg-bar"></span>
@@ -251,18 +225,18 @@
           </div>
         </div>
 
-        <!-- Visite et contact atelier style Norea Capture 2 -->
-        <div class="c-split-story__content dark-callout" data-reveal style="margin-top: 3.5rem; display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+        <!-- Visite et contact atelier (Harmonie Blanc & Gris) -->
+        <div class="light-callout" data-reveal style="margin-top: 3.5rem; display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; position: relative; overflow: hidden;">
           <div style="max-width: 580px;">
-            <span class="c-split-story__tag" style="color: #60A5FA;">[ ATELIER OUVERT AUX PROFESSIONNELS ]</span>
-            <h3 style="font-family: var(--f-disp); font-weight: 800; font-size: 1.45rem; color: #FFFFFF; margin-top: 6px; margin-bottom: 6px;">Visite technique à Attinguié PK 26</h3>
-            <p style="color: #94A3B8; font-size: 0.9rem; line-height: 1.6;">Venez examiner nos modules témoins en cours d'assemblage et constater la qualité des soudures et de l'isolation.</p>
+            <span class="c-index-bracket" style="color: #1D68BD; display: inline-block; margin-bottom: 0.35rem;">[ ATELIER OUVERT AUX PROFESSIONNELS ]</span>
+            <h3 style="font-family: var(--f-disp); font-weight: 800; font-size: 1.45rem; color: #07080A; margin-top: 4px; margin-bottom: 6px;">Visite technique à Attinguié PK 26</h3>
+            <p style="color: #475569; font-size: 0.9rem; line-height: 1.6;">Venez examiner nos modules témoins en cours d'assemblage et constater la qualité des soudures et de l'isolation.</p>
           </div>
           <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
             <a href="ets_contact.html" class="c-btn-pill c-btn-pill--blue">Prendre rendez-vous</a>
-            <div class="c-phone-pill-box" style="background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.15);">
-              <input type="text" value="+225 07 07 83 17 91" readonly aria-label="Numéro direct" style="color: #FFFFFF;">
-              <a href="tel:+2250707831791" class="c-btn-pill c-btn-pill--white" style="padding: 6px 14px; font-size: 0.75rem;">Appeler</a>
+            <div class="c-phone-pill-box" style="background: #FFFFFF; border-color: #CBD5E1;">
+              <input type="text" value="+225 07 07 83 17 91" readonly aria-label="Numéro direct" style="color: #07080A;">
+              <a href="tel:+2250707831791" class="c-btn-pill c-btn-pill--blue" style="padding: 6px 14px; font-size: 0.75rem;">Appeler</a>
             </div>
           </div>
         </div>
