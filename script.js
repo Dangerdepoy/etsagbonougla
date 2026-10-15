@@ -16,15 +16,9 @@ window.__etsMotionReady = true;
 document.addEventListener('DOMContentLoaded', () => {
 
   const root = document.documentElement;
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  
-  // Active le mode motion sur toutes les pages automatiquement
-  if (!reduceMotion && 'IntersectionObserver' in window) {
-    root.classList.add('motion');
-  } else {
-    root.classList.remove('motion');
-  }
-  const motionOn = !reduceMotion && 'IntersectionObserver' in window;
+  // Réactivation permanente du motion design scroll pour une expérience visuelle fluide & dynamique
+  root.classList.add('motion');
+  const motionOn = 'IntersectionObserver' in window;
 
   // 1. Signature LAMANO DESIGN (lien uniquement si une URL vérifiée est configurée)
   document.querySelectorAll('.lamano-credit').forEach(link => {
@@ -77,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Révélations à l'entrée dans le viewport (une seule fois)
+    // Révélations dynamiques à l'entrée dans le viewport (avec contrôle immédiat pour les éléments visibles)
     const revealObs = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -85,8 +79,20 @@ document.addEventListener('DOMContentLoaded', () => {
           revealObs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('[data-reveal]').forEach(el => revealObs.observe(el));
+    }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
+
+    const checkReveals = () => {
+      const vh = window.innerHeight;
+      document.querySelectorAll('[data-reveal]').forEach(el => {
+        const r = el.getBoundingClientRect();
+        if (r.top < vh - 20 && r.bottom > 0) {
+          el.classList.add('is-in');
+        } else {
+          revealObs.observe(el);
+        }
+      });
+    };
+    checkReveals();
 
     // Manifeste : les mots passent du gris au noir pur (#000000) mot par mot au scroll (effet de lecture au doigt)
     const manifestos = new Map();
