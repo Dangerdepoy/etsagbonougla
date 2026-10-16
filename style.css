@@ -2241,21 +2241,22 @@ section[id] {
   filter: contrast(1.02) saturate(1.05);
 }
 
-/* Couche 1 : Titre architectural ETS AGBONOUGLA — ETS gauche | câbles | AGBONOUGLA droite */
+/* Couche 1 : Titre architectural ETS AGBONOUGLA — Rapproché et centré */
 .h-hero__megatitle {
   position: absolute;
-  top: clamp(110px, 16vh, 175px);
+  top: clamp(110px, 15vh, 165px);
   left: 50%;
   transform: translateX(-50%);
-  width: 100%;
-  max-width: 1440px;
+  width: auto;
+  max-width: 92vw;
   z-index: 1;
   pointer-events: none;
   user-select: none;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 0 clamp(2rem, 4vw, 3.5rem);
+  justify-content: center;
+  align-items: center;
+  gap: clamp(20px, 3vw, 44px);
+  padding: 0;
 }
 
 /* Côtés gauche & droite du titre */
@@ -2278,9 +2279,8 @@ section[id] {
   filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.35));
 }
 
-/* Espace central pour laisser passer les câbles de la grue */
 .h-hero__mega-gap {
-  flex: 0 0 clamp(140px, 16vw, 260px);
+  display: none;
 }
 
 /* Couche 1b : Dégradé ciel doux vers blanc en bas (derrière le conteneur) */
@@ -2300,22 +2300,19 @@ section[id] {
   );
 }
 
-/* Couche 2 : Conteneur suspendu monumental centré
-   Le PNG fait 1470px de haut. Le conteneur bleu (corps) commence à Y≈900.
-   Pour que le conteneur soit visible à l'écran (viewport ≈ 900px),
-   on remonte l'image de ~500px : top = -500px. Les câbles partent hors-cadre en haut (grue).
-*/
+/* Couche 2 : Conteneur suspendu — taille réduite et bien calibrée sur PC */
 .h-hero__fg {
   position: absolute;
-  top: clamp(-560px, -55vh, -380px);
+  top: clamp(-360px, -36vh, -250px);
   left: 50%;
-  width: clamp(760px, 58vw, 1020px);
+  width: clamp(500px, 38vw, 680px);
   height: auto;
   transform: translateX(-50%) translate3d(0, calc(var(--crane-base-y, 0px) + var(--crane-y, 0px)), 0);
   pointer-events: none;
   z-index: 2;
   will-change: transform;
 }
+
 
 .h-hero__fg img {
   width: 100%;
@@ -2929,16 +2926,14 @@ section[id] {
     min-height: 100dvh;
     min-height: 100svh;
     height: auto;
-    padding: 0 0 2rem;
+    padding: 0 0 clamp(3rem, 7vh, 5rem);
   }
 
   .h-hero__fg {
-    /* PNG 1470px tall, container body at Y≈900px.
-       At 390px wide, PNG renders ~530px tall → container at ~325px.
-       Bring it up just enough to show the full container body. */
-    top: clamp(-210px, -25vh, -130px);
+    /* PNG 1470px haut — conteneur centré avec proportions équilibrées */
+    top: clamp(-175px, -20vh, -110px);
     left: 50%;
-    width: clamp(380px, 100vw, 460px);
+    width: clamp(340px, 92vw, 420px);
     transform: translateX(-50%) translate3d(0, calc(var(--crane-base-y, 0px) + var(--crane-y, 0px)), 0) !important;
     -webkit-mask-image: none !important;
     mask-image: none !important;
@@ -2950,9 +2945,9 @@ section[id] {
     transform: none !important;
   }
 
-  /* Sur mobile : ETS et AGBONOUGLA centrés, grands et puissants */
+  /* Sur mobile : ETS AGBONOUGLA descendu au milieu pour une visibilité optimale */
   .h-hero__megatitle {
-    top: clamp(60px, 8vh, 80px);
+    top: clamp(330px, 40vh, 380px);
     justify-content: center;
     padding: 0 0.5rem;
     gap: 0.25em;
@@ -2963,7 +2958,7 @@ section[id] {
   }
 
   .h-hero__mega-side {
-    font-size: clamp(2.5rem, 10vw, 3.5rem);
+    font-size: clamp(2.3rem, 9.2vw, 3.3rem);
     letter-spacing: 0.03em;
     white-space: nowrap;
     text-align: center;
@@ -2973,6 +2968,8 @@ section[id] {
   .h-hero__mega-side--left::after {
     content: '\00a0';
   }
+
+
 
   .h-hero__callout {
     width: min(310px, 88vw);
