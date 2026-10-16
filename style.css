@@ -2931,10 +2931,10 @@ section[id] {
   }
 
   .h-hero__fg {
-    /* PNG 1470px haut — conteneur centré avec proportions équilibrées */
-    top: clamp(-175px, -20vh, -110px);
+    /* Conteneur descendu légèrement pour équilibrer la hero au milieu */
+    top: clamp(-85px, -10vh, -60px);
     left: 50%;
-    width: clamp(340px, 92vw, 420px);
+    width: clamp(345px, 92vw, 420px);
     transform: translateX(-50%) translate3d(0, calc(var(--crane-base-y, 0px) + var(--crane-y, 0px)), 0) !important;
     -webkit-mask-image: none !important;
     mask-image: none !important;
@@ -2946,16 +2946,16 @@ section[id] {
     transform: none !important;
   }
 
-  /* Sur mobile : Grand texte ETS AGBONOUGLA derrière les chaînes du conteneur au milieu comme sur PC */
+  /* Sur mobile : Grand texte ETS AGBONOUGLA pile au niveau des chaînes, centré et lisible */
   .h-hero__megatitle {
-    top: clamp(82px, 11.5vh, 120px);
+    top: clamp(212px, 25.5vh, 236px);
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
     justify-content: center;
     align-items: center;
     padding: 0 0.5rem;
-    gap: clamp(10px, 2.8vw, 18px);
+    gap: clamp(6px, 2vw, 12px);
     z-index: 1;
   }
 
@@ -2964,34 +2964,41 @@ section[id] {
   }
 
   .h-hero__mega-side {
-    font-size: clamp(2.7rem, 10.5vw, 3.8rem);
+    font-family: 'Bebas Neue', 'Barlow Condensed', 'Oswald', sans-serif;
+    font-size: clamp(3.2rem, 12.8vw, 4.4rem);
     letter-spacing: 0.03em;
     white-space: nowrap;
     text-align: center;
     line-height: 0.92;
+    filter: drop-shadow(0 2px 14px rgba(0, 0, 0, 0.45));
   }
 
   .h-hero__mega-side--left::after {
     content: '\00a0';
   }
 
-
-
-
   .h-hero__callout {
-    width: min(310px, 88vw);
-    padding: 1.25rem 1.35rem 1.2rem;
+    width: min(325px, 90vw);
+    padding: 1.35rem 1.45rem 1.3rem;
     background: #F1EDE4;
     border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 22px;
     box-shadow: 0 12px 36px rgba(15, 23, 42, 0.08);
+    margin-bottom: clamp(0.75rem, 2vh, 1.5rem);
   }
 
   .h-hero__title {
-    font-size: 1.14rem;
-    margin-bottom: 0.95rem;
+    font-size: clamp(1.22rem, 4.4vw, 1.38rem);
+    line-height: 1.25;
+    margin-bottom: 1rem;
     color: #07080A !important;
     text-shadow: none;
+  }
+
+  .h-hero__cta-btn {
+    min-height: 48px;
+    font-size: 0.78rem;
+    letter-spacing: 0.07em;
   }
 
 
