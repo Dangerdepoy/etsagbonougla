@@ -456,7 +456,7 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem(ANALYTICS_KEY, JSON.stringify(list.slice(0, 200)));
     } catch (_) {}
 
-    const apiBase = window.location.protocol.startsWith('http') ? 'api/index.php' : 'http://127.0.0.1:8080/api/index.php';
+    const apiBase = 'api/index.php';
     fetch(`${apiBase}?route=analytics-beacon`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -512,7 +512,7 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem(LEADS_KEY, JSON.stringify(existing));
     } catch (_) {}
 
-    const apiBase = window.location.protocol.startsWith('http') ? 'api/index.php' : 'http://127.0.0.1:8080/api/index.php';
+    const apiBase = 'api/index.php';
     try {
       const res = await fetch(`${apiBase}?route=leads`, {
         method: 'POST',

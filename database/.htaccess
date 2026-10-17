@@ -1,0 +1,13 @@
+# =============================================================================
+# ETS AGBONOUGLA — Protection de la Base de Données Relationnelle
+# Interdiction stricte de tout accès HTTP direct aux fichiers SQLite et SQL
+# =============================================================================
+
+<IfModule mod_authz_core.c>
+  Require all denied
+</IfModule>
+
+<IfModule !mod_authz_core.c>
+  Order Deny,Allow
+  Deny from all
+</IfModule>

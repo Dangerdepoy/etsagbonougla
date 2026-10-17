@@ -1,6 +1,23 @@
+# Dépendances et caches
 node_modules/
 .DS_Store
+Thumbs.db
+
+# Fichiers temporaires et logs
 *.log
-*.terabox*
-*.cfg
+*.tmp
+*.bak
+cookies.txt
+
+# Variables d'environnement & Secrets de production (ne jamais commiter)
+.env
+.env.local
+
+# Fichiers journaux temporaires SQLite (garder le .sqlite principal)
+database/*.wal
+database/*.shm
+database/*.journal
+
+# Dossiers de travail temporaire
 scratch/
+.terabox*

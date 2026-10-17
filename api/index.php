@@ -5,11 +5,29 @@
  */
 declare(strict_types=1);
 
+ini_set('display_errors', '0');
+ini_set('log_errors', '1');
+error_reporting(E_ALL);
+
 header('Content-Type: application/json; charset=utf-8');
 header('X-Frame-Options: DENY');
 header('X-Content-Type-Options: nosniff');
 header('Referrer-Policy: strict-origin-when-cross-origin');
-header('Access-Control-Allow-Origin: *');
+
+// Gestion sécurisée des origines CORS (Production et Domaine)
+$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+$allowedOrigins = [
+    'https://etsagbonougla.net',
+    'https://www.etsagbonougla.net',
+    'http://localhost:8080',
+    'http://127.0.0.1:8080'
+];
+if (in_array($origin, $allowedOrigins, true)) {
+    header("Access-Control-Allow-Origin: {$origin}");
+    header('Access-Control-Allow-Credentials: true');
+} else {
+    header('Access-Control-Allow-Origin: *');
+}
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, X-CSRF-Token, X-Admin-Token');
 
@@ -34,9 +52,13 @@ function env_val(string $key, string $default = ''): string {
     return $env[$key] ?? ($_ENV[$key] ?? $default);
 }
 
+$isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https');
 ini_set('session.cookie_httponly', '1');
 ini_set('session.cookie_samesite', 'Lax');
 ini_set('session.use_strict_mode', '1');
+if ($isHttps) {
+    ini_set('session.cookie_secure', '1');
+}
 session_name('ETS_ADMIN_SESS');
 session_start();
 
@@ -266,18 +288,13 @@ function require_auth(PDO $pdo): array {
     }
     $headerToken = $_SERVER['HTTP_X_ADMIN_TOKEN'] ?? '';
     if ($headerToken !== '') {
-        $stmt = $pdo->prepare("SELECT u.id, u.email, u.display_name, u.role FROM sessions_admin s JOIN users_admin u ON u.id = s.user_id WHERE s.csrf_token = ? AND s.revoked = 0");
+        $stmt = $pdo->prepare("SELECT u.id, u.email, u.display_name, u.role FROM sessions_admin s JOIN users_admin u ON u.id = s.user_id WHERE s.csrf_token = ? AND s.revoked = 0 AND s.expires_at > CURRENT_TIMESTAMP");
         $stmt->execute([$headerToken]);
         $u = $stmt->fetch();
         if ($u) return $u;
     }
-    // En environnement local (127.0.0.1 / ::1), autorise le jeton de session locale
-    $remote = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
-    if (in_array($remote, ['127.0.0.1', '::1'], true)) {
-        return ['id' => 1, 'email' => 'direction@etsagbonougla.net', 'display_name' => 'Direction ETS AGBONOUGLA', 'role' => 'OWNER'];
-    }
     http_response_code(401);
-    echo json_encode(['ok' => false, 'error' => 'Authentification requise.']);
+    echo json_encode(['ok' => false, 'error' => 'Authentification requise. Session expirée ou non autorisée.']);
     exit;
 }
 
@@ -634,6 +651,7 @@ try {
 
     echo json_encode(['ok' => false, 'error' => 'Route inconnue.']);
 } catch (Throwable $e) {
+    error_log('[ETS AGBONOUGLA API ERROR] ' . $e->getMessage() . ' in ' . $e->getFile() . ':' . $e->getLine());
     http_response_code(500);
-    echo json_encode(['ok' => false, 'error' => 'Erreur interne serveur : ' . $e->getMessage()]);
+    echo json_encode(['ok' => false, 'error' => 'Une erreur interne est survenue. Veuillez contacter le support.']);
 }
