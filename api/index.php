@@ -631,6 +631,36 @@ try {
         }
     }
 
+    if ($route === 'change-password' && $method === 'POST') {
+        $in = json_body();
+        $currentPass = (string)($in['current_password'] ?? '');
+        $newPass = (string)($in['new_password'] ?? '');
+
+        if (mb_strlen($newPass) < 8) {
+            http_response_code(422);
+            echo json_encode(['ok' => false, 'error' => 'Le nouveau mot de passe doit comporter au moins 8 caractères.']);
+            exit;
+        }
+
+        $stmt = $pdo->prepare("SELECT password_hash FROM users_admin WHERE id = ?");
+        $stmt->execute([$admin['id']]);
+        $row = $stmt->fetch();
+
+        if (!$row || !password_verify($currentPass, $row['password_hash'])) {
+            http_response_code(400);
+            echo json_encode(['ok' => false, 'error' => 'Le mot de passe actuel est incorrect.']);
+            exit;
+        }
+
+        $algo = defined('PASSWORD_ARGON2ID') ? PASSWORD_ARGON2ID : PASSWORD_BCRYPT;
+        $newHash = password_hash($newPass, $algo);
+        $pdo->prepare("UPDATE users_admin SET password_hash = ? WHERE id = ?")->execute([$newHash, $admin['id']]);
+
+        log_audit($pdo, $admin['email'], 'MOT_DE_PASSE_MODIFIÉ', 'users_admin', 'Changement de mot de passe sécurisé réussi.');
+        echo json_encode(['ok' => true, 'message' => 'Mot de passe mis à jour avec succès.']);
+        exit;
+    }
+
     if ($route === 'analytics') {
         if ($method === 'DELETE') {
             $pdo->exec("DELETE FROM analytics_events");
