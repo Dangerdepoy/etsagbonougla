@@ -1,50 +1,44 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>Administration & CRM/CMS — ETS AGBONOUGLA</title>
+  <title>Direction & Pilotage Opérationnel — ETS AGBONOUGLA</title>
   <link rel="icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="admin.css?v=1">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css?v=3">
 </head>
 <body class="adm-body">
 
   <!-- ========================================================================
-       PORTAIL D'AUTHENTIFICATION SÉCURISÉ (Couche 2 : Argon2id + 2FA TOTP)
+       PORTAIL D'AUTHENTIFICATION DIRECTION & GESTION (PHP / PDO SQLite)
        ======================================================================== -->
   <div class="adm-auth-gate" id="adm-auth-gate" role="dialog" aria-modal="true" aria-labelledby="auth-title">
-    <div class="adm-orbital__rings" aria-hidden="true">
-      <div class="adm-orbital__ring adm-orbital__ring--1"></div>
-      <div class="adm-orbital__ring adm-orbital__ring--2"></div>
-      <div class="adm-orbital__ring adm-orbital__ring--3"></div>
-    </div>
-
     <div class="adm-auth-card">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;">
-        <div style="display:flex;align-items:center;gap:10px;">
-          <img src="assets/images/logo-ets-white.png" alt="Logo ETS AGBONOUGLA" style="width:34px;height:34px;object-fit:contain;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <img src="assets/images/logo-ets-white.png" alt="Logo ETS AGBONOUGLA" style="width:38px;height:38px;object-fit:contain;border-radius:6px;background:#0F172A;padding:4px;">
           <div>
-            <div style="font-weight:700;font-size:0.98rem;letter-spacing:-0.02em;">Ets Agbonougla</div>
-            <div style="font-size:0.72rem;color:var(--adm-ink-muted);">Portail d’Administration · PK 26</div>
+            <div style="font-weight:800;font-size:1.05rem;letter-spacing:-0.02em;color:var(--adm-ink);">ETS AGBONOUGLA</div>
+            <div style="font-size:0.75rem;color:var(--adm-ink-muted);">Direction & Pilotage Atelier PK 26</div>
           </div>
         </div>
-        <span class="ds-tag ds-tag--micro">PROTECTION 2FA</span>
+        <span class="ds-tag ds-tag--micro">ESPACE SÉCURISÉ</span>
       </div>
 
-      <h1 id="auth-title" style="font-family:var(--adm-font-display);font-size:1.55rem;font-weight:700;letter-spacing:-0.03em;margin-bottom:6px;">
+      <h1 id="auth-title" style="font-family:var(--adm-font-display);font-size:1.45rem;font-weight:700;letter-spacing:-0.025em;color:var(--adm-ink);margin-bottom:6px;">
         Connexion Administrateur
       </h1>
-      <p style="font-size:0.83rem;color:var(--adm-ink-muted);margin-bottom:20px;">
-        Accès réservé à la direction commerciale et technique d’ETS AGBONOUGLA.
+      <p style="font-size:0.84rem;color:var(--adm-ink-muted);margin-bottom:22px;line-height:1.5;">
+        Accès réservé à la direction générale et commerciale d’ETS AGBONOUGLA.
       </p>
 
-      <form id="adm-login-form" novalidate style="display:flex;flex-direction:column;gap:14px;">
+      <form id="adm-login-form" novalidate style="display:flex;flex-direction:column;gap:15px;">
         <div class="ds-field">
-          <label class="ds-label" for="login-email">Identifiant professionnel</label>
+          <label class="ds-label" for="login-email">Identifiant professionnel (Email)</label>
           <input class="ds-input" type="email" id="login-email" name="email" value="direction@etsagbonougla.net" required autocomplete="username">
         </div>
 
@@ -53,42 +47,33 @@
           <input class="ds-input" type="password" id="login-password" name="password" value="EtsAgbonougla2026!" required autocomplete="current-password">
         </div>
 
-        <div class="ds-field">
-          <label class="ds-label" for="login-totp">Code 2FA TOTP (ou code d’évaluation <code>242600</code>)</label>
-          <input class="ds-input" type="text" id="login-totp" name="totp" value="242600" inputmode="numeric" maxlength="6" placeholder="000000" style="font-family:var(--adm-font-mono);letter-spacing:0.2em;font-weight:600;">
-        </div>
+        <div id="login-error" style="display:none;padding:11px 14px;border-radius:10px;background:var(--adm-red-bg);color:var(--adm-red);font-size:0.82rem;font-weight:600;"></div>
 
-        <div id="login-error" style="display:none;padding:10px 14px;border-radius:10px;background:var(--adm-red-bg);color:var(--adm-red);font-size:0.8rem;font-weight:600;"></div>
-
-        <button type="submit" class="ds-btn ds-btn--black" style="width:100%;padding:14px;">
-          Accéder au tableau de bord
-        </button>
-
-        <button type="button" id="btn-quick-demo" class="ds-btn ds-btn--stone" style="width:100%;">
-          Accès direct Évaluation Locale (DEV-ONLY)
+        <button type="submit" class="ds-btn ds-btn--black" id="btn-login-submit" style="width:100%;padding:13px;font-size:0.88rem;">
+          Se connecter au tableau de bord
         </button>
       </form>
 
-      <div class="ds-info-block" style="margin-top:18px;">
+      <div class="ds-info-block" style="margin-top:20px;">
         <span class="ds-check-dot" aria-hidden="true">✓</span>
-        <div>
-          <strong>Architecture multi-couches :</strong> Sessions <code>HttpOnly</code>, protection CSRF, hachage Argon2id et journal d’audit immuable activés.
+        <div style="font-size:0.77rem;line-height:1.45;">
+          <strong>Protection opérationnelle :</strong> Sessions chiffrées HttpOnly, protection CSRF, hachage Argon2id/Bcrypt et verrouillage anti-bruteforce actifs.
         </div>
       </div>
     </div>
   </div>
 
   <!-- ========================================================================
-       CADRE PRINCIPAL DE L'APPLICATION ADMIN
+       CADRE PRINCIPAL DE L'APPLICATION
        ======================================================================== -->
   <div class="adm-frame">
 
-    <!-- 1. BARRE DE NAVIGATION PILULE FLOTTANTE (Référence 1 : Deflexai) -->
-    <header class="adm-pillnav" role="navigation" aria-label="Navigation administration">
+    <!-- 1. BARRE DE NAVIGATION SUPÉRIEURE -->
+    <header class="adm-pillnav" role="navigation" aria-label="Navigation principale">
       <a href="#overview" class="adm-pillnav__brand" data-nav-target="overview">
-        <img src="assets/images/logo-ets-white.png" alt="ETS AGBONOUGLA" class="adm-pillnav__logo">
-        <span>Ets Agbonougla</span>
-        <span class="adm-pillnav__badge-env" id="adm-env-badge">SYNCHRO ACTIVE</span>
+        <img src="assets/images/logo-ets-white.png" alt="ETS AGBONOUGLA" class="adm-pillnav__logo" style="background:#0F172A;padding:3px;">
+        <span>ETS AGBONOUGLA</span>
+        <span class="adm-pillnav__badge-env" id="adm-env-badge">BD SQLITE CONNECTÉE</span>
       </a>
 
       <div class="adm-pillnav__links" role="tablist">
@@ -96,21 +81,14 @@
           Vue d’ensemble
         </button>
         <button type="button" class="adm-pillnav__tab" role="tab" aria-selected="false" data-tab="crm">
-          CRM Devis
+          Devis & CRM
           <span class="adm-pillnav__count" id="nav-crm-count">0</span>
         </button>
         <button type="button" class="adm-pillnav__tab" role="tab" aria-selected="false" data-tab="cms">
-          CMS Contenu
-          <span class="adm-pillnav__new-tag">LIVE</span>
-        </button>
-        <button type="button" class="adm-pillnav__tab" role="tab" aria-selected="false" data-tab="analytics">
-          Analytics
+          Contenus (CMS)
         </button>
         <button type="button" class="adm-pillnav__tab" role="tab" aria-selected="false" data-tab="security">
-          Sécurité
-        </button>
-        <button type="button" class="adm-pillnav__tab" role="tab" aria-selected="false" data-tab="design-system">
-          Design System
+          Sécurité & Audit
         </button>
       </div>
 
@@ -128,88 +106,38 @@
     </header>
 
     <!-- ======================================================================
-         ONGLET 1 : VUE D'ENSEMBLE (ORBITAL COMMAND HUB + KPI + DEMANDES)
+         ONGLET 1 : VUE D'ENSEMBLE (TABLEAU DE BORD EXÉCUTIF)
          ====================================================================== -->
     <section class="adm-section is-active" id="tab-overview" role="tabpanel">
 
-      <!-- Hub Orbital Concentrique inspiré de l'exemple 1 (Deflexai) -->
-      <div class="adm-orbital">
-        <div class="adm-orbital__rings" aria-hidden="true">
-          <div class="adm-orbital__ring adm-orbital__ring--1"></div>
-          <div class="adm-orbital__ring adm-orbital__ring--2"></div>
-          <div class="adm-orbital__ring adm-orbital__ring--3"></div>
-          <div class="adm-orbital__ring adm-orbital__ring--4"></div>
-        </div>
-
-        <!-- 6 Nœuds satellites cliquables sur les orbites -->
-        <button type="button" class="adm-orbit-node adm-orbit-node--tl" data-jump-tab="crm" title="Pipeline CRM & Devis">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg>
-        </button>
-        <button type="button" class="adm-orbit-node adm-orbit-node--ml" data-jump-tab="cms" title="Catalogue Conteneurs 20' & 40'">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-        </button>
-        <button type="button" class="adm-orbit-node adm-orbit-node--bl" data-jump-tab="analytics" title="Analytics & Audience Temps Réel">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </button>
-        <button type="button" class="adm-orbit-node adm-orbit-node--tr" data-jump-tab="cms" title="Galerie des Réalisations">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        </button>
-        <button type="button" class="adm-orbit-node adm-orbit-node--mr" data-jump-tab="security" title="Sécurité & Journal d'Audit">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </button>
-        <button type="button" class="adm-orbit-node adm-orbit-node--br" data-jump-tab="design-system" title="Design System & Composants">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-        </button>
-
-        <div class="adm-orbital__inner">
-          <div class="adm-orbital__trust-row">
-            <span class="adm-orbital__trust-item">
-              <span class="adm-dot-live"></span>
-              <strong>Atelier PK 26</strong> · Attinguié
-            </span>
-            <span aria-hidden="true">·</span>
-            <span class="adm-orbital__trust-item">
-              ★ <strong>2 500 m²</strong> Parc & Production
-            </span>
+      <!-- Bannière d'en-tête sobre et mature -->
+      <div class="adm-header-banner">
+        <div class="adm-header-banner__info">
+          <div class="adm-header-banner__badge">
+            <span class="adm-dot-live"></span>
+            Atelier Attinguié PK 26 · Direction Commerciale
           </div>
-
-          <h1 class="adm-orbital__title">
-            Pilotage centralisé des devis<br>& solutions modulaires
+          <h1 class="adm-header-banner__title">
+            Pilotage des Devis & Solutions Modulaires
           </h1>
-          <p class="adm-orbital__subtitle">
-            Des demandes entrantes de bureaux de chantier jusqu’à la mise à jour du catalogue public, pilotez toute l’activité d’ETS AGBONOUGLA en un seul espace sobre et sécurisé.
+          <p class="adm-header-banner__sub">
+            Traitement des demandes de chiffrage sous 24h, suivi de production à l'atelier PK 26 et administration du catalogue public.
           </p>
-
-          <div class="adm-orbital__ctas">
-            <button type="button" class="ds-btn ds-btn--black" id="btn-open-new-lead">
-              + Saisir une demande de devis
-            </button>
-            <button type="button" class="ds-btn ds-btn--outline" data-jump-tab="cms">
-              Modifier le contenu du site
-            </button>
-          </div>
-
-          <!-- Cascade des 3 cartes de notification en direct (Référence 1) -->
-          <div class="adm-stack-wrap" id="overview-stack-cards">
-            <div class="adm-stack-glow" aria-hidden="true"></div>
-            <!-- Rendu dynamique par admin.js -->
-          </div>
         </div>
-
-        <div class="adm-orbital__footer-strip">
-          <div class="adm-orbital__footer-label">Modules connectés en temps réel au site public etsagbonougla.net</div>
-          <div class="adm-orbital__modules-bar">
-            <span>CRM DEVIS</span>
-            <span>CATALOGUE CORTEN</span>
-            <span>GALERIE RÉALISATIONS</span>
-            <span>FICHES ATELIER PK 26</span>
-            <span>SEO & MÉTADONNÉES</span>
-            <span>AUDIT SÉCURITÉ</span>
-          </div>
+        <div class="adm-header-banner__actions">
+          <button type="button" class="ds-btn ds-btn--black" id="btn-quick-new-lead">
+            + Saisir un devis
+          </button>
+          <button type="button" class="ds-btn ds-btn--stone" id="btn-quick-export-csv">
+            Exporter les devis CSV
+          </button>
+          <button type="button" class="ds-btn ds-btn--outline" data-jump-tab="cms">
+            Coordonnées Atelier
+          </button>
         </div>
       </div>
 
-      <!-- 4 Cartes KPI -->
+      <!-- 4 Cartes KPI réelles -->
       <div class="adm-kpi-grid">
         <article class="adm-kpi-card">
           <div class="adm-kpi-top">
@@ -218,59 +146,60 @@
           </div>
           <div class="adm-kpi-value" id="kpi-total-leads">0</div>
           <div class="adm-kpi-foot">
-            <span class="adm-trend adm-trend--up" id="kpi-new-leads-badge">▲ 0 nouveau(x)</span>
-            <span style="color:var(--adm-ink-muted);">Pipeline commercial</span>
+            <span class="adm-trend adm-trend--up" id="kpi-new-leads-trend">0 nouveau(x)</span>
+            <span style="color:var(--adm-ink-muted);">Enregistrés en base</span>
           </div>
         </article>
 
         <article class="adm-kpi-card">
           <div class="adm-kpi-top">
-            <span>EN ÉTUDE / PRODUCTION</span>
-            <span class="ds-tag ds-tag--micro">ATELIER PK 26</span>
+            <span>NOUVEAUX DEVIS À TRAITER</span>
+            <span class="ds-tag ds-tag--micro">URGENT</span>
+          </div>
+          <div class="adm-kpi-value" id="kpi-new-leads" style="color:var(--adm-coral);">0</div>
+          <div class="adm-kpi-foot">
+            <span class="adm-trend adm-trend--warn">SLA Cible : 24 h</span>
+            <span style="color:var(--adm-ink-muted);">En attente d’étude</span>
+          </div>
+        </article>
+
+        <article class="adm-kpi-card">
+          <div class="adm-kpi-top">
+            <span>DOSSIERS ACTIFS / ATELIER</span>
+            <span class="ds-tag ds-tag--micro">PK 26</span>
           </div>
           <div class="adm-kpi-value" id="kpi-active-leads">0</div>
           <div class="adm-kpi-foot">
-            <span class="adm-trend adm-trend--warn">SLA Cible : 24 h</span>
-            <span style="color:var(--adm-ink-muted);">Dossiers actifs</span>
+            <span class="adm-trend adm-trend--up">Étude ou Production</span>
+            <span style="color:var(--adm-ink-muted);">Dossiers en cours</span>
           </div>
         </article>
 
         <article class="adm-kpi-card">
           <div class="adm-kpi-top">
-            <span>CATALOGUE & RÉALISATIONS</span>
-            <span class="ds-tag ds-tag--micro">CMS PUBLIC</span>
+            <span>SOLUTIONS & RÉALISATIONS</span>
+            <span class="ds-tag ds-tag--micro">CMS</span>
           </div>
           <div class="adm-kpi-value" id="kpi-cms-items">7</div>
           <div class="adm-kpi-foot">
-            <span class="adm-trend adm-trend--neutral" id="kpi-cms-detail">4 solutions · 3 projets</span>
-            <span style="color:var(--adm-ink-muted);">En ligne</span>
-          </div>
-        </article>
-
-        <article class="adm-kpi-card">
-          <div class="adm-kpi-top">
-            <span>ÉVÉNEMENTS & CLICS DEVIS</span>
-            <span class="ds-tag ds-tag--micro">ANALYTICS</span>
-          </div>
-          <div class="adm-kpi-value" id="kpi-analytics-events">0</div>
-          <div class="adm-kpi-foot">
-            <span class="adm-trend adm-trend--up" id="kpi-analytics-sub">Mesure sans cookie</span>
-            <span style="color:var(--adm-ink-muted);">Temps réel</span>
+            <span class="adm-trend adm-trend--neutral" id="kpi-cms-sub">4 modèles · 3 chantiers</span>
+            <span style="color:var(--adm-ink-muted);">Catalogue public</span>
           </div>
         </article>
       </div>
 
-      <!-- Grille inférieure Vue d'ensemble : Demandes récentes + Accès rapides -->
+      <!-- Grille inférieure : Dernières demandes + Infos de contact rapides -->
       <div class="ds-bento-showcase">
         <div class="ds-card ds-col-8">
           <div class="ds-card__head">
             <div>
-              <div class="ds-card__eyebrow">Flux commercial entrant</div>
-              <h2 class="ds-card__title">Dernières demandes de devis</h2>
+              <div class="ds-card__eyebrow">Flux commercial récent</div>
+              <h2 class="ds-card__title">Dernières demandes de devis enregistrées</h2>
             </div>
             <div style="display:flex;gap:8px;">
-              <button type="button" class="ds-btn ds-btn--stone ds-btn--sm" id="btn-export-csv-quick">Exporter CSV</button>
-              <button type="button" class="ds-btn ds-btn--outline ds-btn--sm" data-jump-tab="crm">Voir tout le CRM →</button>
+              <button type="button" class="ds-btn ds-btn--outline ds-btn--sm" data-jump-tab="crm">
+                Voir tout le CRM →
+              </button>
             </div>
           </div>
 
@@ -278,16 +207,16 @@
             <table class="adm-table">
               <thead>
                 <tr>
+                  <th>Date</th>
                   <th>Référence</th>
-                  <th>Prospect / Société</th>
-                  <th>Module souhaité</th>
-                  <th>Localisation</th>
+                  <th>Prospect / Entreprise</th>
+                  <th>Module</th>
                   <th>Statut</th>
-                  <th>Action</th>
+                  <th style="text-align:right;">Action</th>
                 </tr>
               </thead>
               <tbody id="overview-leads-tbody">
-                <!-- Peuplé par admin.js -->
+                <!-- Rendu dynamique par admin.js -->
               </tbody>
             </table>
           </div>
@@ -295,526 +224,331 @@
 
         <div class="ds-card ds-col-4" style="display:flex;flex-direction:column;justify-content:space-between;gap:16px;">
           <div>
-            <div class="ds-card__eyebrow">Raccourcis de gestion</div>
-            <h2 class="ds-card__title" style="margin-bottom:14px;">Actions rapides</h2>
+            <div class="ds-card__eyebrow">Informations & Coordonnées</div>
+            <h2 class="ds-card__title" style="margin-bottom:14px;">Atelier Attinguié PK 26</h2>
 
-            <div style="display:flex;flex-direction:column;gap:10px;">
-              <div class="ds-cell" data-jump-tab="cms" style="cursor:pointer;">
+            <div style="display:flex;flex-direction:column;gap:12px;font-size:0.84rem;">
+              <div class="ds-cell ds-cell--stone">
                 <div>
-                  <div style="font-weight:700;font-size:0.86rem;">Mettre à jour le Hero & Contacts</div>
-                  <div style="font-size:0.74rem;color:var(--adm-ink-muted);">Téléphone, WhatsApp, Titre & Devis</div>
+                  <div style="font-size:0.72rem;color:var(--adm-ink-muted);text-transform:uppercase;font-weight:700;">Téléphone Principal</div>
+                  <div style="font-weight:700;" id="quick-phone-val">+225 07 07 68 38 68</div>
                 </div>
-                <span class="ds-btn ds-btn--circle" style="width:32px;height:32px;">→</span>
+                <a href="tel:+2250707683868" class="ds-btn ds-btn--stone ds-btn--sm" id="quick-phone-btn">Appeler</a>
               </div>
 
-              <div class="ds-cell ds-cell--stone" data-jump-tab="cms" data-cms-sub="projects" style="cursor:pointer;">
+              <div class="ds-cell ds-cell--stone">
                 <div>
-                  <div style="font-weight:700;font-size:0.86rem;">Ajouter une réalisation chantier</div>
-                  <div style="font-size:0.74rem;color:var(--adm-ink-muted);">Photos réelles du parc & besoin client</div>
+                  <div style="font-size:0.72rem;color:var(--adm-ink-muted);text-transform:uppercase;font-weight:700;">WhatsApp Commercial</div>
+                  <div style="font-weight:700;" id="quick-wa-val">+225 07 07 68 38 68</div>
                 </div>
-                <span class="ds-tag ds-tag--coral">+ AJOUTER</span>
+                <a href="https://wa.me/2250707683868" target="_blank" rel="noopener" class="ds-btn ds-btn--stone ds-btn--sm" id="quick-wa-btn">Ouvrir</a>
               </div>
 
-              <div class="ds-cell" id="btn-seed-demo-leads" style="cursor:pointer;">
+              <div class="ds-cell ds-cell--stone">
                 <div>
-                  <div style="font-weight:700;font-size:0.86rem;">Charger 4 dossiers types (DEV-ONLY)</div>
-                  <div style="font-size:0.74rem;color:var(--adm-ink-muted);">Simuler un pipeline chantier complet</div>
+                  <div style="font-size:0.72rem;color:var(--adm-ink-muted);text-transform:uppercase;font-weight:700;">Localisation Atelier</div>
+                  <div style="font-size:0.8rem;color:var(--adm-ink-soft);" id="quick-address-val">Attinguié, Autoroute du Nord PK 26 — Abidjan</div>
                 </div>
-                <span class="ds-tag ds-tag--micro">SEED</span>
               </div>
             </div>
           </div>
 
-          <div class="ds-info-block">
-            <span class="ds-check-dot">✓</span>
-            <div>
-              <strong>Synchronisation directe :</strong> Toute demande soumise depuis <code>index.html</code> ou <code>ets_contact.html</code> remonte instantanément dans ce CRM.
-            </div>
+          <div style="padding-top:14px;border-top:1px solid var(--adm-border);margin-top:auto;">
+            <button type="button" class="ds-btn ds-btn--outline ds-btn--sm" style="width:100%;padding:10px 14px;" data-jump-tab="cms">
+              Modifier ces informations dans le CMS →
+            </button>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ======================================================================
-         ONGLET 2 : CRM COMMERCIAL (DEMANDES DE DEVIS, KANBAN & EXPORT ATELIER)
+         ONGLET 2 : DEVIS & CRM (PIPELINE COMMERCIAL COMPLET)
          ====================================================================== -->
     <section class="adm-section" id="tab-crm" role="tabpanel">
-      <div class="ds-card" style="margin-bottom:20px;">
-        <div class="ds-card__head" style="margin-bottom:18px;">
-          <div>
-            <div class="ds-card__eyebrow">Mini-CRM Commercial · Transmission Atelier Attinguié</div>
-            <h2 class="ds-card__title" style="font-size:1.35rem;">Gestion des demandes de devis & prospects</h2>
+
+      <!-- Barre d'outils CRM -->
+      <div class="adm-toolbar">
+        <div class="adm-toolbar__filters">
+          <div class="ds-search-pill" style="min-width:320px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--adm-ink-muted);flex-shrink:0;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="crm-search" placeholder="Rechercher par référence, nom, tél, entreprise, ville...">
           </div>
 
-          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-            <!-- Barre de recherche pilule du Design System (Référence 2) -->
-            <div class="ds-search-pill">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              <input type="search" id="crm-search-input" placeholder="Rechercher un nom, téléphone, réf...">
-              <select class="ds-search-pill__select" id="crm-type-filter" aria-label="Filtrer par produit">
-                <option value="ALL">Tous modules ▾</option>
-                <option value="Bureau">Bureaux de chantier</option>
-                <option value="Base-vie">Bases-vie 40'</option>
-                <option value="Sanitaire">Sanitaires / Vestiaires</option>
-                <option value="Stockage">Stockage / Technique</option>
-              </select>
-            </div>
+          <select class="ds-select" id="crm-filter-status" style="width:auto;min-width:180px;padding:9px 14px;">
+            <option value="ALL">Tous les statuts</option>
+            <option value="Nouveau">Nouveau</option>
+            <option value="Étude en cours">Étude en cours</option>
+            <option value="Devis envoyé">Devis envoyé</option>
+            <option value="Validé / En production">Validé / En production</option>
+            <option value="Livré">Livré</option>
+            <option value="Archivé">Archivé</option>
+          </select>
 
-            <!-- Segmented Control Liste / Kanban (Référence 2) -->
-            <div class="ds-segmented" role="group" aria-label="Mode d'affichage CRM">
-              <button type="button" class="ds-segmented__btn is-active" data-crm-view="list">Vue Liste</button>
-              <button type="button" class="ds-segmented__btn" data-crm-view="kanban">Pipeline Kanban</button>
-            </div>
-
-            <button type="button" class="ds-btn ds-btn--stone ds-btn--sm" id="btn-crm-export-csv">Exporter CSV</button>
-            <button type="button" class="ds-btn ds-btn--black ds-btn--sm" id="btn-crm-add-lead">+ Nouveau devis</button>
-          </div>
+          <select class="ds-select" id="crm-filter-type" style="width:auto;min-width:190px;padding:9px 14px;">
+            <option value="ALL">Tous les modules</option>
+            <option value="Bureau">Bureaux de chantier</option>
+            <option value="Base-vie">Bases-vie</option>
+            <option value="Sanitaire">Sanitaires & Vestiaires</option>
+            <option value="Stockage">Stockage Dry & Corten</option>
+            <option value="Sur-mesure">Aménagements sur-mesure</option>
+          </select>
         </div>
 
-        <!-- Filtres Tags & Badges (Référence 2 : Tags & Badges) -->
-        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;" id="crm-status-pills">
-          <button type="button" class="ds-tag ds-tag--coral" data-status-filter="ALL">TOUS</button>
-          <button type="button" class="ds-tag ds-tag--stone" data-status-filter="Nouveau">NOUVEAU</button>
-          <button type="button" class="ds-tag ds-tag--stone" data-status-filter="Étude en cours">ÉTUDE EN COURS</button>
-          <button type="button" class="ds-tag ds-tag--stone" data-status-filter="Devis envoyé">DEVIS ENVOYÉ</button>
-          <button type="button" class="ds-tag ds-tag--stone" data-status-filter="Validé / En production">EN PRODUCTION PK 26</button>
-          <button type="button" class="ds-tag ds-tag--stone" data-status-filter="Livré">LIVRÉ</button>
-          <button type="button" class="ds-tag ds-tag--micro" id="crm-clear-filters">Réinitialiser ×</button>
+        <div class="adm-toolbar__actions">
+          <button type="button" class="ds-btn ds-btn--stone" id="btn-crm-export">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Exporter CSV
+          </button>
+          <button type="button" class="ds-btn ds-btn--black" id="btn-crm-add">
+            + Saisir un devis
+          </button>
         </div>
       </div>
 
-      <!-- Vue 1 : Tableau CRM complet -->
-      <div id="crm-view-list" class="ds-card">
+      <!-- Tableau complet des devis -->
+      <div class="adm-table-wrap">
+        <table class="adm-table" id="crm-leads-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Référence</th>
+              <th>Prospect / Entreprise</th>
+              <th>Téléphone</th>
+              <th>Module souhaité</th>
+              <th>Qté</th>
+              <th>Délai</th>
+              <th>Statut</th>
+              <th style="text-align:right;">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="crm-leads-tbody">
+            <!-- Rendu dynamique par admin.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:14px;font-size:0.8rem;color:var(--adm-ink-muted);">
+        <div id="crm-results-count">Affichage des demandes...</div>
+        <div>Trié par ordre chronologique décroissant (plus récentes en premier)</div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         ONGLET 3 : CONTENUS (CMS)
+         ====================================================================== -->
+    <section class="adm-section" id="tab-cms" role="tabpanel">
+
+      <div class="adm-subnav">
+        <button type="button" class="adm-subnav__btn is-active" data-cms-tab="settings">Coordonnées & Atelier</button>
+        <button type="button" class="adm-subnav__btn" data-cms-tab="products">Solutions Modulaires</button>
+        <button type="button" class="adm-subnav__btn" data-cms-tab="projects">Réalisations Livrées</button>
+      </div>
+
+      <!-- Sous-panneau 1 : Coordonnées de l'entreprise -->
+      <div class="adm-cms-panel is-active" id="cms-panel-settings">
+        <div class="ds-card" style="max-width:820px;">
+          <div class="ds-card__head">
+            <div>
+              <div class="ds-card__eyebrow">Paramètres permanents</div>
+              <h2 class="ds-card__title">Coordonnées officielles d’ETS AGBONOUGLA</h2>
+            </div>
+            <button type="button" class="ds-btn ds-btn--black" id="btn-save-settings">
+              Enregistrer les modifications
+            </button>
+          </div>
+
+          <form id="form-cms-settings" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+            <div class="ds-field">
+              <label class="ds-label" for="cfg-company-name">Nom de l'entreprise</label>
+              <input class="ds-input" type="text" id="cfg-company-name" name="company_name">
+            </div>
+
+            <div class="ds-field">
+              <label class="ds-label" for="cfg-quote-sla">Délai d’engagement devis</label>
+              <input class="ds-input" type="text" id="cfg-quote-sla" name="quote_sla" placeholder="24 h">
+            </div>
+
+            <div class="ds-field">
+              <label class="ds-label" for="cfg-phone-primary">Téléphone principal (appels)</label>
+              <input class="ds-input" type="text" id="cfg-phone-primary" name="phone_primary">
+            </div>
+
+            <div class="ds-field">
+              <label class="ds-label" for="cfg-phone-secondary">Téléphone secondaire</label>
+              <input class="ds-input" type="text" id="cfg-phone-secondary" name="phone_secondary">
+            </div>
+
+            <div class="ds-field">
+              <label class="ds-label" for="cfg-whatsapp">Numéro WhatsApp (sans espace ni +)</label>
+              <input class="ds-input" type="text" id="cfg-whatsapp" name="whatsapp_number" placeholder="2250707683868">
+            </div>
+
+            <div class="ds-field">
+              <label class="ds-label" for="cfg-email">Email de contact officiel</label>
+              <input class="ds-input" type="email" id="cfg-email" name="email_contact">
+            </div>
+
+            <div class="ds-field" style="grid-column:span 2;">
+              <label class="ds-label" for="cfg-address">Adresse atelier & parc</label>
+              <input class="ds-input" type="text" id="cfg-address" name="address_workshop">
+            </div>
+
+            <div class="ds-field">
+              <label class="ds-label" for="cfg-surface">Superficie atelier PK 26</label>
+              <input class="ds-input" type="text" id="cfg-surface" name="workshop_surface" placeholder="2 500 m²">
+            </div>
+
+            <div class="ds-field">
+              <label class="ds-label" for="cfg-lamano">Signature & Développeur (LAMANO DESIGN)</label>
+              <input class="ds-input" type="url" id="cfg-lamano" name="lamano_design_url" placeholder="https://lamanodesign.com">
+            </div>
+
+            <div class="ds-field" style="grid-column:span 2;">
+              <label class="ds-label" for="cfg-manifesto">Texte engagement / Manifeste atelier</label>
+              <textarea class="ds-textarea" id="cfg-manifesto" name="manifesto_quote"></textarea>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Sous-panneau 2 : Catalogue Solutions Modulaires -->
+      <div class="adm-cms-panel" id="cms-panel-products" style="display:none;">
+        <div class="adm-toolbar">
+          <div>
+            <h2 class="ds-card__title">Solutions Modulaires au Catalogue</h2>
+            <div style="font-size:0.8rem;color:var(--adm-ink-muted);">Modèles présentés sur la page Solutions et dans les formulaires</div>
+          </div>
+          <button type="button" class="ds-btn ds-btn--black" id="btn-open-add-product">
+            + Ajouter un modèle
+          </button>
+        </div>
+
         <div class="adm-table-wrap">
           <table class="adm-table">
             <thead>
               <tr>
-                <th>Réf. & Date</th>
-                <th>Client & Entreprise</th>
-                <th>Coordonnées directes</th>
-                <th>Configuration demandée</th>
-                <th>Chantier / Délai</th>
-                <th>Statut pipeline</th>
-                <th>Actions</th>
+                <th>Image</th>
+                <th>Titre du Modèle</th>
+                <th>Catégorie</th>
+                <th>Dimensions</th>
+                <th>Description</th>
+                <th style="text-align:right;">Action</th>
               </tr>
             </thead>
-            <tbody id="crm-full-tbody">
+            <tbody id="cms-products-tbody">
               <!-- Peuplé par admin.js -->
             </tbody>
           </table>
         </div>
       </div>
 
-      <!-- Vue 2 : Pipeline Kanban par étape -->
-      <div id="crm-view-kanban" style="display:none;">
-        <div class="adm-kanban" id="crm-kanban-board">
-          <!-- Peuplé par admin.js -->
+      <!-- Sous-panneau 3 : Réalisations & Projets -->
+      <div class="adm-cms-panel" id="cms-panel-projects" style="display:none;">
+        <div class="adm-toolbar">
+          <div>
+            <h2 class="ds-card__title">Chantiers & Réalisations Livrées</h2>
+            <div style="font-size:0.8rem;color:var(--adm-ink-muted);">Études de cas réelles déployées sur le territoire ivoirien</div>
+          </div>
+          <button type="button" class="ds-btn ds-btn--black" id="btn-open-add-project">
+            + Ajouter une réalisation
+          </button>
+        </div>
+
+        <div class="adm-table-wrap">
+          <table class="adm-table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Projet / Titre</th>
+                <th>Lieu</th>
+                <th>Année</th>
+                <th>Besoin &amp; Solution</th>
+                <th style="text-align:right;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="cms-projects-tbody">
+              <!-- Peuplé par admin.js -->
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
 
     <!-- ======================================================================
-         ONGLET 3 : CMS (PRODUITS, RÉALISATIONS, HERO & COORDONNÉES, FAQ, SEO)
+         ONGLET 4 : SÉCURITÉ & AUDIT (JOURNAL IMMUABLE SQLITE)
          ====================================================================== -->
-    <section class="adm-section" id="tab-cms" role="tabpanel">
-      <div class="ds-card" style="margin-bottom:20px;">
-        <div class="ds-card__head" style="margin-bottom:0;">
-          <div>
-            <div class="ds-card__eyebrow">Gestionnaire de contenu sans code (Synchronisé avec le site public)</div>
-            <h2 class="ds-card__title" style="font-size:1.35rem;">CMS · Catalogue, Réalisations & Paramètres du Site</h2>
-          </div>
+    <section class="adm-section" id="tab-security" role="tabpanel">
 
-          <div class="ds-segmented" id="cms-subnav">
-            <button type="button" class="ds-segmented__btn is-active" data-cms-pane="settings">Hero & Coordonnées</button>
-            <button type="button" class="ds-segmented__btn" data-cms-pane="products">Solutions (Produits)</button>
-            <button type="button" class="ds-segmented__btn" data-cms-pane="projects">Réalisations</button>
-            <button type="button" class="ds-segmented__btn" data-cms-pane="faq">FAQ & Carrières</button>
-            <button type="button" class="ds-segmented__btn" data-cms-pane="seo">SEO & Partage</button>
+      <div class="adm-header-banner" style="margin-bottom:20px;">
+        <div class="adm-header-banner__info">
+          <div class="adm-header-banner__badge" style="color:var(--adm-green);">
+            <span class="adm-dot-live"></span>
+            Surveillance & Intégrité du Système
           </div>
+          <h1 class="adm-header-banner__title">
+            Sécurité, Sessions &amp; Journal d’Audit
+          </h1>
+          <p class="adm-header-banner__sub">
+            Traçabilité intégrale de chaque modification de devis, connexion d'administrateur et mise à jour de contenu.
+          </p>
         </div>
-      </div>
-
-      <!-- Sous-volet CMS 1 : Hero, Textes, Coordonnées & Signature LAMANO DESIGN -->
-      <div class="cms-pane" id="cms-pane-settings">
-        <div class="ds-bento-showcase">
-          <form class="ds-card ds-col-8" id="cms-settings-form">
-            <div class="ds-card__head">
-              <div>
-                <div class="ds-card__eyebrow">Édition directe de la page d’accueil et du pied de page</div>
-                <h3 class="ds-card__title">Textes du Hero, Coordonnées & Lien Développeur</h3>
-              </div>
-              <button type="submit" class="ds-btn ds-btn--black ds-btn--sm">Enregistrer & Publier sur le site</button>
-            </div>
-
-            <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;">
-              <div class="ds-field">
-                <label class="ds-label" for="set-hero-word">Titre géant d’arrière-plan Hero</label>
-                <input class="ds-input" type="text" id="set-hero-word" name="hero_bg_word" value="ETS AGBONOUGLA">
-              </div>
-              <div class="ds-field">
-                <label class="ds-label" for="set-hero-callout">Accroche du module Devis (Hero)</label>
-                <input class="ds-input" type="text" id="set-hero-callout" name="hero_callout_title" value="Déployez vos espaces en quelques jours">
-              </div>
-              <div class="ds-field" style="grid-column:span 2;">
-                <label class="ds-label" for="set-manifesto">Citation Manifeste (Animation de lecture mot par mot au scroll)</label>
-                <textarea class="ds-textarea" id="set-manifesto" name="manifesto_quote">Nous concevons et aménageons à Attinguié des structures modulaires en acier Corten pensées pour durer sur les chantiers les plus exigeants de Côte d’Ivoire.</textarea>
-              </div>
-              <div class="ds-field">
-                <label class="ds-label" for="set-phone">Téléphone principal (cliquable)</label>
-                <input class="ds-input" type="text" id="set-phone" name="phone_primary" value="+225 07 07 68 38 68">
-              </div>
-              <div class="ds-field">
-                <label class="ds-label" for="set-whatsapp">Numéro WhatsApp (format international)</label>
-                <input class="ds-input" type="text" id="set-whatsapp" name="whatsapp_number" value="2250707683868">
-              </div>
-              <div class="ds-field">
-                <label class="ds-label" for="set-email">Email officiel de réception Devis</label>
-                <input class="ds-input" type="email" id="set-email" name="email_contact" value="info@etsagbonougla.net">
-              </div>
-              <div class="ds-field">
-                <label class="ds-label" for="set-address">Adresse de l’atelier & parc</label>
-                <input class="ds-input" type="text" id="set-address" name="address_workshop" value="Attinguié, Autoroute du Nord PK 26 — Abidjan">
-              </div>
-              <div class="ds-field" style="grid-column:span 2;">
-                <label class="ds-label" for="set-lamano">URL Portfolio Développeur (<code>LAMANO_DESIGN_URL</code> dans le footer)</label>
-                <input class="ds-input" type="url" id="set-lamano" name="lamano_design_url" value="https://lamanodesign.com">
-              </div>
-            </div>
-          </form>
-
-          <div class="ds-card ds-col-4" style="display:flex;flex-direction:column;justify-content:space-between;gap:14px;">
-            <div>
-              <div class="ds-card__eyebrow">Prévisualisation instantanée</div>
-              <h3 class="ds-card__title" style="margin-bottom:12px;">Aperçu du bloc Hero</h3>
-              <div style="background:#111317;color:#FFFFFF;padding:22px;border-radius:14px;border:1px solid rgba(255,255,255,0.15);">
-                <div style="font-size:0.68rem;letter-spacing:0.16em;color:rgba(255,255,255,0.55);margin-bottom:6px;" id="preview-hero-word">ETS AGBONOUGLA</div>
-                <div style="font-size:1.15rem;font-weight:600;line-height:1.3;margin-bottom:14px;" id="preview-hero-callout">Déployez vos espaces en quelques jours</div>
-                <span style="display:inline-block;background:#FFFFFF;color:#0A0A0A;font-size:0.72rem;font-weight:700;padding:9px 16px;border-radius:6px;">DEMANDER UN DEVIS</span>
-              </div>
-            </div>
-
-            <div class="ds-info-block">
-              <span class="ds-check-dot">✓</span>
-              <div>
-                <strong>Règle métier respectée :</strong> Aucune mention de villas ou mobil-homes résidentiels non confirmés. Positionnement 100 % professionnel et chantier.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sous-volet CMS 2 : Solutions / Produits -->
-      <div class="cms-pane" id="cms-pane-products" style="display:none;">
-        <div class="ds-bento-showcase">
-          <div class="ds-card ds-col-7">
-            <div class="ds-card__head">
-              <div>
-                <div class="ds-card__eyebrow">Gammes affichées sur le site</div>
-                <h3 class="ds-card__title">Catalogue des conteneurs modulaires</h3>
-              </div>
-            </div>
-            <div id="cms-products-list" style="display:flex;flex-direction:column;gap:12px;">
-              <!-- Peuplé par admin.js -->
-            </div>
-          </div>
-
-          <form class="ds-card ds-col-5" id="cms-product-form">
-            <div class="ds-card__head">
-              <div>
-                <div class="ds-card__eyebrow">Ajouter ou modifier une gamme</div>
-                <h3 class="ds-card__title" id="product-form-title">Nouvelle solution modulaire</h3>
-              </div>
-              <button type="button" class="ds-tag ds-tag--micro" id="btn-reset-product-form">Nouveau</button>
-            </div>
-            <input type="hidden" id="prod-id" value="0">
-            <div style="display:flex;flex-direction:column;gap:12px;">
-              <div class="ds-field">
-                <label class="ds-label">Intitulé du module</label>
-                <input class="ds-input" type="text" id="prod-title" required placeholder="Ex: Bureau de Chantier 20 pieds">
-              </div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-                <div class="ds-field">
-                  <label class="ds-label">Catégorie</label>
-                  <select class="ds-select" id="prod-category">
-                    <option value="Bureaux & Bases-vie">Bureaux & Bases-vie</option>
-                    <option value="Sanitaires & Hygiène">Sanitaires & Hygiène</option>
-                    <option value="Stockage & Technique">Stockage & Technique</option>
-                    <option value="Frigorifique (Reefer)">Frigorifique (Reefer)</option>
-                  </select>
-                </div>
-                <div class="ds-field">
-                  <label class="ds-label">Dimensions confirmées</label>
-                  <input class="ds-input" type="text" id="prod-dimensions" value="20 pieds (6,05 × 2,44 m)">
-                </div>
-              </div>
-              <div class="ds-field">
-                <label class="ds-label">Photo réelle de l’atelier (actif local vérifié)</label>
-                <select class="ds-select" id="prod-image">
-                  <option value="assets/images/conteneurs-amenages-toitures.jpg">12.jpg — Bureau modulaire blanc avec climatisation</option>
-                  <option value="assets/images/poste-garde-logistique.jpg">15.jpg — Base-vie 40 pieds en finition atelier</option>
-                  <option value="19.jpg">19.jpg — Alignement de modules sur parc Attinguié</option>
-                  <option value="assets/images/bureau-conteneur-split.jpg">21.jpg — Module sanitaire et vestiaire équipé</option>
-                  <option value="assets/images/equipe-technique-atelier.jpg">27.jpg — Conteneur maritime Corten stockage</option>
-                  <option value="assets/images/conteneur-40ft-corten.jpg">61.jpeg — Guérite & bureau vitré panoramique</option>
-                </select>
-              </div>
-              <div class="ds-field">
-                <label class="ds-label">Descriptif technique court</label>
-                <textarea class="ds-textarea" id="prod-desc" required placeholder="Isolation, électricité, menuiserie..."></textarea>
-              </div>
-              <button type="submit" class="ds-btn ds-btn--black">Enregistrer la fiche produit</button>
-            </div>
-          </form>
-        </div>
-      </div>
-
-      <!-- Sous-volet CMS 3 : Réalisations (Projets) -->
-      <div class="cms-pane" id="cms-pane-projects" style="display:none;">
-        <div class="ds-bento-showcase">
-          <div class="ds-card ds-col-7">
-            <div class="ds-card__head">
-              <div>
-                <div class="ds-card__eyebrow">Structure Besoin / Solution / Résultat</div>
-                <h3 class="ds-card__title">Réalisations publiées</h3>
-              </div>
-            </div>
-            <div id="cms-projects-list" style="display:flex;flex-direction:column;gap:12px;">
-              <!-- Peuplé par admin.js -->
-            </div>
-          </div>
-
-          <form class="ds-card ds-col-5" id="cms-project-form">
-            <div class="ds-card__head">
-              <div>
-                <div class="ds-card__eyebrow">Nouvelle fiche réalisation</div>
-                <h3 class="ds-card__title">Ajouter un projet livré</h3>
-              </div>
-            </div>
-            <input type="hidden" id="proj-id" value="0">
-            <div style="display:flex;flex-direction:column;gap:11px;">
-              <div class="ds-field">
-                <label class="ds-label">Titre de la réalisation</label>
-                <input class="ds-input" type="text" id="proj-title" required placeholder="Ex: Base-vie chantier routier">
-              </div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-                <div class="ds-field">
-                  <label class="ds-label">Catégorie</label>
-                  <input class="ds-input" type="text" id="proj-category" value="Bureaux de chantier">
-                </div>
-                <div class="ds-field">
-                  <label class="ds-label">Localisation réelle</label>
-                  <input class="ds-input" type="text" id="proj-location" value="Attinguié · Abidjan">
-                </div>
-              </div>
-              <div class="ds-field">
-                <label class="ds-label">Photographie réelle du projet</label>
-                <select class="ds-select" id="proj-image">
-                  <option value="19.jpg">19.jpg — Complexe bureaux de chantier</option>
-                  <option value="13.jpg">13.jpg — Unités techniques & stockage</option>
-                  <option value="assets/images/conteneur-40ft-corten.jpg">61.jpeg — Guérite vitrée zone industrielle</option>
-                  <option value="assets/images/poste-garde-logistique.jpg">15.jpg — Module 40 pieds aménagé</option>
-                  <option value="24.jpg">24.jpg — Livraison sur camion-grue</option>
-                </select>
-              </div>
-              <div class="ds-field">
-                <label class="ds-label">1. Besoin exprimé (Goal)</label>
-                <input class="ds-input" type="text" id="proj-need" required placeholder="Problématique du chantier...">
-              </div>
-              <div class="ds-field">
-                <label class="ds-label">2. Solution technique fabriquée</label>
-                <input class="ds-input" type="text" id="proj-solution" required placeholder="Aménagement réalisé en atelier...">
-              </div>
-              <div class="ds-field">
-                <label class="ds-label">3. Résultat sur site (Result)</label>
-                <input class="ds-input" type="text" id="proj-result" required placeholder="Mise en service et impact...">
-              </div>
-              <button type="submit" class="ds-btn ds-btn--black">Publier la réalisation</button>
-            </div>
-          </form>
-        </div>
-      </div>
-
-      <!-- Sous-volet CMS 4 : FAQ & Carrières -->
-      <div class="cms-pane" id="cms-pane-faq" style="display:none;">
-        <div class="ds-bento-showcase">
-          <div class="ds-card ds-col-7">
-            <div class="ds-card__head">
-              <div>
-                <div class="ds-card__eyebrow">Composant Accordéon du Design System</div>
-                <h3 class="ds-card__title">Questions Fréquentes (FAQ)</h3>
-              </div>
-            </div>
-            <div id="cms-faq-list">
-              <!-- Peuplé par admin.js -->
-            </div>
-          </div>
-
-          <form class="ds-card ds-col-5" id="cms-faq-form">
-            <div class="ds-card__head">
-              <h3 class="ds-card__title">Ajouter une question FAQ</h3>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:12px;">
-              <div class="ds-field">
-                <label class="ds-label">Question client</label>
-                <input class="ds-input" type="text" id="faq-q" required placeholder="Ex: Quels sont les délais de livraison ?">
-              </div>
-              <div class="ds-field">
-                <label class="ds-label">Réponse claire et vérifiée</label>
-                <textarea class="ds-textarea" id="faq-a" required placeholder="Réponse technique précise..."></textarea>
-              </div>
-              <button type="submit" class="ds-btn ds-btn--black">Ajouter à la FAQ</button>
-            </div>
-          </form>
-        </div>
-      </div>
-
-      <!-- Sous-volet CMS 5 : SEO & Métadonnées par page -->
-      <div class="cms-pane" id="cms-pane-seo" style="display:none;">
-        <div class="ds-card">
-          <div class="ds-card__head">
-            <div>
-              <div class="ds-card__eyebrow">Référencement naturel & OpenGraph (Vraies images de partage, pas le favicon)</div>
-              <h3 class="ds-card__title">Métadonnées SEO par page publique</h3>
-            </div>
-          </div>
-          <div class="adm-table-wrap">
-            <table class="adm-table">
-              <thead>
-                <tr>
-                  <th>Fichier Page</th>
-                  <th>Balise Title</th>
-                  <th>Meta Description</th>
-                  <th>Image OpenGraph</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody id="cms-seo-tbody">
-                <!-- Peuplé par admin.js -->
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================================================================
-         ONGLET 4 : ANALYTICS TEMPS RÉEL (SANS FAUX COMPTEURS)
-         ====================================================================== -->
-    <section class="adm-section" id="tab-analytics" role="tabpanel">
-      <div class="ds-card" style="margin-bottom:20px;">
-        <div class="ds-card__head" style="margin-bottom:0;">
-          <div>
-            <div class="ds-card__eyebrow">Pipeline d’audience interne · Anonymisation SHA-256 quotidienne · Respect de DoNotTrack</div>
-            <h2 class="ds-card__title" style="font-size:1.35rem;">Analytics Temps Réel & Clics sur les CTA</h2>
-          </div>
-          <div style="display:flex;gap:8px;">
-            <button type="button" class="ds-btn ds-btn--stone ds-btn--sm" id="btn-simulate-pageview">Simuler visite test (DEV)</button>
-            <button type="button" class="ds-btn ds-btn--outline ds-btn--sm" id="btn-clear-analytics">Purger événements locaux</button>
-          </div>
+        <div class="adm-header-banner__actions">
+          <button type="button" class="ds-btn ds-btn--stone" id="btn-refresh-security">
+            Actualiser les journaux
+          </button>
         </div>
       </div>
 
       <div class="ds-bento-showcase">
+        <div class="ds-card ds-col-4">
+          <div class="ds-card__eyebrow">Conformité & Protocoles</div>
+          <h2 class="ds-card__title" style="margin-bottom:14px;">Paramètres de protection</h2>
+
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:0.82rem;">
+            <div class="ds-cell ds-cell--stone">
+              <span>Sessions Administrateur</span>
+              <strong style="color:var(--adm-green);">HttpOnly + SameSite=Lax</strong>
+            </div>
+            <div class="ds-cell ds-cell--stone">
+              <span>Protection Formulaires</span>
+              <strong style="color:var(--adm-green);">Jeton CSRF Unitaire</strong>
+            </div>
+            <div class="ds-cell ds-cell--stone">
+              <span>Verrouillage Bruteforce</span>
+              <strong>5 échecs = 15 min lock</strong>
+            </div>
+            <div class="ds-cell ds-cell--stone">
+              <span>Base de données</span>
+              <strong id="sec-db-info">SQLite WAL Mode</strong>
+            </div>
+            <div class="ds-cell ds-cell--stone">
+              <span>Environnement PHP</span>
+              <strong id="sec-php-info">PHP 8.3</strong>
+            </div>
+          </div>
+        </div>
+
         <div class="ds-card ds-col-8">
           <div class="ds-card__head">
             <div>
-              <div class="ds-card__eyebrow">Évolution des sessions & pages vues</div>
-              <h3 class="ds-card__title">Activité enregistrée sur le site public</h3>
+              <div class="ds-card__eyebrow">Traçabilité légale</div>
+              <h2 class="ds-card__title">Journal d'audit des actions récentes</h2>
             </div>
-            <span class="ds-tag ds-tag--stone" id="analytics-honest-badge">DONNÉES RÉELLES</span>
           </div>
 
-          <div id="analytics-chart-box" style="padding:18px 0;">
-            <!-- Courbe SVG ou État vide honnête généré par admin.js -->
-          </div>
-        </div>
-
-        <div class="ds-card ds-col-4">
-          <div class="ds-card__head">
-            <div>
-              <div class="ds-card__eyebrow">Instrumentation <code>data-track</code></div>
-              <h3 class="ds-card__title">Clics par élément CTA</h3>
-            </div>
-          </div>
-          <div id="analytics-clicks-list" style="display:flex;flex-direction:column;gap:10px;">
-            <!-- Peuplé par admin.js -->
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================================================================
-         ONGLET 5 : SÉCURITÉ MULTI-COUCHES, SESSIONS & JOURNAL D'AUDIT
-         ====================================================================== -->
-    <section class="adm-section" id="tab-security" role="tabpanel">
-      <div class="ds-bento-showcase">
-        <div class="ds-card ds-col-5">
-          <div class="ds-card__head">
-            <div>
-              <div class="ds-card__eyebrow">Architecture de défense en profondeur</div>
-              <h2 class="ds-card__title">État des 6 couches de sécurité</h2>
-            </div>
-            <span class="ds-tag ds-tag--coral">ACTIF</span>
-          </div>
-
-          <div style="display:flex;flex-direction:column;gap:10px;">
-            <div class="ds-cell">
-              <div>
-                <div style="font-weight:700;font-size:0.84rem;">1. Transport & En-têtes HTTP</div>
-                <div style="font-size:0.74rem;color:var(--adm-ink-muted);">CSP, X-Frame-Options: DENY, nosniff</div>
-              </div>
-              <span class="adm-status adm-status--won">Vérifié</span>
-            </div>
-            <div class="ds-cell">
-              <div>
-                <div style="font-weight:700;font-size:0.84rem;">2. Authentification Argon2id + 2FA</div>
-                <div style="font-size:0.74rem;color:var(--adm-ink-muted);">Verrouillage après 5 échecs / 15 min</div>
-              </div>
-              <span class="adm-status adm-status--won">Actif</span>
-            </div>
-            <div class="ds-cell">
-              <div>
-                <div style="font-weight:700;font-size:0.84rem;">3. Sessions HttpOnly & SameSite=Strict</div>
-                <div style="font-size:0.74rem;color:var(--adm-ink-muted);">Protection contre le vol de cookie XSS</div>
-              </div>
-              <span class="adm-status adm-status--won">Actif</span>
-            </div>
-            <div class="ds-cell">
-              <div>
-                <div style="font-weight:700;font-size:0.84rem;">4. Contrôle des rôles & CSRF</div>
-                <div style="font-size:0.74rem;color:var(--adm-ink-muted);">Rôle actuel : <strong>OWNER (Propriétaire)</strong></div>
-              </div>
-              <span class="adm-status adm-status--won">Actif</span>
-            </div>
-            <div class="ds-cell">
-              <div>
-                <div style="font-weight:700;font-size:0.84rem;">5. Requêtes préparées PDO & Anti-spam</div>
-                <div style="font-size:0.74rem;color:var(--adm-ink-muted);">Honeypot invisible sur les formulaires devis</div>
-              </div>
-              <span class="adm-status adm-status--won">Actif</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="ds-card ds-col-7">
-          <div class="ds-card__head">
-            <div>
-              <div class="ds-card__eyebrow">Traçabilité en écriture seule (Couche 6)</div>
-              <h2 class="ds-card__title">Journal d’audit de sécurité immuable</h2>
-            </div>
-          </div>
           <div class="adm-table-wrap">
             <table class="adm-table">
               <thead>
                 <tr>
-                  <th>Horodatage</th>
+                  <th>Date &amp; Heure</th>
                   <th>Acteur</th>
                   <th>Action</th>
                   <th>Cible</th>
                   <th>Détails</th>
                 </tr>
               </thead>
-              <tbody id="security-audit-tbody">
+              <tbody id="sec-audit-tbody">
                 <!-- Peuplé par admin.js -->
               </tbody>
             </table>
@@ -823,197 +557,327 @@
       </div>
     </section>
 
-    <!-- ======================================================================
-         ONGLET 6 : PLANCHE DESIGN SYSTEM INTERACTIVE (Référence 2 reproduite)
-         ====================================================================== -->
-    <section class="adm-section" id="tab-design-system" role="tabpanel">
-      <h2 class="ds-showcase-title">Design System</h2>
-
-      <div class="ds-bento-showcase">
-        <!-- Bloc 1 : Buttons -->
-        <div class="ds-card ds-col-7">
-          <div class="ds-card__eyebrow" style="margin-bottom:16px;">Buttons</div>
-          <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:14px;">
-            <button type="button" class="ds-btn ds-btn--black" style="min-width:140px;">Button</button>
-            <button type="button" class="ds-btn ds-btn--outline" style="min-width:140px;">Button</button>
-            <button type="button" class="ds-btn ds-btn--circle" aria-label="Chevron">⌄</button>
-            <button type="button" class="ds-btn ds-btn--circle" aria-label="Filtre">≡</button>
-          </div>
-          <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
-            <button type="button" class="ds-btn ds-btn--stone" style="min-width:140px;">Button</button>
-            <div style="display:inline-flex;gap:6px;background:var(--adm-stone);padding:4px;border-radius:999px;">
-              <button type="button" class="ds-btn ds-btn--stone ds-btn--sm">Button</button>
-              <button type="button" class="ds-btn ds-btn--black ds-btn--sm">Button</button>
-            </div>
-            <button type="button" class="ds-btn ds-btn--circle" aria-label="Suivant">→</button>
-          </div>
-        </div>
-
-        <!-- Bloc 2 : Tags & Badges -->
-        <div class="ds-card ds-col-5">
-          <div class="ds-card__eyebrow" style="margin-bottom:16px;">Tags & Badges</div>
-          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px;">
-            <span class="ds-tag ds-tag--coral">ALL</span>
-            <span class="ds-tag ds-tag--stone">CHANTIER PK 26</span>
-            <span class="ds-tag ds-tag--stone">Dimensions ⌄</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-            <span style="font-size:0.78rem;font-weight:700;cursor:pointer;">Clear All ✕</span>
-            <span class="ds-tag ds-tag--micro">ACIER CORTEN</span>
-            <span class="ds-tag ds-tag--micro">ISO 20' / 40'</span>
-          </div>
-        </div>
-
-        <!-- Bloc 3 : Bread & Bullets -->
-        <div class="ds-col-5" style="display:flex;flex-direction:column;gap:16px;">
-          <div class="ds-card">
-            <div class="ds-card__eyebrow" style="margin-bottom:12px;">Bread</div>
-            <div style="display:flex;align-items:center;gap:10px;font-size:0.84rem;font-weight:600;">
-              <span>Accueil</span>
-              <span style="color:var(--adm-ink-muted);">·</span>
-              <span class="ds-tag ds-tag--stone" style="text-transform:none;">Détails Réalisation</span>
-            </div>
-          </div>
-
-          <div class="ds-card">
-            <div class="ds-card__eyebrow" style="margin-bottom:12px;">Bullets</div>
-            <div class="ds-bullet-pill" style="width:100%;">
-              <span class="ds-check-dot">✓</span>
-              <span>Qualité industrielle certifiée</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bloc 4 : Accordion -->
-        <div class="ds-card ds-col-7">
-          <div class="ds-card__eyebrow" style="margin-bottom:14px;">Accordion</div>
-          <div class="ds-accordion-item">
-            <button type="button" class="ds-accordion-trigger" onclick="this.parentElement.classList.toggle('is-open')">
-              <span>Qu’est-ce que l’atelier ETS AGBONOUGLA ?</span>
-              <span class="ds-accordion-icon">+</span>
-            </button>
-          </div>
-          <div class="ds-accordion-item is-open">
-            <button type="button" class="ds-accordion-trigger" onclick="this.parentElement.classList.toggle('is-open')">
-              <span>Qu’est-ce qui rend nos modules uniques ?</span>
-              <span class="ds-accordion-icon">−</span>
-            </button>
-            <div class="ds-accordion-content">
-              Sur notre parc de <span class="ds-coral-link">2 500 m² à Attinguié (PK 26)</span>, nos équipes réalisent la chaudronnerie, l’isolation thermique et le câblage complet sur <span class="ds-coral-link">base Corten premier choix</span>.
-            </div>
-          </div>
-        </div>
-
-        <!-- Bloc 5 : Text Inputs & Info blocks & Sliders -->
-        <div class="ds-card ds-col-8">
-          <div class="ds-card__eyebrow" style="margin-bottom:16px;">Text Inputs</div>
-          <div class="ds-search-pill" style="margin-bottom:14px;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input type="text" value="Rechercher un bureau de chantier 20 pieds" aria-label="Recherche">
-            <span class="ds-search-pill__select">Budget ⌄</span>
-          </div>
-          <div class="ds-search-pill" style="max-width:310px;margin-bottom:18px;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input type="text" value="Modules mobiles" aria-label="Recherche mobile">
-            <span class="ds-btn ds-btn--circle" style="width:30px;height:30px;">≡</span>
-          </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-            <select class="ds-select" aria-label="Objet de la demande"><option>Quel est l’objet de votre demande ?</option></select>
-            <input class="ds-input" type="text" placeholder="Nom ou entreprise">
-          </div>
-        </div>
-
-        <div class="ds-col-4" style="display:flex;flex-direction:column;gap:16px;">
-          <div class="ds-card">
-            <div class="ds-card__eyebrow" style="margin-bottom:10px;">Info blocks</div>
-            <div class="ds-info-block">
-              <span class="ds-check-dot">✓</span>
-              <div>
-                <strong>Besoin d’un plan sur-mesure ?</strong> Précisez vos dimensions et ouvertures : notre bureau d’études prépare le chiffrage sous 24h.
-              </div>
-            </div>
-          </div>
-
-          <div class="ds-card">
-            <div class="ds-card__eyebrow" style="margin-bottom:6px;">Sliders</div>
-            <div class="ds-slider-wrap">
-              <div class="ds-slider-bubble" id="ds-slider-bubble" style="left:65%;">20' HC</div>
-              <input type="range" class="ds-range" id="ds-range-demo" min="10" max="40" step="10" value="30">
-            </div>
-          </div>
-        </div>
-
-        <!-- Bloc 6 : Cells, Segmented Controls & Profile -->
-        <div class="ds-card ds-col-5">
-          <div class="ds-card__eyebrow" style="margin-bottom:14px;">Cells</div>
-          <div class="ds-cell" style="margin-bottom:10px;">
-            <div>
-              <div style="font-weight:700;font-size:0.86rem;">Base-Vie Chantier PK 26</div>
-              <div style="font-size:0.7rem;color:var(--adm-ink-muted);text-transform:uppercase;letter-spacing:0.05em;">LIVRAISON GRUE INCLUSE</div>
-            </div>
-            <span class="ds-btn ds-btn--circle" style="width:30px;height:30px;">→</span>
-          </div>
-          <div class="ds-cell ds-cell--stone">
-            <div style="display:flex;align-items:center;gap:10px;">
-              <img src="assets/images/logo-ets-white.png" alt="" style="width:36px;height:36px;border-radius:50%;object-fit:contain;background:#FFF;padding:3px;">
-              <div>
-                <div style="color:var(--adm-coral);font-size:0.7rem;">★★★★★</div>
-                <div style="font-weight:700;font-size:0.88rem;">Direction Atelier</div>
-                <div style="font-size:0.72rem;color:var(--adm-ink-muted);">Attinguié · ✓ Disponible</div>
-              </div>
-            </div>
-            <span class="ds-tag ds-tag--stone">24H</span>
-          </div>
-        </div>
-
-        <div class="ds-card ds-col-4">
-          <div class="ds-card__eyebrow" style="margin-bottom:14px;">Segmented Controls</div>
-          <div style="display:flex;gap:12px;margin-bottom:14px;">
-            <div class="ds-segmented">
-              <button type="button" class="ds-segmented__btn is-active">⊞</button>
-              <button type="button" class="ds-segmented__btn">☰</button>
-            </div>
-            <div class="ds-segmented">
-              <button type="button" class="ds-segmented__btn">⊞</button>
-              <button type="button" class="ds-segmented__btn is-active">☰</button>
-            </div>
-          </div>
-          <div class="ds-segmented" style="width:100%;justify-content:space-between;">
-            <button type="button" class="ds-segmented__btn is-active">Chantier</button>
-            <button type="button" class="ds-segmented__btn">Bureau</button>
-            <button type="button" class="ds-segmented__btn">Stockage</button>
-          </div>
-        </div>
-
-        <div class="ds-card ds-col-3" style="text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-          <div class="ds-card__eyebrow" style="margin-bottom:12px;">Identité Marque</div>
-          <div style="width:74px;height:74px;border-radius:50%;background:var(--adm-stone);display:flex;align-items:center;justify-content:center;border:2px solid var(--adm-border-mid);">
-            <img src="assets/images/logo-ets-white.png" alt="Logo ETS AGBONOUGLA" style="width:52px;height:52px;object-fit:contain;">
-          </div>
-          <span class="ds-tag ds-tag--micro" style="background:#EAB308;color:#141413;border:none;margin-top:-10px;font-weight:800;">OWNER</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Pied de page discret de l'administration -->
-    <footer style="margin-top:40px;padding-top:18px;border-top:1px solid var(--adm-border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:0.78rem;color:var(--adm-ink-muted);">
-      <div>© 2026 <strong>ETS AGBONOUGLA</strong> · Interface Administrateur CRM & CMS (PK 26 Attinguié)</div>
-      <div>Design & développement par <a href="https://lamanodesign.com" id="adm-lamano-link" target="_blank" rel="noopener noreferrer" style="color:var(--adm-ink);font-weight:700;text-decoration:underline;">LAMANO DESIGN</a></div>
-    </footer>
   </div>
 
   <!-- ========================================================================
-       MODALE FICHE DÉTAILLÉE D'UN DEVIS / SAISIE MANUELLE CRM
+       MODAL 1 : VOLET DÉTAIL / GESTION D'UN DEVIS (CRM)
        ======================================================================== -->
-  <div class="adm-modal-backdrop" id="crm-lead-modal" role="dialog" aria-modal="true">
-    <div class="adm-modal" id="crm-lead-modal-content">
-      <!-- Peuplé par admin.js -->
+  <div class="adm-modal-backdrop" id="modal-lead-detail" role="dialog" aria-modal="true" aria-labelledby="modal-lead-title">
+    <div class="adm-modal adm-modal--lg">
+      <button type="button" class="adm-modal__close" id="btn-close-lead-modal" aria-label="Fermer la fiche">✕</button>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding-right:40px;margin-bottom:18px;">
+        <div>
+          <div style="font-size:0.75rem;font-weight:700;color:var(--adm-coral);letter-spacing:0.04em;text-transform:uppercase;" id="modal-lead-date">Demande reçue le ...</div>
+          <h2 id="modal-lead-title" style="font-family:var(--adm-font-display);font-size:1.45rem;font-weight:700;letter-spacing:-0.02em;color:var(--adm-ink);">
+            Fiche Devis #ETS-XXXX
+          </h2>
+        </div>
+        <div id="modal-lead-status-badge"></div>
+      </div>
+
+      <div class="adm-lead-grid">
+        <!-- Colonne Gauche : Coordonnées Prospect & Besoin Technique -->
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div class="adm-meta-box">
+            <div class="adm-meta-box__title">Coordonnées du prospect</div>
+            <div class="adm-meta-row">
+              <span class="adm-meta-row__label">Nom complet :</span>
+              <span class="adm-meta-row__val" id="lead-view-name">-</span>
+            </div>
+            <div class="adm-meta-row">
+              <span class="adm-meta-row__label">Entreprise :</span>
+              <span class="adm-meta-row__val" id="lead-view-company">-</span>
+            </div>
+            <div class="adm-meta-row">
+              <span class="adm-meta-row__label">Téléphone :</span>
+              <span class="adm-meta-row__val" id="lead-view-phone">-</span>
+            </div>
+            <div class="adm-meta-row">
+              <span class="adm-meta-row__label">Email :</span>
+              <span class="adm-meta-row__val" id="lead-view-email">-</span>
+            </div>
+            <div class="adm-meta-row">
+              <span class="adm-meta-row__label">Localisation :</span>
+              <span class="adm-meta-row__val" id="lead-view-location">-</span>
+            </div>
+          </div>
+
+          <div class="adm-meta-box">
+            <div class="adm-meta-box__title">Spécifications du besoin</div>
+            <div class="adm-meta-row">
+              <span class="adm-meta-row__label">Type de module :</span>
+              <span class="adm-meta-row__val" id="lead-view-product">-</span>
+            </div>
+            <div class="adm-meta-row">
+              <span class="adm-meta-row__label">Dimensions :</span>
+              <span class="adm-meta-row__val" id="lead-view-dims">-</span>
+            </div>
+            <div class="adm-meta-row">
+              <span class="adm-meta-row__label">Quantité :</span>
+              <span class="adm-meta-row__val" id="lead-view-qty">-</span>
+            </div>
+            <div class="adm-meta-row">
+              <span class="adm-meta-row__label">Délai souhaité :</span>
+              <span class="adm-meta-row__val" id="lead-view-timeline">-</span>
+            </div>
+            <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--adm-border);">
+              <div style="font-size:0.72rem;color:var(--adm-ink-muted);font-weight:700;text-transform:uppercase;margin-bottom:4px;">Message client :</div>
+              <div style="font-size:0.83rem;color:var(--adm-ink);background:var(--adm-surface);padding:10px;border-radius:8px;border:1px solid var(--adm-border);line-height:1.45;" id="lead-view-message">-</div>
+            </div>
+          </div>
+
+          <!-- Actions directes 1-clic -->
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <a href="#" target="_blank" rel="noopener" class="ds-btn ds-btn--black" id="lead-btn-whatsapp" style="flex:1;background:#16A34A;border-color:#16A34A;">
+              Contacter via WhatsApp
+            </a>
+            <a href="#" class="ds-btn ds-btn--outline" id="lead-btn-call" style="flex:1;">
+              Appeler
+            </a>
+          </div>
+        </div>
+
+        <!-- Colonne Droite : Modification du Statut & Notes Commerciales -->
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div class="adm-meta-box">
+            <div class="adm-meta-box__title">Mise à jour du dossier</div>
+
+            <form id="form-update-lead-status" style="display:flex;flex-direction:column;gap:12px;">
+              <input type="hidden" id="lead-edit-id">
+
+              <div class="ds-field">
+                <label class="ds-label" for="lead-edit-status">Statut du devis</label>
+                <select class="ds-select" id="lead-edit-status">
+                  <option value="Nouveau">Nouveau (en attente)</option>
+                  <option value="Étude en cours">Étude en cours</option>
+                  <option value="Devis envoyé">Devis envoyé</option>
+                  <option value="Validé / En production">Validé / En production</option>
+                  <option value="Livré">Livré</option>
+                  <option value="Archivé">Archivé</option>
+                </select>
+              </div>
+
+              <div class="ds-field">
+                <label class="ds-label" for="lead-edit-assigned">Assigné à</label>
+                <input class="ds-input" type="text" id="lead-edit-assigned" placeholder="Direction Commerciale">
+              </div>
+
+              <div class="ds-field">
+                <label class="ds-label" for="lead-edit-estimate">Montant chiffré / Estimatif (FCFA)</label>
+                <input class="ds-input" type="text" id="lead-edit-estimate" placeholder="Ex: 4 200 000 FCFA">
+              </div>
+
+              <button type="submit" class="ds-btn ds-btn--black" style="padding:10px 16px;font-size:0.84rem;">
+                Enregistrer le statut
+              </button>
+            </form>
+          </div>
+
+          <!-- Prise de notes internes -->
+          <div class="adm-meta-box" style="flex:1;display:flex;flex-direction:column;justify-content:space-between;">
+            <div>
+              <div class="adm-meta-box__title">Historique & Notes de suivi commercial</div>
+              <div class="adm-notes-list" id="lead-notes-container">
+                <!-- Rendu dynamique par admin.js -->
+              </div>
+            </div>
+
+            <form id="form-add-lead-note" style="display:flex;gap:8px;margin-top:10px;">
+              <input class="ds-input" type="text" id="lead-new-note-text" placeholder="Ajouter une note interne..." required style="padding:8px 12px;font-size:0.8rem;">
+              <button type="submit" class="ds-btn ds-btn--stone ds-btn--sm" style="flex-shrink:0;">Ajouter</button>
+            </form>
+          </div>
+
+          <button type="button" class="ds-btn ds-btn--stone ds-btn--sm" id="btn-delete-lead" style="color:var(--adm-red);align-self:flex-start;">
+            Supprimer ce devis
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 
+  <!-- ========================================================================
+       MODAL 2 : SAISIE MANUELLE D'UN DEVIS
+       ======================================================================== -->
+  <div class="adm-modal-backdrop" id="modal-new-lead" role="dialog" aria-modal="true" aria-labelledby="modal-new-lead-title">
+    <div class="adm-modal" style="max-width:640px;">
+      <button type="button" class="adm-modal__close" id="btn-close-new-lead-modal" aria-label="Fermer">✕</button>
+
+      <div class="ds-card__eyebrow">Nouvelle opportunité</div>
+      <h2 id="modal-new-lead-title" class="ds-card__title" style="margin-bottom:18px;">
+        Saisir une demande de devis
+      </h2>
+
+      <form id="form-create-lead" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div class="ds-field" style="grid-column:span 2;">
+          <label class="ds-label" for="nl-name">Nom complet du prospect *</label>
+          <input class="ds-input" type="text" id="nl-name" name="full_name" required placeholder="Ex: Kouassi Emmanuel">
+        </div>
+
+        <div class="ds-field">
+          <label class="ds-label" for="nl-company">Entreprise / Organisation</label>
+          <input class="ds-input" type="text" id="nl-company" name="company" placeholder="Ex: PFO Africa">
+        </div>
+
+        <div class="ds-field">
+          <label class="ds-label" for="nl-phone">Numéro de téléphone *</label>
+          <input class="ds-input" type="tel" id="nl-phone" name="phone" required placeholder="+225 07 ...">
+        </div>
+
+        <div class="ds-field">
+          <label class="ds-label" for="nl-email">Adresse email</label>
+          <input class="ds-input" type="email" id="nl-email" name="email" placeholder="contact@entreprise.ci">
+        </div>
+
+        <div class="ds-field">
+          <label class="ds-label" for="nl-location">Lieu d'implantation / Chantier</label>
+          <input class="ds-input" type="text" id="nl-location" name="location" placeholder="Abidjan / Intérieur">
+        </div>
+
+        <div class="ds-field">
+          <label class="ds-label" for="nl-product">Type de conteneur souhaité</label>
+          <select class="ds-select" id="nl-product" name="product_type">
+            <option value="Bureau de chantier 20'">Bureau de chantier 20'</option>
+            <option value="Base-vie & Réunion 40'">Base-vie & Réunion 40'</option>
+            <option value="Bloc Sanitaire & Vestiaire">Bloc Sanitaire & Vestiaire</option>
+            <option value="Stockage Sécurisé Dry 20'/40'">Stockage Sécurisé Dry 20'/40'</option>
+            <option value="Aménagement Spécial sur-mesure">Aménagement Spécial sur-mesure</option>
+          </select>
+        </div>
+
+        <div class="ds-field">
+          <label class="ds-label" for="nl-qty">Quantité de modules</label>
+          <input class="ds-input" type="number" id="nl-qty" name="quantity" value="1" min="1">
+        </div>
+
+        <div class="ds-field" style="grid-column:span 2;">
+          <label class="ds-label" for="nl-timeline">Délai de livraison souhaité</label>
+          <select class="ds-select" id="nl-timeline" name="timeline">
+            <option value="Urgent (sous 7 jours)">Urgent (sous 7 jours)</option>
+            <option value="Sous 2 à 3 semaines" selected>Sous 2 à 3 semaines</option>
+            <option value="Projet à moyen terme (1 à 3 mois)">Projet à moyen terme (1 à 3 mois)</option>
+          </select>
+        </div>
+
+        <div class="ds-field" style="grid-column:span 2;">
+          <label class="ds-label" for="nl-message">Détails du cahier des charges ou message</label>
+          <textarea class="ds-textarea" id="nl-message" name="message" placeholder="Précisez les aménagements souhaités (climatisation, cloisons, portes supplémentaires, etc.)..."></textarea>
+        </div>
+
+        <div style="grid-column:span 2;display:flex;justify-content:flex-end;gap:10px;margin-top:6px;">
+          <button type="button" class="ds-btn ds-btn--stone" id="btn-cancel-new-lead">Annuler</button>
+          <button type="submit" class="ds-btn ds-btn--black">Enregistrer en base SQLite</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL 3 : AJOUT / ÉDITION D'UNE SOLUTION AU CATALOGUE
+       ======================================================================== -->
+  <div class="adm-modal-backdrop" id="modal-product" role="dialog" aria-modal="true">
+    <div class="adm-modal" style="max-width:560px;">
+      <button type="button" class="adm-modal__close" id="btn-close-product-modal" aria-label="Fermer">✕</button>
+
+      <div class="ds-card__eyebrow">Catalogue Modulaire</div>
+      <h2 class="ds-card__title" style="margin-bottom:18px;">Ajouter une Solution</h2>
+
+      <form id="form-product" style="display:flex;flex-direction:column;gap:14px;">
+        <input type="hidden" id="prod-id" name="id">
+
+        <div class="ds-field">
+          <label class="ds-label" for="prod-title">Nom du modèle / Solution *</label>
+          <input class="ds-input" type="text" id="prod-title" name="title" required placeholder="Ex: Bureau de Direction 20'">
+        </div>
+
+        <div class="ds-field">
+          <label class="ds-label" for="prod-cat">Catégorie</label>
+          <select class="ds-select" id="prod-cat" name="category">
+            <option value="Bureaux & Bases-vie">Bureaux & Bases-vie</option>
+            <option value="Sanitaires & Hygiène">Sanitaires & Hygiène</option>
+            <option value="Stockage & Technique">Stockage & Technique</option>
+            <option value="Sur-mesure">Sur-mesure</option>
+          </select>
+        </div>
+
+        <div class="ds-field">
+          <label class="ds-label" for="prod-dims">Dimensions standard</label>
+          <input class="ds-input" type="text" id="prod-dims" name="dimensions" placeholder="Ex: 20 pieds (6,05 × 2,44 × 2,59 m)">
+        </div>
+
+        <div class="ds-field">
+          <label class="ds-label" for="prod-image">Image (nom de fichier dans assets/images/)</label>
+          <input class="ds-input" type="text" id="prod-image" name="image_path" value="12.jpg">
+        </div>
+
+        <div class="ds-field">
+          <label class="ds-label" for="prod-desc">Description courte</label>
+          <textarea class="ds-textarea" id="prod-desc" name="short_desc" placeholder="Caractéristiques techniques, isolation, climatisation..."></textarea>
+        </div>
+
+        <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:8px;">
+          <button type="button" class="ds-btn ds-btn--stone" id="btn-cancel-product">Annuler</button>
+          <button type="submit" class="ds-btn ds-btn--black">Enregistrer la solution</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL 4 : AJOUT D'UNE RÉALISATION / PROJET
+       ======================================================================== -->
+  <div class="adm-modal-backdrop" id="modal-project" role="dialog" aria-modal="true">
+    <div class="adm-modal" style="max-width:580px;">
+      <button type="button" class="adm-modal__close" id="btn-close-project-modal" aria-label="Fermer">✕</button>
+
+      <div class="ds-card__eyebrow">Référence Chantier</div>
+      <h2 class="ds-card__title" style="margin-bottom:18px;">Ajouter une Réalisation</h2>
+
+      <form id="form-project" style="display:flex;flex-direction:column;gap:14px;">
+        <div class="ds-field">
+          <label class="ds-label" for="proj-title">Titre du projet / Client *</label>
+          <input class="ds-input" type="text" id="proj-title" name="title" required placeholder="Ex: Base-Vie Chantier Autoroutier">
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div class="ds-field">
+            <label class="ds-label" for="proj-loc">Lieu d'implantation</label>
+            <input class="ds-input" type="text" id="proj-loc" name="location" placeholder="Attinguié / Abidjan">
+          </div>
+          <div class="ds-field">
+            <label class="ds-label" for="proj-year">Année</label>
+            <input class="ds-input" type="text" id="proj-year" name="year_completed" value="2026">
+          </div>
+        </div>
+
+        <div class="ds-field">
+          <label class="ds-label" for="proj-need">Besoin initial du client</label>
+          <textarea class="ds-textarea" id="proj-need" name="need_text" style="min-height:64px;" placeholder="Déployer rapidement des bureaux climatisés sur site..."></textarea>
+        </div>
+
+        <div class="ds-field">
+          <label class="ds-label" for="proj-sol">Solution livrée par ETS AGBONOUGLA</label>
+          <textarea class="ds-textarea" id="proj-sol" name="solution_text" style="min-height:64px;" placeholder="Fabrication en atelier PK 26 de 4 modules Corten isolés..."></textarea>
+        </div>
+
+        <div class="ds-field">
+          <label class="ds-label" for="proj-image">Image (assets/images/...)</label>
+          <input class="ds-input" type="text" id="proj-image" name="image_path" value="19.jpg">
+        </div>
+
+        <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:8px;">
+          <button type="button" class="ds-btn ds-btn--stone" id="btn-cancel-project">Annuler</button>
+          <button type="submit" class="ds-btn ds-btn--black">Enregistrer la réalisation</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
   <div class="adm-toast" id="adm-toast" role="status" aria-live="polite"></div>
 
-  <script src="admin.js?v=1"></script>
+  <!-- SCRIPT DU TABLEAU DE BORD (ROBUSTE & DIRECT) -->
+  <script src="admin.js?v=3"></script>
 </body>
 </html>
-

@@ -229,301 +229,144 @@ body.adm-body {
 }
 
 /* ==========================================================================
-   2. HUB ORBITAL CONCENTRIQUE & CARTES EN CASCADE (Référence 1 : Deflexai)
+   2. BANNIÈRE EXÉCUTIVE & BARRES D'OUTILS OPÉRATIONNELLES
    ========================================================================== */
-.adm-orbital {
-  position: relative;
-  padding: 46px 24px 40px;
-  margin-bottom: 32px;
+.adm-header-banner {
   background: var(--adm-surface);
   border: 1px solid var(--adm-border);
-  border-radius: 24px;
-  overflow: hidden;
-  text-align: center;
+  border-radius: var(--adm-radius-card);
+  padding: 26px 30px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
   box-shadow: var(--adm-shadow-sm);
 }
 
-/* Cercles concentriques architecturaux */
-.adm-orbital__rings {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.adm-orbital__ring {
-  position: absolute;
-  border-radius: 50%;
-  border: 1px solid var(--adm-ring-line);
-}
-
-.adm-orbital__ring--1 {
-  width: 520px;
-  height: 520px;
-}
-
-.adm-orbital__ring--2 {
-  width: 780px;
-  height: 780px;
-  border-left-color: rgba(37, 99, 235, 0.38);
-  border-right-color: rgba(249, 92, 75, 0.35);
-}
-
-.adm-orbital__ring--3 {
-  width: 1040px;
-  height: 1040px;
-}
-
-.adm-orbital__ring--4 {
-  width: 1300px;
-  height: 1300px;
-  border-left-color: rgba(37, 99, 235, 0.25);
-  border-right-color: rgba(37, 99, 235, 0.25);
-}
-
-/* Nœuds satellites flottants sur les orbites */
-.adm-orbit-node {
-  position: absolute;
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background: var(--adm-bg-elevated);
-  border: 1px solid var(--adm-border);
-  box-shadow: var(--adm-shadow-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--adm-ink);
-  cursor: pointer;
-  z-index: 3;
-  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
-}
-
-.adm-orbit-node:hover {
-  transform: translateY(-4px) scale(1.06);
-  border-color: var(--adm-coral);
-  box-shadow: var(--adm-shadow-lg);
-}
-
-.adm-orbit-node svg {
-  width: 22px;
-  height: 22px;
-}
-
-.adm-orbit-node--tl { top: 14%; left: 17%; color: var(--adm-coral); }
-.adm-orbit-node--ml { top: 38%; left: 9%; color: #16A34A; }
-.adm-orbit-node--bl { top: 64%; left: 19%; color: #2563EB; }
-.adm-orbit-node--tr { top: 14%; right: 17%; color: var(--adm-coral); }
-.adm-orbit-node--mr { top: 38%; right: 9%; color: #D97706; }
-.adm-orbit-node--br { top: 64%; right: 19%; color: #0EA5E9; }
-
-.adm-orbital__inner {
-  position: relative;
-  z-index: 4;
+.adm-header-banner__info {
   max-width: 680px;
-  margin: 0 auto;
 }
 
-.adm-orbital__trust-row {
+.adm-header-banner__badge {
   display: inline-flex;
   align-items: center;
-  gap: 18px;
-  padding: 6px 16px;
-  border-radius: var(--adm-radius-pill);
-  background: var(--adm-stone);
-  border: 1px solid var(--adm-border);
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--adm-ink-soft);
-  margin-bottom: 18px;
+  gap: 7px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--adm-coral);
+  margin-bottom: 8px;
 }
 
-.adm-orbital__trust-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.adm-dot-live {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--adm-green);
-  box-shadow: 0 0 0 4px var(--adm-green-bg);
-}
-
-.adm-orbital__title {
+.adm-header-banner__title {
   font-family: var(--adm-font-display);
-  font-size: clamp(2rem, 3.8vw, 3.15rem);
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
   font-weight: 700;
-  line-height: 1.08;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.025em;
   color: var(--adm-ink);
-  margin-bottom: 14px;
+  line-height: 1.2;
+  margin-bottom: 6px;
 }
 
-.adm-orbital__subtitle {
-  font-size: 0.96rem;
+.adm-header-banner__sub {
+  font-size: 0.88rem;
   color: var(--adm-ink-muted);
-  max-width: 520px;
-  margin: 0 auto 24px;
-  line-height: 1.55;
+  line-height: 1.5;
 }
 
-.adm-orbital__ctas {
+.adm-header-banner__actions {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 34px;
-}
-
-/* Pile de 3 cartes de notification en cascade avec halo doux (Référence 1) */
-.adm-stack-wrap {
-  position: relative;
-  max-width: 440px;
-  margin: 0 auto 26px;
-  padding: 10px 0 6px;
-}
-
-.adm-stack-glow {
-  position: absolute;
-  inset: -18px -28px;
-  background: radial-gradient(circle at 50% 55%, var(--adm-blue-glow), rgba(249, 92, 75, 0.08) 52%, transparent 74%);
-  filter: blur(18px);
-  z-index: 0;
-  pointer-events: none;
-}
-
-.adm-stack-card {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  text-align: left;
-  background: var(--adm-bg-elevated);
-  border: 1px solid var(--adm-border);
-  border-radius: 15px;
-  padding: 13px 16px;
-  box-shadow: var(--adm-shadow-md);
-  transition: transform 0.22s ease, box-shadow 0.22s ease;
-  cursor: pointer;
-}
-
-.adm-stack-card:hover {
-  transform: translateY(-2px) scale(1.01);
-  box-shadow: var(--adm-shadow-lg);
-}
-
-.adm-stack-card--1 {
-  width: 100%;
-  z-index: 4;
-}
-
-.adm-stack-card--2 {
-  width: 91%;
-  margin: -6px auto 0;
-  z-index: 3;
-  opacity: 0.95;
-}
-
-.adm-stack-card--3 {
-  width: 82%;
-  margin: -6px auto 0;
-  z-index: 2;
-  opacity: 0.86;
-}
-
-.adm-stack-avatar {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: var(--adm-stone);
-  border: 1px solid var(--adm-border-mid);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 0.82rem;
-  color: var(--adm-ink);
-  flex-shrink: 0;
-  position: relative;
-}
-
-.adm-stack-avatar__badge {
-  position: absolute;
-  top: -2px;
-  right: -2px;
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  background: #2563EB;
-  border: 2px solid var(--adm-bg-elevated);
-}
-
-.adm-stack-avatar__badge--green {
-  background: #16A34A;
-}
-
-.adm-stack-avatar__badge--coral {
-  background: var(--adm-coral);
-}
-
-.adm-stack-body {
-  flex: 1;
-  min-width: 0;
-}
-
-.adm-stack-title {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--adm-ink);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.adm-stack-meta {
-  font-size: 0.75rem;
-  color: var(--adm-ink-muted);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.adm-orbital__footer-strip {
-  position: relative;
-  z-index: 3;
-  margin-top: 18px;
-  padding-top: 18px;
-  border-top: 1px solid var(--adm-border);
-  display: flex;
-  flex-direction: column;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
-.adm-orbital__footer-label {
-  font-size: 0.75rem;
-  color: var(--adm-ink-muted);
-  font-weight: 500;
-}
-
-.adm-orbital__modules-bar {
+.adm-toolbar {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 24px;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 18px;
   flex-wrap: wrap;
+}
+
+.adm-toolbar__filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.adm-toolbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.adm-subnav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--adm-stone);
+  padding: 4px;
+  border-radius: var(--adm-radius-pill);
+  margin-bottom: 20px;
+  width: fit-content;
+  border: 1px solid var(--adm-border);
+}
+
+.adm-subnav__btn {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--adm-ink-soft);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: var(--adm-radius-pill);
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+
+.adm-subnav__btn.is-active {
+  background: var(--adm-surface);
+  color: var(--adm-ink);
+  box-shadow: var(--adm-shadow-sm);
+}
+
+.adm-notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 220px;
+  overflow-y: auto;
+  margin-bottom: 14px;
+  padding-right: 4px;
+}
+
+.adm-note-item {
+  background: var(--adm-stone);
+  border-radius: 10px;
+  padding: 10px 12px;
   font-size: 0.82rem;
-  font-weight: 700;
+  line-height: 1.45;
+  border: 1px solid var(--adm-border);
+}
+
+.adm-note-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.72rem;
   color: var(--adm-ink-muted);
-  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+  font-weight: 600;
 }
 
 /* ==========================================================================
@@ -1117,54 +960,6 @@ body.adm-body {
 .ds-col-8 { grid-column: span 8; }
 .ds-col-12 { grid-column: span 12; }
 
-.ds-showcase-title {
-  font-family: var(--adm-font-serif);
-  font-size: clamp(2rem, 3.4vw, 2.75rem);
-  font-weight: 400;
-  text-align: center;
-  color: var(--adm-ink);
-  margin: 8px 0 28px;
-  letter-spacing: -0.02em;
-}
-
-/* Slider avec bulle noire "Value" (Référence 2) */
-.ds-slider-wrap {
-  position: relative;
-  padding-top: 32px;
-  padding-bottom: 8px;
-}
-
-.ds-slider-bubble {
-  position: absolute;
-  top: 0;
-  transform: translateX(-50%);
-  background: var(--adm-ink);
-  color: var(--adm-bg-elevated);
-  font-size: 0.72rem;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 6px;
-  pointer-events: none;
-  white-space: nowrap;
-}
-
-.ds-slider-bubble::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 4px 4px 0;
-  border-style: solid;
-  border-color: var(--adm-ink) transparent transparent;
-}
-
-.ds-range {
-  width: 100%;
-  accent-color: var(--adm-ink);
-  cursor: pointer;
-}
-
 /* Modal / Drawer détail CRM & Login Overlay */
 .adm-modal-backdrop {
   position: fixed;
@@ -1192,6 +987,90 @@ body.adm-body {
   overflow-y: auto;
   padding: 28px;
   box-shadow: var(--adm-shadow-lg);
+  position: relative;
+}
+
+.adm-modal--lg {
+  max-width: 860px;
+}
+
+.adm-modal__close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--adm-stone);
+  border: 1px solid var(--adm-border);
+  color: var(--adm-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.adm-modal__close:hover {
+  background: var(--adm-ink);
+  color: var(--adm-bg-elevated);
+}
+
+.adm-lead-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 16px;
+}
+
+@media (max-width: 768px) {
+  .adm-lead-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.adm-meta-box {
+  background: var(--adm-stone);
+  border-radius: 14px;
+  padding: 16px;
+  border: 1px solid var(--adm-border);
+}
+
+.adm-meta-box__title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--adm-ink-muted);
+  margin-bottom: 12px;
+}
+
+.adm-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.84rem;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--adm-border);
+}
+
+.adm-meta-row:last-child {
+  border-bottom: none;
+}
+
+.adm-meta-row__label {
+  color: var(--adm-ink-muted);
+  font-size: 0.78rem;
+  flex-shrink: 0;
+}
+
+.adm-meta-row__val {
+  color: var(--adm-ink);
+  font-weight: 600;
+  text-align: right;
+  word-break: break-word;
 }
 
 /* Écran d'authentification plein cadre avec anneaux concentriques */
