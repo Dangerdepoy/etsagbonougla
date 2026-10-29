@@ -8,7 +8,7 @@ AddDefaultCharset UTF-8
 DefaultLanguage fr-FR
 
 # 2. BLOCAGE STRICT DES FICHIERS & DOSSIERS SENSIBLES
-<FilesMatch "^(\.env|\.git|\.htaccess|\.htpasswd|composer\.(json|lock)|.*\.sqlite|.*\.sql|.*\.log|.*\.bak|.*\.sh)$">
+<FilesMatch "^(\.env|\.git|\.htaccess|\.htpasswd|composer\.(json|lock)|.*\.sqlite(-wal|-shm)?|.*\.sql|.*\.log|.*\.bak|.*\.sh|default_index\.html)$">
   <IfModule mod_authz_core.c>
     Require all denied
   </IfModule>
@@ -18,16 +18,18 @@ DefaultLanguage fr-FR
   </IfModule>
 </FilesMatch>
 
-# Interdit l'exploration des dossiers sans index
+# Interdit l'exploration des dossiers sans index et force index.html par défaut
 Options -Indexes
+DirectoryIndex index.html index.php
 
 # 3. EN-TÊTES DE SÉCURITÉ HTTP
 <IfModule mod_headers.c>
   Header set X-Content-Type-Options "nosniff"
   Header set X-Frame-Options "SAMEORIGIN"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
-  Header set X-XSS-Protection "1; mode=block"
   Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  Header set Content-Security-Policy "frame-ancestors 'self';"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
 </IfModule>
 
 # 4. COMPRESSION MOD_DEFLATE (VITESSE & CORE WEB VITALS)

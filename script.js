@@ -1,36 +1,39 @@
 /**
- * ETS AGBONOUGLA — Scripts Publics Front-End
+ * ETS AGBONOUGLA — Scripts Publics Front-End (Production)
  * Architecture Modulaire & Conteneurs Industriels — Abidjan, Côte d'Ivoire
  * Design & développement par LAMANO DESIGN
  */
 
-// ── CONFIGURATION DU PROJET ─────────────────────────────────────
-// URL du portfolio LAMANO DESIGN : À RENSEIGNER (adresse vérifiée uniquement).
-// Tant qu'elle est vide, la signature s'affiche en texte simple, sans lien.
 const LAMANO_DESIGN_URL = '';
 
 // Signale au script inline du <head> que le moteur d'animation est chargé
-// (sinon la classe .motion est retirée pour garantir un contenu visible).
 window.__etsMotionReady = true;
 
 document.addEventListener('DOMContentLoaded', () => {
 
   const root = document.documentElement;
-  // Réactivation permanente du motion design scroll pour une expérience visuelle fluide & dynamique
   root.classList.add('motion');
   const motionOn = 'IntersectionObserver' in window;
+  const reduceMotion = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false;
 
-  // 1. Signature LAMANO DESIGN (lien uniquement si une URL vérifiée est configurée)
-  document.querySelectorAll('.lamano-credit').forEach(link => {
-    if (LAMANO_DESIGN_URL) {
-      link.setAttribute('href', LAMANO_DESIGN_URL);
-      link.setAttribute('target', '_blank');
-      link.setAttribute('rel', 'noopener noreferrer');
-    } else {
-      link.removeAttribute('href');
-      link.removeAttribute('target');
-    }
-  });
+  // État dynamique synchronisé avec la base SQLite (api/index.php?route=public-data)
+  let activeWaNumber = '2250707831791';
+  let activePhoneDisplay = '+225 07 07 83 17 91';
+
+  // 1. Signature LAMANO DESIGN
+  function applyLamanoLink(url) {
+    document.querySelectorAll('.lamano-credit, [data-lamano-link], .lamano-link').forEach(link => {
+      if (url && url !== '#') {
+        link.setAttribute('href', url);
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+      } else {
+        link.removeAttribute('href');
+        link.removeAttribute('target');
+      }
+    });
+  }
+  applyLamanoLink(LAMANO_DESIGN_URL);
 
   // 1b. Découpage en mots (conserve <em>, <strong>, <br>)
   const splitWords = (el, wrap) => {
@@ -58,7 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 1c. Moteur de mouvement (CSS + IntersectionObserver, aucun scroll-jacking)
   if (motionOn) {
-    // Titres : chaque mot monte depuis un masque
     document.querySelectorAll('[data-reveal="words"]').forEach(el => {
       splitWords(el, (txt, i) => {
         const w = document.createElement('span');
@@ -71,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Révélations dynamiques à l'entrée dans le viewport (avec contrôle immédiat pour les éléments visibles)
     const revealObs = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -93,11 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     };
     checkReveals();
-    // Re-check after full page load (images, fonts) to catch elements
-    // whose position shifted after DOMContentLoaded
     window.addEventListener('load', () => { setTimeout(checkReveals, 100); });
 
-    // Manifeste : les mots passent du gris au noir pur (#000000) mot par mot au scroll (effet de lecture au doigt)
     const manifestos = new Map();
     document.querySelectorAll('[data-words]').forEach(el => {
       const words = splitWords(el, (txt) => {
@@ -108,7 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       manifestos.set(el, words);
 
-      // Interaction au passage du curseur / doigt sur la phrase
       el.addEventListener('pointermove', (e) => {
         const target = e.target.closest('.mw');
         if (!target) return;
@@ -123,7 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }, { passive: true });
     });
 
-    // Progression au scroll : --p (0..1) sur [data-scroll] + lecture mot par mot sur [data-words]
     const scrollEls = Array.from(document.querySelectorAll('[data-scroll]'));
     const clamp = (v) => Math.min(1, Math.max(0, v));
     let ticking = false;
@@ -149,9 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.setProperty('--p', p.toFixed(4));
 
         if (el.classList.contains('h-hero')) {
-          // Descente continue et progressive du conteneur dans la hero section :
-          // Sur PC, le conteneur descend calmement (70px) et se dissout doucement dans le dégradé blanc.
-          // Sur mobile, descente fluide de 100px.
           const isMobile = window.innerWidth < 768;
           const maxDescent = isMobile ? 100 : 70;
           const ease = p * p * (3 - 2 * p);
@@ -165,7 +158,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      // Contrôle de secours continu pour révéler sans faille tous les éléments [data-reveal]
       document.querySelectorAll('[data-reveal]:not(.is-in)').forEach(revEl => {
         const rect = revEl.getBoundingClientRect();
         if (rect.top < vh - 10 && rect.bottom > 0) {
@@ -173,7 +165,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      // Lecture fluide mot par mot : dès que le texte entre dans la zone de lecture (85% -> 28% du viewport)
       manifestos.forEach((words, textEl) => {
         const r = textEl.getBoundingClientRect();
         const startY = vh * 0.86;
@@ -233,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 2. Barre de navigation au scroll & transition dynamique Hero transparent -> Pill blanche
+  // 2. Barre de navigation au scroll
   const navbar = document.getElementById('appNavbar');
   const heroPillNav = document.getElementById('heroPillNav');
   const heroSection = document.querySelector('.h-hero');
@@ -241,7 +232,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (heroPillNav && heroSection) {
     let ticking = false;
     const updateHeroNav = () => {
-      // Dès que l'utilisateur commence à scroller (100px), la navbar bascule en pilule blanche pop dynamique
       const isPastHero = window.scrollY > 100;
       if (isPastHero) {
         if (!heroPillNav.classList.contains('is-hero-scrolled')) {
@@ -276,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
     handleScroll();
   }
 
-  // 3. Menu Mobile (drawer : inert quand fermé, focus, Escape)
+  // 3. Menu Mobile (drawer)
   const hamburger = document.getElementById('hamburger');
   const drawer = document.getElementById('drawer');
   const overlay = document.getElementById('drawerOverlay');
@@ -380,25 +370,27 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // 7. Filtre des projets (page Références)
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.real-card[data-cat]');
-  if (filterButtons.length > 0 && projectCards.length > 0) {
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const filter = btn.getAttribute('data-filter');
-        filterButtons.forEach(b => b.classList.remove('act'));
-        btn.classList.add('act');
-        projectCards.forEach(card => {
-          card.style.display = (filter === 'all' || card.getAttribute('data-cat') === filter) ? '' : 'none';
+  function bindProjectFilters() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    if (filterButtons.length > 0) {
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.getAttribute('data-filter');
+          filterButtons.forEach(b => b.classList.remove('act'));
+          btn.classList.add('act');
+          document.querySelectorAll('.real-card[data-cat]').forEach(card => {
+            card.style.display = (filter === 'all' || card.getAttribute('data-cat') === filter) ? '' : 'none';
+          });
         });
       });
-    });
+    }
   }
+  bindProjectFilters();
 
   // 8. Sélecteur rapide "Que cherchez-vous ?" (Home)
   const needChips = document.querySelectorAll('#qfNeedChips .qf-chip');
   const sectorChips = document.querySelectorAll('#qfSectorChips .qf-chip');
-  const quoteModuleSelect = document.getElementById('quoteModule');
+  const quoteModuleSelect = document.getElementById('quoteModule') || document.getElementById('moduleType');
 
   if (needChips.length > 0) {
     needChips.forEach(chip => {
@@ -413,7 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const val = chip.getAttribute('data-value');
         if (quoteModuleSelect && val) {
           Array.from(quoteModuleSelect.options).forEach(opt => {
-            if (opt.value === val || opt.text.includes(val)) {
+            if (opt.value === val || opt.text.toLowerCase().includes(val.toLowerCase())) {
               quoteModuleSelect.value = opt.value;
             }
           });
@@ -435,93 +427,161 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 9. Synchronisation CMS & Analytics respectueux de la vie privée (DoNotTrack respecté)
-  const CMS_KEY = 'ets_cms_store_v1';
-  const LEADS_KEY = 'ets_crm_leads_v1';
-  const ANALYTICS_KEY = 'ets_analytics_v1';
+  // 9. Synchronisation CMS temps réel avec api/index.php?route=public-data & Analytics
+  function escHtml(str) {
+    if (str == null) return '';
+    const d = document.createElement('div');
+    d.textContent = String(str);
+    return d.innerHTML;
+  }
+
+  const currentPage = (window.location.pathname.split('/').pop() || 'index.html');
 
   function recordAnalyticsEvent(type, targetLabel) {
     if (navigator.doNotTrack === '1' || window.doNotTrack === '1') return;
-    const pagePath = (window.location.pathname.split('/').pop() || 'index.html');
-    const ev = {
-      id: Date.now(),
-      type,
-      page_path: pagePath,
-      target: targetLabel || pagePath,
-      created_at: new Date().toLocaleTimeString('fr-FR')
-    };
-    try {
-      const list = JSON.parse(localStorage.getItem(ANALYTICS_KEY) || '[]');
-      list.unshift(ev);
-      localStorage.setItem(ANALYTICS_KEY, JSON.stringify(list.slice(0, 200)));
-    } catch (_) {}
-
-    const apiBase = 'api/index.php';
-    fetch(`${apiBase}?route=analytics-beacon`, {
+    fetch('api/index.php?route=analytics-beacon', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ type, path: pagePath, target: targetLabel || '' })
+      body: JSON.stringify({ type, path: currentPage, target: targetLabel || '' })
     }).catch(() => {});
   }
 
-  recordAnalyticsEvent('pageview', 'Visite : ' + (window.location.pathname.split('/').pop() || 'index.html'));
+  recordAnalyticsEvent('pageview', 'Visite : ' + currentPage);
 
-  document.querySelectorAll('.h-hero__cta-btn, .btn-primary, a[href*="wa.me"], a[href^="tel:"]').forEach(cta => {
+  document.querySelectorAll('.h-hero__cta-btn, .btn-primary, .btn-green, .btn-coral, a[href*="wa.me"], a[href^="tel:"]').forEach(cta => {
     cta.addEventListener('click', () => {
       const label = (cta.textContent || cta.getAttribute('href') || 'CTA').trim().slice(0, 50);
       recordAnalyticsEvent('click', 'CTA : ' + label);
     }, { passive: true });
   });
 
-  // Application dynamique des réglages publiés depuis l'interface Admin CMS
-  try {
-    const rawCms = localStorage.getItem(CMS_KEY);
-    if (rawCms) {
-      const cmsData = JSON.parse(rawCms);
-      const s = cmsData?.settings || {};
-      if (s.hero_bg_word) {
-        const megaWord = document.querySelector('.h-hero__mega-word');
-        if (megaWord) megaWord.textContent = s.hero_bg_word;
-      }
-      if (s.hero_callout_title) {
-        const calloutTitle = document.querySelector('.h-hero__callout-title');
-        if (calloutTitle) calloutTitle.textContent = s.hero_callout_title;
-      }
-      if (s.lamano_design_url && s.lamano_design_url !== '#') {
-        document.querySelectorAll('[data-lamano-link], .lamano-link').forEach(a => {
-          a.href = s.lamano_design_url;
+  async function syncCmsFromServer() {
+    try {
+      const res = await fetch('api/index.php?route=public-data');
+      if (!res.ok) return;
+      const data = await res.json();
+      if (!data || !data.ok) return;
+
+      const s = data.settings || {};
+
+      // Coordonnées téléphoniques & WhatsApp
+      if (s.whatsapp_number) {
+        activeWaNumber = s.whatsapp_number.replace(/[^0-9]/g, '') || '2250707831791';
+        document.querySelectorAll('a[href*="wa.me/"]').forEach(a => {
+          const href = a.getAttribute('href') || '';
+          const parts = href.split('?');
+          a.setAttribute('href', `https://wa.me/${activeWaNumber}${parts[1] ? '?' + parts[1] : ''}`);
         });
       }
-    }
-  } catch (_) {}
+      if (s.phone_primary) {
+        activePhoneDisplay = s.phone_primary;
+        const cleanTel = '+' + s.phone_primary.replace(/[^0-9]/g, '');
+        document.querySelectorAll('a[href^="tel:"]').forEach(a => {
+          a.setAttribute('href', `tel:${cleanTel}`);
+          if (a.textContent && /\+?\d{2,3}/.test(a.textContent)) {
+            const icon = a.querySelector('i');
+            if (icon) {
+              a.innerHTML = '';
+              a.appendChild(icon);
+              a.appendChild(document.createTextNode(' ' + s.phone_primary));
+            } else {
+              a.textContent = s.phone_primary;
+            }
+          }
+        });
+        document.querySelectorAll('.c-phone-pill-box input[type="text"]').forEach(inp => {
+          inp.value = s.phone_primary;
+        });
+      }
+      if (s.email_contact) {
+        document.querySelectorAll('a[href^="mailto:"]').forEach(a => {
+          a.setAttribute('href', `mailto:${s.email_contact}`);
+          if (a.textContent && a.textContent.includes('@')) {
+            const icon = a.querySelector('i');
+            if (icon) {
+              a.innerHTML = '';
+              a.appendChild(icon);
+              a.appendChild(document.createTextNode(' ' + s.email_contact));
+            } else {
+              a.textContent = s.email_contact;
+            }
+          }
+        });
+      }
+      if (s.lamano_design_url) {
+        applyLamanoLink(s.lamano_design_url);
+      }
+      if (s.hero_cta_label) {
+        const heroCtaSpan = document.querySelector('.h-hero__cta-btn span');
+        if (heroCtaSpan) heroCtaSpan.textContent = s.hero_cta_label;
+      }
+      if (s.workshop_surface) {
+        const trustNum = document.querySelector('.h-hero__trust-num');
+        if (trustNum) trustNum.textContent = s.workshop_surface;
+      }
 
+      // Métadonnées SEO de la page active
+      if (Array.isArray(data.seo)) {
+        const pageSeo = data.seo.find(item => item.page_path === currentPage);
+        if (pageSeo) {
+          if (pageSeo.page_title) document.title = pageSeo.page_title;
+          const metaDesc = document.querySelector('meta[name="description"]');
+          if (metaDesc && pageSeo.meta_description) {
+            metaDesc.setAttribute('content', pageSeo.meta_description);
+          }
+        }
+      }
+
+      // Synchronisation des nouvelles réalisations ajoutées dans le CMS sur ets_references.html
+      const realGrid = document.querySelector('.realisations-grid');
+      if (realGrid && Array.isArray(data.projects) && data.projects.length > 0) {
+        const existingTitles = Array.from(realGrid.querySelectorAll('.real-title')).map(el => el.textContent.trim().toLowerCase());
+        data.projects.forEach(pr => {
+          if (!existingTitles.includes((pr.title || '').trim().toLowerCase())) {
+            const art = document.createElement('article');
+            art.className = 'real-card is-in';
+            art.setAttribute('data-cat', pr.category || 'bases-vie');
+            art.innerHTML = `
+              <div class="real-media">
+                <img src="assets/images/${escHtml(pr.image_path)}" alt="${escHtml(pr.title)}" width="800" height="600" loading="lazy" onerror="this.src='assets/images/complexe-base-vie-plateforme.jpg'">
+                <span class="real-loc"><i class="fa-solid fa-location-dot"></i> ${escHtml(pr.location || 'Côte d’Ivoire')}</span>
+              </div>
+              <div class="real-body">
+                <span class="real-cat">${escHtml(pr.category || 'Réalisation')}</span>
+                <h3 class="real-title">${escHtml(pr.title)}</h3>
+                <p class="real-desc">${escHtml(pr.solution_text || pr.need_text || '')}</p>
+              </div>
+            `;
+            realGrid.insertBefore(art, realGrid.firstChild);
+          }
+        });
+      }
+    } catch (_) {}
+  }
+
+  syncCmsFromServer();
+
+  // 10. Enregistrement serveur d'une demande de devis (POST api/index.php?route=leads)
   async function submitLeadToCrm(payload) {
-    const ref = 'ETS-' + new Date().getFullYear() + '-' + Math.random().toString(36).substring(2, 6).toUpperCase();
+    let ref = 'ETS-' + new Date().getFullYear() + '-' + Math.random().toString(36).substring(2, 6).toUpperCase();
     const record = Object.assign({
-      id: Date.now(),
       reference: ref,
       status: 'Nouveau',
-      assigned_to: 'Direction Commerciale',
-      created_at: new Date().toLocaleString('fr-FR'),
-      notes: []
+      website_url_hp: payload.website_url_hp || ''
     }, payload);
 
     try {
-      const existing = JSON.parse(localStorage.getItem(LEADS_KEY) || '[]');
-      existing.unshift(record);
-      localStorage.setItem(LEADS_KEY, JSON.stringify(existing));
-    } catch (_) {}
-
-    const apiBase = 'api/index.php';
-    try {
-      const res = await fetch(`${apiBase}?route=leads`, {
+      const res = await fetch('api/index.php?route=leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(record)
       });
-      if (res.ok) {
-        const data = await res.json();
-        if (data?.reference) record.reference = data.reference;
+      const data = await res.json();
+      if (res.ok && data?.ok) {
+        record.reference = data.reference || ref;
+        record.serverSaved = true;
+      } else {
+        record.error = data?.error || null;
       }
     } catch (_) {}
 
@@ -529,9 +589,46 @@ document.addEventListener('DOMContentLoaded', () => {
     return record;
   }
 
-  // 10. Formulaire de devis Express & Home (.h-final) connecté au CRM
+  // Injecte un champ honeypot anti-spam et une boîte de confirmation dans un formulaire s'ils n'y sont pas
+  function ensureFormEnhancements(form, noticeId) {
+    if (!form) return null;
+    if (!form.querySelector('[name="website_url_hp"]')) {
+      const hp = document.createElement('input');
+      hp.type = 'text';
+      hp.name = 'website_url_hp';
+      hp.tabIndex = -1;
+      hp.autocomplete = 'off';
+      hp.setAttribute('aria-hidden', 'true');
+      hp.style.cssText = 'position:absolute;left:-9999px;opacity:0;pointer-events:none;height:0;width:0;';
+      form.appendChild(hp);
+    }
+
+    let notice = document.getElementById(noticeId);
+    if (!notice) {
+      notice = document.createElement('div');
+      notice.id = noticeId;
+      notice.className = 'form-phase-notice';
+      notice.style.marginTop = '1.25rem';
+      notice.innerHTML = `
+        <h4><i class="fa-solid fa-circle-check" style="color: #25D366;"></i> <span class="notice-ref-title">Demande de devis enregistrée</span></h4>
+        <p class="notice-ref-desc">
+          Votre demande a bien été enregistrée par notre bureau d'études à Attinguié (PK 26). Un conseiller technique vous recontacte sous 24h. Pour accélérer l'étude, vous pouvez aussi transmettre ce dossier directement sur WhatsApp :
+        </p>
+        <a href="https://wa.me/${activeWaNumber}" class="btn btn-wa btn-direct-wa notice-wa-btn" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>Ouvrir et envoyer sur WhatsApp</span>
+        </a>
+      `;
+      form.appendChild(notice);
+    }
+    return notice;
+  }
+
+  // 11. Formulaire de devis Accueil (#homeQuoteForm / #expressQuoteForm)
   const expressForm = document.getElementById('expressQuoteForm') || document.getElementById('homeQuoteForm');
   if (expressForm) {
+    const homeNotice = ensureFormEnhancements(expressForm, 'homeFormNoticeBox');
+
     expressForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (!expressForm.checkValidity()) {
@@ -539,12 +636,22 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
+      const submitBtn = expressForm.querySelector('button[type="submit"]');
+      const origBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Enregistrement en cours...</span>';
+      }
+
       const nom = expressForm.querySelector('#fullName')?.value || expressForm.querySelector('#quoteName')?.value || 'Client';
       const telephone = expressForm.querySelector('#phone')?.value || expressForm.querySelector('#quotePhone')?.value || '';
       const lieu = expressForm.querySelector('#location')?.value || expressForm.querySelector('#quoteLocation')?.value || 'Abidjan';
-      const moduleType = expressForm.querySelector('#moduleType')?.value || expressForm.querySelector('#quoteModule')?.value || 'Bureau de chantier';
-      const sector = expressForm.querySelector('#sector')?.value || 'BTP / Entreprise';
+      const modSel = expressForm.querySelector('#moduleType') || expressForm.querySelector('#quoteModule');
+      const moduleType = modSel ? (modSel.options[modSel.selectedIndex]?.text || modSel.value) : 'Bureau de chantier';
+      const secSel = expressForm.querySelector('#sector');
+      const sector = secSel ? (secSel.options[secSel.selectedIndex]?.text || secSel.value) : 'BTP / Entreprise';
       const message = expressForm.querySelector('#notes')?.value || expressForm.querySelector('#quoteMessage')?.value || 'Demande depuis la page d’accueil';
+      const hpVal = expressForm.querySelector('[name="website_url_hp"]')?.value || '';
 
       const saved = await submitLeadToCrm({
         full_name: nom,
@@ -556,11 +663,17 @@ document.addEventListener('DOMContentLoaded', () => {
         quantity: 1,
         timeline: 'Sous 2 semaines',
         message,
-        source_page: 'index.html'
+        source_page: 'index.html',
+        website_url_hp: hpVal
       });
 
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = origBtnHtml;
+      }
+
       const waText = encodeURIComponent(
-        `Bonjour ETS AGBONOUGLA, je souhaite un devis (Réf CRM ${saved.reference}) :\n` +
+        `Bonjour ETS AGBONOUGLA, je souhaite un devis (Réf ${saved.reference}) :\n` +
         `• Nom / Entreprise : ${nom}\n` +
         `• Téléphone : ${telephone}\n` +
         `• Secteur : ${sector}\n` +
@@ -568,14 +681,27 @@ document.addEventListener('DOMContentLoaded', () => {
         `• Lieu de livraison : ${lieu}\n` +
         (message ? `• Précisions : ${message}` : '')
       );
+      const waUrl = `https://wa.me/${activeWaNumber}?text=${waText}`;
 
-      window.open(`https://wa.me/2250707683868?text=${waText}`, '_blank', 'noopener,noreferrer');
+      if (homeNotice) {
+        const titleEl = homeNotice.querySelector('.notice-ref-title') || homeNotice.querySelector('h4');
+        if (titleEl) {
+          titleEl.innerHTML = `<i class="fa-solid fa-circle-check" style="color: #25D366;"></i> Demande enregistrée — Réf. ${escHtml(saved.reference)}`;
+        }
+        const waBtn = homeNotice.querySelector('.notice-wa-btn') || homeNotice.querySelector('a');
+        if (waBtn) waBtn.href = waUrl;
+        homeNotice.classList.add('show');
+        homeNotice.style.display = 'block';
+        homeNotice.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest' });
+      }
     });
   }
 
-  // 11. Formulaire de devis (Pages secondaires) connecté au CRM
+  // 12. Formulaire de devis Page Contact (#projectForm / #devisForm)
   const quoteForm = document.getElementById('projectForm') || document.getElementById('devisForm');
   if (quoteForm) {
+    ensureFormEnhancements(quoteForm, 'formNoticeBox');
+
     quoteForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (!quoteForm.checkValidity()) {
@@ -583,16 +709,25 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
+      const submitBtn = quoteForm.querySelector('button[type="submit"]');
+      const origBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Enregistrement en cours...</span>';
+      }
+
       const nom = quoteForm.querySelector('[name="nom"]')?.value || 'Client';
+      const entreprise = quoteForm.querySelector('[name="entreprise"]')?.value || 'Professionnel';
       const telephone = quoteForm.querySelector('[name="telephone"]')?.value || '';
       const localisation = quoteForm.querySelector('[name="localisation"]')?.value || 'Abidjan';
       const typeSolution = quoteForm.querySelector('[name="type"]:checked')?.value || 'Bureau de chantier';
       const dimensions = quoteForm.querySelector('[name="dimensions"]')?.value || '20 pieds';
       const description = quoteForm.querySelector('[name="description"]')?.value || '';
+      const hpVal = quoteForm.querySelector('[name="website_url_hp"]')?.value || '';
 
       const saved = await submitLeadToCrm({
         full_name: nom,
-        company: 'Professionnel',
+        company: entreprise,
         phone: telephone,
         location: localisation,
         product_type: typeSolution,
@@ -600,28 +735,38 @@ document.addEventListener('DOMContentLoaded', () => {
         quantity: 1,
         timeline: 'Sous 2 semaines',
         message: description,
-        source_page: 'ets_contact.html'
+        source_page: 'ets_contact.html',
+        website_url_hp: hpVal
       });
+
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = origBtnHtml;
+      }
 
       const noticeBox = document.getElementById('formNoticeBox');
       const waButton = document.getElementById('waDirectSubmit');
 
       const waText = encodeURIComponent(
-        `Bonjour ETS AGBONOUGLA, je souhaite un devis (Réf CRM ${saved.reference}) :\n` +
-        `- Nom : ${nom}\n` +
-        `- Téléphone : ${telephone}\n` +
-        `- Localisation : ${localisation}\n` +
-        `- Solution : ${typeSolution}\n` +
-        `- Dimensions souhaitées : ${dimensions}\n` +
-        `- Détails : ${description}`
+        `Bonjour ETS AGBONOUGLA, je souhaite un devis (Réf ${saved.reference}) :\n` +
+        `• Nom : ${nom} (${entreprise})\n` +
+        `• Téléphone : ${telephone}\n` +
+        `• Localisation : ${localisation}\n` +
+        `• Solution : ${typeSolution}\n` +
+        `• Dimensions souhaitées : ${dimensions}\n` +
+        `• Détails : ${description}`
       );
 
       if (noticeBox) {
+        const h4 = noticeBox.querySelector('h4');
+        if (h4) {
+          h4.innerHTML = `<i class="fa-solid fa-circle-check" style="color: #25D366;"></i> Demande enregistrée — Réf. ${escHtml(saved.reference)}`;
+        }
         noticeBox.classList.add('show');
         noticeBox.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest' });
       }
       if (waButton) {
-        waButton.href = `https://wa.me/2250707683868?text=${waText}`;
+        waButton.href = `https://wa.me/${activeWaNumber}?text=${waText}`;
       }
     });
   }
